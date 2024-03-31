@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public bool IsAutoAiming = false;
     public Transform ForwardAxis;
 
+    [Header("Attack")]
+    public Bullet Bullet;
+    public Transform HeadGun;
+
 
     #region Monobehaviour
     private void Start()
@@ -92,10 +96,18 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Aiming
+
+    float LastTimeShoot = 0;
     private void SetAimingState(float hz, float v)
     {
         IsAiming = true;
         SetAimingState(IsAiming);
+        if (Time.time - LastTimeShoot > 0.3f)
+        {
+            LastTimeShoot = Time.time;
+            Bullet newbu = Instantiate(Bullet, HeadGun.position, Quaternion.identity);
+            newbu.Speed = 150 * transform.forward;
+        }
     }
     private void CancelAiming()
     {

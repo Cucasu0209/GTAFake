@@ -37,6 +37,8 @@ public class KeyBoardInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             IsMousePressing = true;
+            UserInputController.Instance.OnStartAiming?.Invoke();
+
         }
         if (Input.GetMouseButtonUp(0))
         {
