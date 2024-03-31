@@ -9,7 +9,6 @@ public class FollowPlayerCamera : MonoBehaviour
     private Vector2 NearPlaneSize;
 
     [SerializeField] private Transform TransformFollow;
-    [SerializeField] private Transform Player;
 
     private float MaxDistance;
     private float TargetMaxDistance;
@@ -21,10 +20,6 @@ public class FollowPlayerCamera : MonoBehaviour
     [SerializeField] private Vector2 AimingSensitivity;
     [SerializeField] private Camera Camera;
     [SerializeField] private Transform CenterUI;
-    private float TargetPPWeight = 0;
-
-
-    private bool IsAiming = false;
 
     private void Start()
     {
@@ -100,29 +95,19 @@ public class FollowPlayerCamera : MonoBehaviour
 
         //transform.position = Vector3.Lerp(transform.position, Follow.position + direction * distance, 10* Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
-        if (IsAiming)
-        {
-            Player.rotation = Quaternion.Euler(Player.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, Player.rotation.eulerAngles.z);
-        }
+
     }
 
     public void StartAiming()
     {
-        TargetMaxDistance = AimingMaxDistance;
-        TransformFollow.DOLocalMoveX(0.7f, 0.2f);
-        TargetPPWeight = 1;
 
-        CenterUI.DOScale(1, 0.2f);
+
         Sensitivity = AimingSensitivity;
-        IsAiming = true;
+
     }
     public void CancelAiming()
     {
-        TargetMaxDistance = NormalMaxDistance;
-        TransformFollow.DOLocalMoveX(0, 0.2f);
-        TargetPPWeight = 0.01f;
-        CenterUI.DOScale(0, 0.2f);
         Sensitivity = NormalSensitivity;
-        IsAiming = false;
+
     }
 }
