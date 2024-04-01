@@ -6,6 +6,9 @@ using DG.Tweening;
 public class PlayerAiming : MonoBehaviour
 {
     private float Speed = 5;
+    float CurrentRotation = 0;
+    float CurrenthzInput = 0;
+    float CurrentvInput = 0;
     [SerializeField] private float AimingSpeed = 5;
     private PlayerController Controller;
     //[SerializeField] private PlayerEnemyDetection detection;
@@ -16,38 +19,29 @@ public class PlayerAiming : MonoBehaviour
         UserInputController.Instance.OnMovementJoystick += MovePlayer;
         UserInputController.Instance.OnAimingJoystick += Aim;
         UserInputController.Instance.OnCancelAiming += HideAimingZone;
+        UserInputController.Instance.OnStartAiming += OnStartAiming;
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnMovementJoystick -= MovePlayer;
         UserInputController.Instance.OnAimingJoystick -= Aim;
         UserInputController.Instance.OnCancelAiming -= HideAimingZone;
+        UserInputController.Instance.OnStartAiming -= OnStartAiming;
     }
     private void Aim(float hzInput, float vInput)
     {
         if (Controller.IsAiming == true)
         {
-
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.ForwardAxis.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-
-            //Vector2 AimInput = Controller.ForwardAxis.forward;
-            //Vector2 Direction = (AimInput).normalized;
-            //if (AimInput.magnitude > 0.1f)
-            //{
-
-            //    float rotation = Mathf.Atan2(Direction.x, Direction.y) * Mathf.Rad2Deg;
-            //    rotation = (rotation % 360 + 360) % 360;
-            //    float currentRotation = (transform.eulerAngles.y % 360 + 360) % 360;
-            //    if (Mathf.Abs(currentRotation - rotation) > 180)
-            //    {
-            //        if (currentRotation < 180) currentRotation += 360;
-            //        else rotation += 360;
-            //    }
-            //    transform.eulerAngles = Vector3.up * Mathf.Lerp(currentRotation, rotation, 10 * Time.deltaTime);
-            //}
-
-            //shoot
         }
+    }
+
+
+    private void OnStartAiming()
+    {
+        CurrentRotation = 99999;
+        CurrenthzInput = 0;
+        CurrentvInput = 0;
     }
     private void MovePlayer(float hzInput, float vInput)
     {
@@ -64,18 +58,11 @@ public class PlayerAiming : MonoBehaviour
                 Direction = new Vector2(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)).normalized;
                 Controller.charController.Move(new Vector3(Direction.x, 0, Direction.y) * Speed * Time.deltaTime);
 
-                //Anim
-                rotation = rotation - transform.eulerAngles.y;
-                Direction = new Vector2(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)).normalized;
-                Controller.SetAimingMovement(Direction.x, Direction.y);
-            }
-            else
-            {
-                Controller.SetAimingMovement(0, 0);
 
             }
-
-
+            CurrenthzInput = Mathf.Lerp(CurrenthzInput, hzInput, 10 * Time.deltaTime);
+            CurrentvInput = Mathf.Lerp(CurrentvInput, vInput, 10 * Time.deltaTime);
+            Controller.SetAimingMovement(CurrenthzInput, CurrentvInput);
         }
     }
 
