@@ -6,6 +6,7 @@ using UnityEngine.Animations.Rigging;
 public class PlayerAnimationCallbacks : MonoBehaviour
 {
     public PlayerController Controller;
+    public PlayerJumping PlayerJumping;
 
     public void Start()
     {
@@ -21,10 +22,14 @@ public class PlayerAnimationCallbacks : MonoBehaviour
 
     private void OnStartAiming()
     {
-      
+
     }
     private void OnCancelAiming()
     {
-      
+
+    }
+    public void AddJumpForce()
+    {
+        PlayerJumping.AddForceJump();
     }
 }

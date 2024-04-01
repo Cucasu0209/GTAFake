@@ -65,6 +65,14 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("attack");
     }
+    public void SetTriggerJump()
+    {
+        PlayerAnimator.SetTrigger("jump");
+    }
+    public void SetIsGroundedAnim(bool isGrounded)
+    {
+        PlayerAnimator.SetBool("grounded", isGrounded);
+    }
     #endregion
 
     #region Gravity
@@ -73,8 +81,10 @@ public class PlayerController : MonoBehaviour
         Vector3 SpherePos = transform.position - Vector3.up * GroundYOffset;
         if (Physics.CheckSphere(SpherePos, charController.radius - 0.05f, GroundMask))
         {
+            SetIsGroundedAnim(true);
             return true;
         }
+        SetIsGroundedAnim(false);
         return false;
     }
     void ApplyGravity()
@@ -86,6 +96,8 @@ public class PlayerController : MonoBehaviour
         else if (Velocity.y < 0)
         {
             Velocity.y = 0;
+           
+
         }
 
         charController.Move(Velocity * Time.deltaTime);
@@ -104,5 +116,6 @@ public class PlayerController : MonoBehaviour
         IsAiming = false;
         SetAimingState(IsAiming);
     }
+
     #endregion
 }

@@ -6,7 +6,6 @@ using DG.Tweening;
 public class PlayerAiming : MonoBehaviour
 {
     private float Speed = 5;
-    float CurrentRotation = 0;
     float CurrenthzInput = 0;
     float CurrentvInput = 0;
     [SerializeField] private float AimingSpeed = 5;
@@ -39,7 +38,6 @@ public class PlayerAiming : MonoBehaviour
 
     private void OnStartAiming()
     {
-        CurrentRotation = 99999;
         CurrenthzInput = 0;
         CurrentvInput = 0;
     }
