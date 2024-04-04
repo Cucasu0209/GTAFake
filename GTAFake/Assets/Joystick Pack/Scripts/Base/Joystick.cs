@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,7 +21,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         get { return deadZone; }
         set { deadZone = Mathf.Abs(value); }
     }
-
+    public Action OnStartDrag;
+    public Action OnEndDrag;
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
     public bool SnapY { get { return snapY; } set { snapY = value; } }
@@ -60,6 +62,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public virtual void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
+        OnStartDrag?.Invoke();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -133,6 +136,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+        OnEndDrag?.Invoke();
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

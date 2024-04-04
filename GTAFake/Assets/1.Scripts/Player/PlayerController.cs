@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Lean.Pool;
 public class PlayerController : MonoBehaviour
 {
     public Animator PlayerAnimator;
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public Transform ForwardAxis;
 
     [Header("Attack")]
-    public Bullet Bullet;
+    public GameObject Bullet;
     public Transform HeadGun;
 
 
@@ -102,11 +103,21 @@ public class PlayerController : MonoBehaviour
     {
         IsAiming = true;
         SetAimingState(IsAiming);
-        if (Time.time - LastTimeShoot > 0.3f)
+        if (Time.time - LastTimeShoot > 0.2f)
         {
             LastTimeShoot = Time.time;
-            Bullet newbu = Instantiate(Bullet, HeadGun.position, Quaternion.identity);
-            newbu.Speed = 150 * transform.forward;
+            GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
+            newbu.GetComponent<TrailRenderer>().enabled = true;
+            newbu.GetComponent<Bullet>().Speed = 150 * transform.forward;
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                newbu.GetComponent<Bullet>().Speed = Vector3.zero;
+                newbu.GetComponent<TrailRenderer>().enabled = false;
+                newbu.transform.position = transform.position;
+                DOVirtual.DelayedCall(0.2f, () => LeanPool.Despawn(newbu));
+
+
+            });
         }
     }
     private void CancelAiming()
