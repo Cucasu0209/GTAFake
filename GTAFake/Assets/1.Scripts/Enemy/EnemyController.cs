@@ -13,15 +13,16 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - LastTimeCheckFollow > 2f)
+        Anim.SetFloat("speed", Agent.velocity.magnitude);
+        if (Time.time - LastTimeCheckFollow > Random.Range(2, 4f))
         {
             LastTimeCheckFollow = Time.time;
             PlayerController player = FindAnyObjectByType<PlayerController>();
             if (player != null)
             {
                 Agent.SetDestination(player.transform.position);
-                Anim.SetFloat("speed", Agent.velocity.magnitude);
-               
+                
+
 
             }
             if (Body.velocity.y < -3) Body.velocity = Vector3.zero;
