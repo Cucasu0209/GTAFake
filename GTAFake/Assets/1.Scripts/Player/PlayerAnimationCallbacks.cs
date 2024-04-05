@@ -5,8 +5,11 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerAnimationCallbacks : MonoBehaviour
 {
-    public PlayerController Controller;
+    [HideInInspector] public PlayerController Controller;
     public MultiAimConstraint RhandConstraint;
+    public TwoBoneIKConstraint LhandConstraint;
+    public MultiAimConstraint HeadConstraint;
+    public MultiAimConstraint ShoulderConstraint;
 
     public void Start()
     {
@@ -23,9 +26,17 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     private void OnStartAiming()
     {
         RhandConstraint.weight = 1.0f;
+        LhandConstraint.weight = 1.0f;
+        HeadConstraint.weight = 1.0f;
+        ShoulderConstraint.weight = 1.0f;
+        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
     }
     private void OnCancelAiming()
     {
         RhandConstraint.weight = 0f;
+        LhandConstraint.weight = 0f;
+        HeadConstraint.weight = 0f;
+        ShoulderConstraint.weight = 0f;
+        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
     }
 }

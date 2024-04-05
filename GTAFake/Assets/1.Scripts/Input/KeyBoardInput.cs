@@ -20,7 +20,10 @@ public class KeyBoardInput : MonoBehaviour
     }
     private void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            UserInputController.Instance.OnJumpBtnClick?.Invoke();
+        }
 
 
         if (Input.GetKey(KeyCode.W)) vInput = 1;

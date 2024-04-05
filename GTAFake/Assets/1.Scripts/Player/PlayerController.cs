@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement and Aiming")]
     public bool IsAiming;/* { get; private set; }*/
     public bool IsAutoAiming = false;
-    public Transform ForwardAxis;
+    public readonly string AimLayerName = "Aiming";
+    [HideInInspector] public Transform ForwardAxis;
 
     [Header("Attack")]
     public GameObject Bullet;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     #region Monobehaviour
     private void Start()
     {
+        ForwardAxis = Camera.main.transform;
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
     }
@@ -58,16 +60,9 @@ public class PlayerController : MonoBehaviour
         PlayerAnimator.SetBool("aiming", IsAiming);
 
     }
-    public void SetHandInWeaponAnim(int index)
+    public void SetJumpAnim()
     {
-        for (int i = 1; i < PlayerAnimator.layerCount; i++)
-        {
-            PlayerAnimator.SetLayerWeight(i, i == index ? 1 : 0);
-        }
-    }
-    public void SetAttackAnim()
-    {
-        PlayerAnimator.SetTrigger("attack");
+        PlayerAnimator.SetTrigger("jump");
     }
     #endregion
 
