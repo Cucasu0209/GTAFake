@@ -20,8 +20,10 @@ public class PlayerJumping : MonoBehaviour
     }
     private void Jump()
     {
-        Controller.Velocity += Vector3.up * (JumpStartVeloc - Controller.Velocity.y);
-        Controller.SetJumpAnim();
-        Debug.Log("asssssssssss");
+        if (Controller.IsGrounded())
+        {
+            Controller.Velocity += Vector3.up * (JumpStartVeloc - Controller.Velocity.y);
+            Controller.SetJumpAnim();
+        }
     }
 }

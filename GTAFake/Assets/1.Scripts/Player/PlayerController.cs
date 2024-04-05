@@ -11,13 +11,12 @@ public class PlayerController : MonoBehaviour
     [Header("Gravity")]
     [SerializeField] public float Gravity = -50;
     public readonly float DefaultGravity = -50;
-    [HideInInspector] public Vector3 Velocity;
+    public Vector3 Velocity;
     [SerializeField] private LayerMask GroundMask;
     [SerializeField] private float GroundYOffset;
 
     [Header("Movement and Aiming")]
     public bool IsAiming;/* { get; private set; }*/
-    public bool IsAutoAiming = false;
     public readonly string AimLayerName = "Aiming";
     [HideInInspector] public Transform ForwardAxis;
 
