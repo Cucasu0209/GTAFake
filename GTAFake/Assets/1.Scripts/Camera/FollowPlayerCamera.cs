@@ -10,31 +10,21 @@ public class FollowPlayerCamera : MonoBehaviour
 
     [SerializeField] private Transform TransformFollow;
 
-    private float MaxDistance;
-    private float TargetMaxDistance;
-    [SerializeField] private float NormalMaxDistance;
-    [SerializeField] private float AimingMaxDistance;
+    [SerializeField] private float MaxDistance;
 
     private Vector2 Sensitivity;//độ nhạy
     [SerializeField] private Vector2 NormalSensitivity;
     [SerializeField] private Vector2 AimingSensitivity;
     [SerializeField] private Camera Camera;
-    [SerializeField] private Transform CenterUI;
 
     private void Start()
     {
-        MaxDistance = NormalMaxDistance;
-        TargetMaxDistance = NormalMaxDistance;
         Sensitivity = NormalSensitivity;
         CalculateNearPlaneSize();
         UserInputController.Instance.OnCameraAxisChange += FollowPlayer;
         UserInputController.Instance.OnStartAiming += StartAiming;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
 
-    }
-    private void Update()
-    {
-        MaxDistance = Mathf.Lerp(MaxDistance, TargetMaxDistance, 10 * Time.deltaTime);
     }
     private void OnDestroy()
     {

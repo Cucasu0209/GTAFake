@@ -31,11 +31,14 @@ public class PlayerController : MonoBehaviour
         ForwardAxis = Camera.main.transform;
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
+        UserInputController.Instance.OnStartAiming += StartAiming;
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnAimingJoystick -= SetAimingState;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
+        UserInputController.Instance.OnStartAiming -= StartAiming;
+
     }
     private void Update()
     {
@@ -101,18 +104,12 @@ public class PlayerController : MonoBehaviour
         {
             LastTimeShoot = Time.time;
             GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
-            newbu.GetComponent<TrailRenderer>().enabled = true;
-            newbu.GetComponent<Bullet>().Speed = 150 * transform.forward;
-            DOVirtual.DelayedCall(1f, () =>
-            {
-                newbu.GetComponent<Bullet>().Speed = Vector3.zero;
-                newbu.GetComponent<TrailRenderer>().enabled = false;
-                newbu.transform.position = transform.position;
-                DOVirtual.DelayedCall(0.2f, () => LeanPool.Despawn(newbu));
-
-
-            });
+            newbu.GetComponent<Bullet>().SetVelocity(transform.forward);
         }
+    }
+    private void StartAiming()
+    {
+        LastTimeShoot = Time.time;
     }
     private void CancelAiming()
     {
