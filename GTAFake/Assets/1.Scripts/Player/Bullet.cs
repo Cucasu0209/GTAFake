@@ -15,12 +15,18 @@ public class Bullet : MonoBehaviour
         transform.LookAt(transform.position + Velocity * 10);
         LeanPool.Despawn(gameObject, 2);
     }
+    RaycastHit hit;
+
     // Update is called once per frame
     void Update()
     {
         transform.position += 150 * Velocity.normalized * Time.deltaTime;
-        if (Physics.Raycast(transform.position - Velocity.normalized, Velocity.normalized, 2, EnemyMask))
+        if (Physics.Raycast(transform.position - Velocity.normalized * 3, Velocity.normalized, out hit, 6, EnemyMask))
         {
+            if (hit.collider.gameObject.GetComponent<IActor>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IActor>().TakeDmg(1);
+            }
             GameObject newFx = LeanPool.Spawn(EffectExplode, transform.position, Quaternion.identity);
             LeanPool.Despawn(newFx, 1);
             Velocity = Vector3.zero;
