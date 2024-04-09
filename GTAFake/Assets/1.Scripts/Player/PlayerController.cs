@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Lean.Pool;
+using System;
 public class PlayerController : MonoBehaviour
 {
     public Animator PlayerAnimator;
@@ -24,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullet;
     public Transform HeadGun;
 
+    [Header("Flying")]
+    public bool IsFlying;
+
 
     #region Monobehaviour
     private void Start()
@@ -32,13 +36,18 @@ public class PlayerController : MonoBehaviour
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
         UserInputController.Instance.OnStartAiming += StartAiming;
+        UserInputController.Instance.OnStartFlying += OnStartFlying;
+        UserInputController.Instance.OnEndFlying += OnEndFlying;
     }
+
+
     private void OnDestroy()
     {
         UserInputController.Instance.OnAimingJoystick -= SetAimingState;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
         UserInputController.Instance.OnStartAiming -= StartAiming;
-
+        UserInputController.Instance.OnStartFlying -= OnStartFlying;
+        UserInputController.Instance.OnEndFlying -= OnEndFlying;
     }
     private void Update()
     {
@@ -115,6 +124,20 @@ public class PlayerController : MonoBehaviour
     {
         IsAiming = false;
         SetAimingState(IsAiming);
+    }
+    #endregion
+
+    #region Flying
+    private void OnStartFlying()
+    {
+        Gravity = 0;
+        Velocity.y = 0;
+        IsFlying = true;
+    }
+    private void OnEndFlying()
+    {
+        Gravity = DefaultGravity;
+        IsFlying = false;
     }
     #endregion
 }

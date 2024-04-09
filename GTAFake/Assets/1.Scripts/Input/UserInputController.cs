@@ -10,9 +10,12 @@ public class UserInputController : MonoBehaviour
     public Action<float, float> OnMovementJoystick;
     public Action<float, float> OnAimingJoystick;
     public Action<float, float> OnCameraAxisChange;
+    public Action<int> OnChooseWeaponIndex;
     public Action OnJumpBtnClick;
     public Action OnStartAiming;
     public Action OnCancelAiming;
+    public Action OnStartFlying;
+    public Action OnEndFlying;
 
     private void Awake()
     {

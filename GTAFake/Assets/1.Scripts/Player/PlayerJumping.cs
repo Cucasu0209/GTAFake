@@ -20,7 +20,7 @@ public class PlayerJumping : MonoBehaviour
     }
     private void Jump()
     {
-        if (Controller.IsGrounded())
+        if (Controller.IsGrounded() && Controller.IsFlying == false)
         {
             Controller.Velocity += Vector3.up * (JumpStartVeloc - Controller.Velocity.y);
             Controller.SetJumpAnim();
