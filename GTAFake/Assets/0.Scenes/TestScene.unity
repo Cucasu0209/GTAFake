@@ -374,6 +374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gangster
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 011209ab8f794b44c90d224104470481, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 011209ab8f794b44c90d224104470481, type: 3}
       propertyPath: m_Controller
       value: 
@@ -959,8 +963,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569401039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.71237, y: 25.37, z: 39.611057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 74.25042, y: 24.7, z: 37.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2544,7 +2548,7 @@ Transform:
   m_GameObject: {fileID: 1333595145887114300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.25042, y: 23.623, z: 37.2}
+  m_LocalPosition: {x: 74.25042, y: 23.623, z: 34.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3450,8 +3454,8 @@ MonoBehaviour:
   Velocity: {x: 0, y: 0, z: 0}
   GroundMask:
     serializedVersion: 2
-    m_Bits: 2049
-  GroundYOffset: 0.3
+    m_Bits: 3383
+  GroundYOffset: 0.2
   IsAiming: 0
   ForwardAxis: {fileID: 1307819254}
   Bullet: {fileID: 1550477657380252, guid: e44210a9c48109f4bb0eff59863a09e1, type: 3}
@@ -4745,12 +4749,12 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1307819254}
   - {fileID: 347871817}
   - {fileID: 1140891521}
+  - {fileID: 1307819254}
   - {fileID: 2717049273465286808}
   - {fileID: 1243401970}
   - {fileID: 1387864790}
   - {fileID: 3246835851830121589}
-  - {fileID: 569401043}
   - {fileID: 285072995}
+  - {fileID: 569401043}

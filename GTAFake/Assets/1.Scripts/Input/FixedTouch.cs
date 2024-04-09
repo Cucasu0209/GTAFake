@@ -33,16 +33,16 @@ public class FixedTouch : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 TouchDist = new Vector2(Input.mousePosition.x, Input.mousePosition.y) - PointerOld;
                 PointerOld = Input.mousePosition;
             }
-            UserInputController.Instance.OnCameraAxisChange(TouchDist.x, TouchDist.y);
+            UserInputController.Instance.OnCameraAxisChange?.Invoke(TouchDist.x, TouchDist.y);
         }
         else if (TouchDist.magnitude != 0)
         {
             TouchDist = Vector2.zero;
-            UserInputController.Instance.OnCameraAxisChange(0, 0);
+            UserInputController.Instance.OnCameraAxisChange?.Invoke(0, 0);
         }
         else
         {
-            UserInputController.Instance.OnCameraAxisChange(0, 0);
+            UserInputController.Instance.OnCameraAxisChange?.Invoke(0, 0);
         }
 
 
