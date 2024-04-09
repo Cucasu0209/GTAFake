@@ -9,8 +9,8 @@ public class FPSMeasurement : MonoBehaviour
     private TextMeshProUGUI m_TextMeshProUGUI;
     private void Start()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        //QualitySettings.vSyncCount = 0;
+        //Application.targetFrameRate = 60;
         m_TextMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
     void Update()

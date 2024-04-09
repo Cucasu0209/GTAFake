@@ -80,9 +80,9 @@ public class FollowPlayerCamera : MonoBehaviour
             }
         }
 
-        //transform.position = TransformFollow.position + direction * distance;
+        transform.position = TransformFollow.position + direction * distance;
 
-        transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 10 * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 10 * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
 
     }
