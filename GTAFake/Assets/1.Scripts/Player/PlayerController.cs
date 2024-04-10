@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement and Aiming")]
     public bool IsAiming;/* { get; private set; }*/
     public readonly string AimLayerName = "Aiming";
-    [HideInInspector] public Transform ForwardAxis;
+    private Transform ForwardAxis;
+    private Vector3 CurrentTarget;
 
     [Header("Attack")]
     public GameObject Bullet;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         UserInputController.Instance.OnStartAiming += StartAiming;
         UserInputController.Instance.OnStartFlying += OnStartFlying;
         UserInputController.Instance.OnEndFlying += OnEndFlying;
+        UserInputController.Instance.OnChangeTargetAim += UpdateTarget;
     }
 
 
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
         UserInputController.Instance.OnStartAiming -= StartAiming;
         UserInputController.Instance.OnStartFlying -= OnStartFlying;
         UserInputController.Instance.OnEndFlying -= OnEndFlying;
+        UserInputController.Instance.OnChangeTargetAim -= UpdateTarget;
+
     }
     private void Update()
     {
@@ -103,7 +107,17 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Aiming
-
+    public void UpdateTarget(Vector3 position)
+    {
+        CurrentTarget = position;
+    }
+    public float GetAngle()
+    {
+        Vector3 dir = CurrentTarget - transform.position;
+        float angle = -Vector2.SignedAngle(new Vector2(dir.z, dir.x), Vector2.right);
+        return angle;
+    }
+    public float GetCameraAngle() => ForwardAxis.eulerAngles.y;
     float LastTimeShoot = 0;
     private void SetAimingState(float hz, float v)
     {

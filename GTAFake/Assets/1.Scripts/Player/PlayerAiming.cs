@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
+
 using UnityEngine;
-using DG.Tweening;
+
 public class PlayerAiming : MonoBehaviour
 {
     [SerializeField] private float Speed = 5;
@@ -27,7 +25,7 @@ public class PlayerAiming : MonoBehaviour
     {
         if (Controller.IsAiming == true)
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.ForwardAxis.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.GetAngle(), transform.rotation.eulerAngles.z);
         }
     }
 
@@ -48,11 +46,9 @@ public class PlayerAiming : MonoBehaviour
             {
                 //move
                 Vector2 Direction = (new Vector2(hzInput, vInput)).normalized;
-                float rotation = Mathf.Atan2(Direction.x, Direction.y) * Mathf.Rad2Deg + Controller.ForwardAxis.eulerAngles.y;
+                float rotation = Mathf.Atan2(Direction.x, Direction.y) * Mathf.Rad2Deg + Controller.GetCameraAngle();
                 Direction = new Vector2(Mathf.Sin(rotation * Mathf.Deg2Rad), Mathf.Cos(rotation * Mathf.Deg2Rad)).normalized;
                 Controller.charController.Move(new Vector3(Direction.x, 0, Direction.y) * Speed * Time.deltaTime);
-
-
             }
             CurrenthzInput = Mathf.Lerp(CurrenthzInput, hzInput, 10 * Time.deltaTime);
             CurrentvInput = Mathf.Lerp(CurrentvInput, vInput, 10 * Time.deltaTime);

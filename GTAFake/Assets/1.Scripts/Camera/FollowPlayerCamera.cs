@@ -61,8 +61,6 @@ public class FollowPlayerCamera : MonoBehaviour
         Angle.y += ver * Mathf.Deg2Rad * Sensitivity.y;
         Angle.y = Mathf.Clamp(Angle.y, MinMaxClampY.x * Mathf.Deg2Rad, MinMaxClampY.y * Mathf.Deg2Rad);
 
-
-
         Vector3 direction = new Vector3(
             Mathf.Cos(Angle.x) * Mathf.Cos(Angle.y),
             -Mathf.Sin(Angle.y),
@@ -79,20 +77,14 @@ public class FollowPlayerCamera : MonoBehaviour
                 distance = Mathf.Min((hit.point - TransformFollow.position).magnitude * 0.8f, distance);
             }
         }
-
-        transform.position = TransformFollow.position + direction * distance;
-
-        //transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 10 * Time.deltaTime);
+        //  transform.position = TransformFollow.position + direction * distance;
+        transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 30 * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
-
     }
 
     public void StartAiming()
     {
-
-
         Sensitivity = AimingSensitivity;
-
     }
     public void CancelAiming()
     {

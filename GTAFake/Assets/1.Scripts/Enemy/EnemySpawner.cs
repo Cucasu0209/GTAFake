@@ -14,11 +14,10 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(5);
             GameObject enemy = LeanPool.Spawn(EnemyPrefabs, SpawnPositions[Random.Range(0, SpawnPositions.Length)].position, Quaternion.identity);
             enemy.GetComponent<EnemyController>().Respawn();
         }
-
     }
 
 }

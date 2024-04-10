@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
             if (MoveInput.magnitude > 0.1f)
             {
 
-                float rotation = Mathf.Atan2(Direction.x, Direction.y) * Mathf.Rad2Deg + Controller.ForwardAxis.eulerAngles.y;
+                float rotation = Mathf.Atan2(Direction.x, Direction.y) * Mathf.Rad2Deg + Controller.GetCameraAngle();
                 rotation = (rotation % 360 + 360) % 360;
                 float currentRotation = (transform.eulerAngles.y % 360 + 360) % 360;
                 if (Mathf.Abs(currentRotation - rotation) > 180)

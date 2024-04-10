@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour, IActor
     public Rigidbody Body;
 
     float LastTimeCheckFollow = 0;
-    private float health = 10;
+    private float health = 5;
 
     public void Respawn()
     {
