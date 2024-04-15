@@ -33,7 +33,6 @@ public class CameraChooseEnemy : MonoBehaviour
         if (chossenenemy != null)
         {
             PosInCamera = Camera.main.WorldToViewportPoint(chossenenemy.transform.position + Vector3.up);
-            Debug.Log((chossenenemy.transform.position + Vector3.up - Camera.main.transform.position).magnitude);
             lastScale = Mathf.Lerp(lastScale, (Mathf.Clamp((chossenenemy.transform.position + Vector3.up - Camera.main.transform.position).magnitude, 9, 40) - 40) / (9 - 40) * 1f + 0.4f, 10 * Time.deltaTime);
             LastPos = Vector2.Lerp(LastPos, new Vector2((PosInCamera.x - 0.5f) * viewport.sizeDelta.x, (PosInCamera.y - 0.5f) * viewport.sizeDelta.y), 50 * Time.deltaTime);
             centra.color = Color.red;
