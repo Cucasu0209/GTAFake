@@ -15,7 +15,6 @@ MonoBehaviour:
   Type: 1
   Name: SimpleGun
   Description: Ehe
-  BaseWeapon: {fileID: 5578159132041978922, guid: f6aeb92b0b53ed3418712eb4e834a16e, type: 3}
-  Fx: {fileID: 0}
+  BaseWeapon: {fileID: 5972090873523914140, guid: b775f2f668cac464c9b2167b8ca22898, type: 3}
   BaseDmg: 100
   Duration: 0.2

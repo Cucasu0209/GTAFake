@@ -1,15 +1,17 @@
+using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : BaseWeapon
 {
-    public BaseBullet Bullet;
-    public override void StartAttack(Transform effectParent, Vector3 forward)
+    [Header("Attack")]
+    public GameObject Bullet;
+    public Transform HeadGun;
+
+    public override void StartAttack(Vector3 forward)
     {
-        BaseBullet bullet = Instantiate(Bullet, effectParent.transform.position, Quaternion.identity);
-        bullet.transform.parent = effectParent;
-        bullet.SetDmg(Data.BaseDmg);
-        bullet.Fly(forward);
+        GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
+        newbu.GetComponent<Bullet>().SetVelocity(forward);
     }
 }

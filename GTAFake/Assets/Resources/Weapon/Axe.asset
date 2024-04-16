@@ -15,7 +15,6 @@ MonoBehaviour:
   Type: 0
   Name: Axe
   Description: Dangerous, dont touch me
-  BaseWeapon: {fileID: 8262771609817055242, guid: 4da850501335d8b40a3c430d717ca1b2, type: 3}
-  Fx: {fileID: 5061230489022475947, guid: 6a90e1718160b5e4c967b26eb83fc986, type: 3}
+  BaseWeapon: {fileID: 2605337355691875431, guid: 204a2c8323b950748ace0b6e3b82307a, type: 3}
   BaseDmg: 100
   Duration: 1

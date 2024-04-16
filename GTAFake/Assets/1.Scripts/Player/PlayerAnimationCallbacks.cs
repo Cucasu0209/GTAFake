@@ -25,18 +25,33 @@ public class PlayerAnimationCallbacks : MonoBehaviour
 
     private void OnStartAiming()
     {
-        RhandConstraint.weight = 1.0f;
-        LhandConstraint.weight = 1.0f;
-        HeadConstraint.weight = 1.0f;
-        ShoulderConstraint.weight = 1.0f;
+
+
+        if (Controller.GetComponent<PlayerWeaponManager>().CurrentWeapon is Gun)
+        {
+            RhandConstraint.weight = 1.0f;
+            LhandConstraint.weight = 1.0f;
+            HeadConstraint.weight = 1.0f;
+            ShoulderConstraint.weight = 1.0f;
+        }
+        else
+        {
+            RhandConstraint.weight = 0f;
+            LhandConstraint.weight = 0f;
+            HeadConstraint.weight = 0f;
+            ShoulderConstraint.weight = 0f;
+        }
+
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
     }
     private void OnCancelAiming()
     {
         RhandConstraint.weight = 0f;
         LhandConstraint.weight = 0f;
+
         HeadConstraint.weight = 0f;
         ShoulderConstraint.weight = 0f;
+
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
     }
 }

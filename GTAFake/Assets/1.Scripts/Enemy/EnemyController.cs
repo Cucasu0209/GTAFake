@@ -48,6 +48,7 @@ public class EnemyController : MonoBehaviour, IActor
         }
 
         Agent.enabled = false;
+        GameManager.Instance.RemoveEnemy(this);
         DOVirtual.DelayedCall(3, () =>
         {
             LeanPool.Despawn(gameObject);

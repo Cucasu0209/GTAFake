@@ -3,49 +3,55 @@ using UnityEngine.UI;
 public class CameraChooseEnemy : MonoBehaviour
 {
     Vector3 PosInCamera;
-    public Image centra;
-    public RectTransform viewport;
+    public Image Centra;
+    public RectTransform Viewport;
     Vector2 LastPos = new Vector3(0, 111);
-    float lastScale = 1;
+    float LastScale = 1;
+    float Maxdistance = 0.25f;
+    EnemyController ChosenEnemy;
 
     private void Update()
     {
-        EnemyController[] enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
-        float maxdistance = 0.25f;
-        EnemyController chossenenemy = null;
+        UpdateTarget();
+    }
 
-        foreach (EnemyController enemy in enemies)
+    private void UpdateTarget()
+    {
+        ChosenEnemy = null;
+        Maxdistance = 0.25f;
+        foreach (EnemyController enemy in GameManager.Instance.GetEnemies())
         {
+
             if (enemy.GetHealth() > 0)
             {
                 PosInCamera = Camera.main.WorldToViewportPoint(enemy.transform.position + Vector3.up);
                 if (Mathf.Abs(PosInCamera.x - 0.5f) < 0.5f && Mathf.Abs(PosInCamera.y - 0.5f) < 0.5f && PosInCamera.z > 0)
                 {
-                    if (Mathf.Abs(PosInCamera.x - 0.5f) < maxdistance)
+                    if (Mathf.Abs(PosInCamera.x - 0.5f) < Maxdistance)
                     {
-                        chossenenemy = enemy;
-                        maxdistance = Mathf.Abs(PosInCamera.x - 0.5f);
+                        ChosenEnemy = enemy;
+                        Maxdistance = Mathf.Abs(PosInCamera.x - 0.5f);
                     }
                 }
             }
         }
 
-        if (chossenenemy != null)
+        if (ChosenEnemy != null)
         {
-            PosInCamera = Camera.main.WorldToViewportPoint(chossenenemy.transform.position + Vector3.up);
-            lastScale = Mathf.Lerp(lastScale, (Mathf.Clamp((chossenenemy.transform.position + Vector3.up - Camera.main.transform.position).magnitude, 9, 40) - 40) / (9 - 40) * 1f + 0.4f, 10 * Time.deltaTime);
-            LastPos = Vector2.Lerp(LastPos, new Vector2((PosInCamera.x - 0.5f) * viewport.sizeDelta.x, (PosInCamera.y - 0.5f) * viewport.sizeDelta.y), 50 * Time.deltaTime);
-            centra.color = Color.red;
-            UserInputController.Instance.OnChangeTargetAim?.Invoke(chossenenemy.transform.position);
+            PosInCamera = Camera.main.WorldToViewportPoint(ChosenEnemy.transform.position + Vector3.up);
+            LastScale = Mathf.Lerp(LastScale, (Mathf.Clamp((ChosenEnemy.transform.position + Vector3.up - Camera.main.transform.position).magnitude, 9, 40) - 40) / (9 - 40) * 1f + 0.4f, 10 * Time.deltaTime);
+            LastPos = Vector2.Lerp(LastPos, new Vector2((PosInCamera.x - 0.5f) * Viewport.sizeDelta.x, (PosInCamera.y - 0.5f) * Viewport.sizeDelta.y), 50 * Time.deltaTime);
+            Centra.color = Color.red;
+            UserInputController.Instance.OnChangeTargetAim?.Invoke(ChosenEnemy.transform.position);
         }
         else
         {
             LastPos = Vector2.Lerp(LastPos, new Vector3(0, 111), 20 * Time.deltaTime);
-            centra.color = Color.white;
-            lastScale = Mathf.Lerp(lastScale, 0.6f, 10 * Time.deltaTime);
+            Centra.color = Color.white;
+            LastScale = Mathf.Lerp(LastScale, 0.6f, 10 * Time.deltaTime);
             UserInputController.Instance.OnChangeTargetAim?.Invoke(Camera.main.transform.position + 100 * Camera.main.transform.forward);
         }
-        centra.rectTransform.anchoredPosition = LastPos;
-        centra.transform.localScale = Vector3.one * lastScale;
+        Centra.rectTransform.anchoredPosition = LastPos;
+        Centra.transform.localScale = Vector3.one * LastScale;
     }
 }

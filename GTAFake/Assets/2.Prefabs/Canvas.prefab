@@ -1239,8 +1239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139a2c32ebe501848b2f2ca27c83a695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centra: {fileID: 4271795708550195771}
-  viewport: {fileID: 3404008673550268745}
+  Centra: {fileID: 4271795708550195771}
+  Viewport: {fileID: 3404008673550268745}
 --- !u!1 &4341060445362042114
 GameObject:
   m_ObjectHideFlags: 0

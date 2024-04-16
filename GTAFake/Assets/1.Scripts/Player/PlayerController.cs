@@ -22,10 +22,6 @@ public class PlayerController : MonoBehaviour
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
-    [Header("Attack")]
-    public GameObject Bullet;
-    public Transform HeadGun;
-
     [Header("Flying")]
     public bool IsFlying;
 
@@ -79,6 +75,17 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("jump");
     }
+    public void SetHandInWeaponAnim(int index)
+    {
+        for (int i = 1; i < PlayerAnimator.layerCount; i++)
+        {
+            PlayerAnimator.SetLayerWeight(i, i == index ? 1 : 0);
+        }
+    }
+    public void SetAttackAnim()
+    {
+        PlayerAnimator.SetTrigger("attack");
+    }
     #endregion
 
     #region Gravity
@@ -123,12 +130,6 @@ public class PlayerController : MonoBehaviour
     {
         IsAiming = true;
         SetAimingState(IsAiming);
-        if (Time.time - LastTimeShoot > 0.2f)
-        {
-            LastTimeShoot = Time.time;
-            GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
-            newbu.GetComponent<Bullet>().SetVelocity(transform.forward);
-        }
     }
     private void StartAiming()
     {

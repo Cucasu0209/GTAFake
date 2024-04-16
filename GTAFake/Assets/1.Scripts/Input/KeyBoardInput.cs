@@ -20,6 +20,12 @@ public class KeyBoardInput : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Alpha1)) UserInputController.Instance.OnChooseWeaponIndex?.Invoke(0);
+        if (Input.GetKey(KeyCode.Alpha2)) UserInputController.Instance.OnChooseWeaponIndex?.Invoke(1);
+        if (Input.GetKey(KeyCode.Alpha3)) UserInputController.Instance.OnChooseWeaponIndex?.Invoke(2);
+        if (Input.GetKey(KeyCode.Alpha4)) UserInputController.Instance.OnChooseWeaponIndex?.Invoke(3);
+
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             UserInputController.Instance.OnStartFlying?.Invoke();
