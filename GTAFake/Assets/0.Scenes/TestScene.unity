@@ -486,6 +486,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8470208040834098706, guid: 9510a97599bd4b149be87a64f6a41358, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:Head'\n\tTransform
+        'mixamorig:LeftArm'\n\tTransform 'mixamorig:RightHand'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
+        'mixamorig:Spine2'\n\tTransform 'mixamorig:RightForeArm'\n\tTransform 'mixamorig:Neck'\n\tTransform
+        'mixamorig:LeftHand'\n\tTransform 'mixamorig:Spine1'\n\tand more ..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1138,7 +1147,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1477452177}
-  - component: {fileID: 1477452178}
   m_Layer: 5
   m_Name: WeaponButtonGroup
   m_TagString: Untagged
@@ -1168,19 +1176,6 @@ RectTransform:
   m_AnchoredPosition: {x: 767.6, y: -297}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1477452178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477452176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f397d7a78221644ea095e1d5653e762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponButtons: []
 --- !u!224 &1714736661 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1906571188959947335, guid: 83d63dea1bf2717418ee09cfe0dd6235, type: 3}

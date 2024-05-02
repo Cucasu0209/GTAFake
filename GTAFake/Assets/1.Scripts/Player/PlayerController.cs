@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Lean.Pool;
 using System;
+using System.Reflection;
 public class PlayerController : MonoBehaviour
 {
     public Animator PlayerAnimator;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [Header("Flying")]
     public bool IsFlying;
 
+    public Action ChangeWeaponDataCallback;
 
     #region Monobehaviour
     private void Start()
@@ -85,6 +87,28 @@ public class PlayerController : MonoBehaviour
     public void SetAttackAnim()
     {
         PlayerAnimator.SetTrigger("attack");
+    }
+    public void StartChangeWeapon()
+    {
+        PlayerAnimator.SetTrigger("changeweapon");
+        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex("ChangeWeapon"), 1);
+
+    }
+    public void EndChangeWeapon()
+    {
+        StartCoroutine(IEndChangeWeapon());
+    }
+    IEnumerator IEndChangeWeapon()
+    {
+        int id = PlayerAnimator.GetLayerIndex("ChangeWeapon");
+        float a = 1;
+        float n = 30;
+        while (a > 0)
+        {
+            yield return new WaitForSeconds(0.3f / n);
+            a -= 1 / n;
+            PlayerAnimator.SetLayerWeight(id, a);
+        }
     }
     #endregion
 

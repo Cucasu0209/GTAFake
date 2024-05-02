@@ -40,7 +40,7 @@ public class SwitchWeaponButton : MonoBehaviour
     }
     private void OnSwitchWeapon(WeaponType Type)
     {
-        CountdownTime(0.3f);
+        CountdownTime(1f);
     }
 
     private void CountdownTime(float duration, Action OnComplete = null)

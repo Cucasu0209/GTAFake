@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 using DG.Tweening;
+using System;
 public class PlayerWeaponManager : MonoBehaviour
 {
     private PlayerController Controller;
@@ -10,10 +11,11 @@ public class PlayerWeaponManager : MonoBehaviour
     private List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
     [HideInInspector] public BaseWeapon CurrentWeapon;
 
+    public Action ChangeWeaponDataCallback;
     IEnumerator Start()
     {
         Controller = GetComponent<PlayerController>();
-        UserInputController.Instance.OnSwitchWeapon += SwitchWeapon;
+        UserInputController.Instance.OnSwitchWeapon += OnChangeWeapon;
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
         yield return null;
@@ -21,10 +23,17 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        UserInputController.Instance.OnSwitchWeapon -= SwitchWeapon;
+        UserInputController.Instance.OnSwitchWeapon -= OnChangeWeapon;
         UserInputController.Instance.OnAimingJoystick -= SetAimingState;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
     }
+
+    private void OnChangeWeapon(WeaponType Type)
+    {
+        Controller.StartChangeWeapon();
+        Controller.ChangeWeaponDataCallback = () => SwitchWeapon(Type);
+    }
+
     private void SwitchWeapon(WeaponType Type)
     {
         WeaponData data = null;

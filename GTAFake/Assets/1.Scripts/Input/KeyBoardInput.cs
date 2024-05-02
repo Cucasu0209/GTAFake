@@ -20,10 +20,10 @@ public class KeyBoardInput : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
-        if (Input.GetKey(KeyCode.Alpha2)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Pistol);
-        if (Input.GetKey(KeyCode.Alpha3)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Rifle);
-        if (Input.GetKey(KeyCode.Alpha4)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Special);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Pistol);
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Rifle);
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Special);
 
 
         if (Input.GetKeyDown(KeyCode.Z))

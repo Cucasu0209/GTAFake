@@ -54,4 +54,15 @@ public class PlayerAnimationCallbacks : MonoBehaviour
 
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
     }
+    #region Animation callbacks
+    public void ChangeWeaponData()
+    {
+        Controller.ChangeWeaponDataCallback?.Invoke();
+    }
+    public void EndChangeWeaponAnim()
+    {
+        Controller.EndChangeWeapon();
+    }
+    
+    #endregion
 }
