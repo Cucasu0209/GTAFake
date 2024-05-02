@@ -6,11 +6,9 @@ using UnityEngine;
 public class BaseWeapon : MonoBehaviour
 {
     public WeaponData Data;
-    public virtual  void StartAttack(Transform character)
+    public virtual void Attack(Transform character)
     {
-    }
-    public virtual void Damage(Transform parent, Vector3 forward)
-    {
-
+        Data.BulletCount--;
+        GameManager.Instance?.OnPlayerFired?.Invoke();
     }
 }

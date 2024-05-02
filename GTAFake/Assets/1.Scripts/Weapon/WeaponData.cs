@@ -12,6 +12,7 @@ public class WeaponData : ScriptableObject
     public float BaseDmg;
     public float Duration;
     public int BulletCount;
+    public int BulletMaxCount;
     public string LinkPrefab;
 }
 public enum WeaponType

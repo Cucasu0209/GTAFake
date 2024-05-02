@@ -4,7 +4,6 @@ using UnityEditor.UI;
 using UnityEngine;
 using DG.Tweening;
 using System;
-using System.Reflection;
 public class PlayerWeaponManager : MonoBehaviour
 {
     private PlayerController Controller;
@@ -39,11 +38,7 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void SwitchWeapon(WeaponType type)
     {
-        WeaponData data = null;
-        if (type == WeaponType.Melee || type == WeaponType.Special)
-            data = Resources.Load<WeaponData>(WeaponConfig.AxeLink);
-        else if (type == WeaponType.Pistol || type == WeaponType.Rifle)
-            data = Resources.Load<WeaponData>(WeaponConfig.GunLink);
+        WeaponData data = Resources.Load<WeaponData>(WeaponConfig.GetDataLink(type));
         if (data != null)
         {
             PlayerData.SetCurrentWeaponData(data);
@@ -94,6 +89,6 @@ public class PlayerWeaponManager : MonoBehaviour
     private void ShowAnimAttack()
     {
         Controller.SetAttackAnim();
-        Controller.AttackCallback = () => CurrentWeapon.StartAttack(Controller.transform);
+        Controller.AttackCallback = () => CurrentWeapon.Attack(Controller.transform);
     }
 }

@@ -17,19 +17,39 @@ public class SwitchWeaponButton : MonoBehaviour
     public void Setup()
     {
         Icon.sprite = Resources.Load<Sprite>(WeaponConfig.GetIconLink(Type));
-        BulletCount.SetText("10/100");
         CountdownImg.fillAmount = 0;
+        OnBulletCountChange();
     }
     private void Start()
     {
         Setup();
         Btn.onClick.AddListener(OnClick);
         UserInputController.Instance.OnSwitchWeapon += OnSwitchWeapon;
+        GameManager.Instance.OnPlayerFired += OnBulletCountChange;
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnSwitchWeapon -= OnSwitchWeapon;
+        GameManager.Instance.OnPlayerFired -= OnBulletCountChange;
 
+    }
+    private void OnBulletCountChange()
+    {
+        WeaponData data = Resources.Load<WeaponData>(WeaponConfig.GetDataLink(Type));
+
+        if (data != null)
+        {
+            if (data.BulletMaxCount > 0)
+            {
+                BulletCount.transform.eulerAngles = Vector3.zero;
+                BulletCount.SetText($"{data.BulletCount}/{data.BulletMaxCount}");
+            }
+            else
+            {
+                BulletCount.transform.eulerAngles = Vector3.forward * 90;
+                BulletCount.SetText("8");
+            }
+        }
     }
     private void OnClick()
     {

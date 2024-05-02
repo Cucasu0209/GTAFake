@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public Action<EnemyController> OnSpawnNewEnemy;
     public Action<EnemyController> OnEnemyDied;
+    public Action OnPlayerFired;
     private List<EnemyController> Enemies = new List<EnemyController>();
 
     private void Awake()

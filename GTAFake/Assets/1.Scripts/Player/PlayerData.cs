@@ -13,10 +13,7 @@ public class PlayerData
     {
         return CurrentWeapon;
     }
-    public static List<WeaponData> GetReverseWeapons()
-    {
-        return new List<WeaponData> { new WeaponData() };
-    }
+
 
     public static void SetCurrentWeaponData(WeaponData data)
     {

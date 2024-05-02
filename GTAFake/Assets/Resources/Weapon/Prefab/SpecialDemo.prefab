@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1220132175177776733}
   - component: {fileID: 2605337355691875431}
   m_Layer: 9
-  m_Name: Axe
+  m_Name: SpecialDemo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,11 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81d015d05d65ab4a820c47716052288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 11400000, guid: ed152dc9e79a543469156422c642f067, type: 2}
-  Fx: {fileID: 0}
-  Mask:
-    serializedVersion: 2
-    m_Bits: 0
+  Data: {fileID: 11400000, guid: 00cdf01eeb22c104e916bcbab3390693, type: 2}
 --- !u!1001 &6484428459147664701
 PrefabInstance:
   m_ObjectHideFlags: 0

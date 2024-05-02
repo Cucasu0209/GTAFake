@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed8aff63c1b5fc84fb0106695f94d778, type: 3}
-  m_Name: Axe
+  m_Name: MeeleDemo
   m_EditorClassIdentifier: 
   Type: 0
   WeaponIndex: 0
@@ -19,4 +19,5 @@ MonoBehaviour:
   BaseDmg: 100
   Duration: 1
   BulletCount: -1
-  LinkPrefab: Weapon/Prefab/Axe
+  BulletMaxCount: -1
+  LinkPrefab: Weapon/Prefab/MeeleDemo
