@@ -33,7 +33,7 @@ public class SwitchWeaponButton : MonoBehaviour
     }
     private void OnClick()
     {
-        if (CanClick)
+        if (CanClick && Type != PlayerData.GetCurrentWeaponData().Type)
         {
             UserInputController.Instance.OnSwitchWeapon?.Invoke(Type);
         }

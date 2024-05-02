@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PlayerData
 {
-    public int GetCurrentWeaponIndex()
+    public static WeaponData CurrentWeapon = null;
+    public static int GetCurrentWeaponIndex()
     {
         return 0;
     }
-    public WeaponData GetCurrentWeaponData()
+    public static WeaponData GetCurrentWeaponData()
     {
-        return new WeaponData() { Type = WeaponType.Melee };
+        return CurrentWeapon;
     }
-    public List<WeaponData> GetReverseWeapons()
+    public static List<WeaponData> GetReverseWeapons()
     {
         return new List<WeaponData> { new WeaponData() };
+    }
+
+    public static void SetCurrentWeaponData(WeaponData data)
+    {
+        CurrentWeapon = data;
     }
 }

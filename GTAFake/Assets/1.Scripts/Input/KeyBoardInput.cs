@@ -20,10 +20,16 @@ public class KeyBoardInput : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Pistol);
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Rifle);
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Special);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Melee)
+            UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Pistol)
+            UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Pistol);
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Rifle)
+            UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Rifle);
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Special)
+            UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Special);
+
 
 
         if (Input.GetKeyDown(KeyCode.Z))

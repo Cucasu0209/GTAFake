@@ -32,8 +32,11 @@ public class PlayerAiming : MonoBehaviour
 
     private void OnStartAiming()
     {
-        CurrenthzInput = 0;
-        CurrentvInput = 0;
+        if (Controller.ChangingWeapon == false)
+        {
+            CurrenthzInput = 0;
+            CurrentvInput = 0;
+        }
     }
     private void MovePlayer(float hzInput, float vInput)
     {

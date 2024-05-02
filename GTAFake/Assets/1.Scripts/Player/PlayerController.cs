@@ -18,15 +18,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float GroundYOffset;
 
     [Header("Movement and Aiming")]
-    public bool IsAiming;/* { get; private set; }*/
+    public bool IsAiming;
     public readonly string AimLayerName = "Aiming";
+    public readonly string AimAxeLayerName = "AxeAttack";
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
     [Header("Flying")]
     public bool IsFlying;
-
     public Action ChangeWeaponDataCallback;
+    public Action AttackCallback;
+
+    public bool ChangingWeapon = false;
 
     #region Monobehaviour
     private void Start()
@@ -66,23 +69,14 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetFloat("hzInput", hzInput);
         PlayerAnimator.SetFloat("vInput", vInput);
-
     }
     public void SetAimingState(bool IsAiming)
     {
         PlayerAnimator.SetBool("aiming", IsAiming);
-
     }
     public void SetJumpAnim()
     {
         PlayerAnimator.SetTrigger("jump");
-    }
-    public void SetHandInWeaponAnim(int index)
-    {
-        for (int i = 1; i < PlayerAnimator.layerCount; i++)
-        {
-            PlayerAnimator.SetLayerWeight(i, i == index ? 1 : 0);
-        }
     }
     public void SetAttackAnim()
     {
@@ -92,11 +86,13 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("changeweapon");
         PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex("ChangeWeapon"), 1);
-
+        ChangingWeapon = true;
     }
     public void EndChangeWeapon()
     {
         StartCoroutine(IEndChangeWeapon());
+        ChangingWeapon = false;
+        if (IsAiming) UserInputController.Instance.OnStartAiming?.Invoke();
     }
     IEnumerator IEndChangeWeapon()
     {
@@ -157,7 +153,8 @@ public class PlayerController : MonoBehaviour
     }
     private void StartAiming()
     {
-        LastTimeShoot = Time.time;
+        if (ChangingWeapon == false)
+            LastTimeShoot = Time.time;
     }
     private void CancelAiming()
     {

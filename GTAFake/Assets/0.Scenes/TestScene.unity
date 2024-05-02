@@ -448,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3909177349136405228, guid: 9510a97599bd4b149be87a64f6a41358, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.46
+      value: 23.62
       objectReference: {fileID: 0}
     - target: {fileID: 3909177349136405228, guid: 9510a97599bd4b149be87a64f6a41358, type: 3}
       propertyPath: m_LocalPosition.z
@@ -488,12 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8470208040834098706, guid: 9510a97599bd4b149be87a64f6a41358, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:Head'\n\tTransform
-        'mixamorig:LeftArm'\n\tTransform 'mixamorig:RightHand'\n\tTransform 'mixamorig:LeftForeArm'\n\tTransform
-        'mixamorig:Spine2'\n\tTransform 'mixamorig:RightForeArm'\n\tTransform 'mixamorig:Neck'\n\tTransform
-        'mixamorig:LeftHand'\n\tTransform 'mixamorig:Spine1'\n\tand more ..."
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,24 +26,30 @@ public class PlayerAnimationCallbacks : MonoBehaviour
 
     private void OnStartAiming()
     {
-
-
-        if (Controller.GetComponent<PlayerWeaponManager>().CurrentWeapon is Gun)
+        if (Controller.ChangingWeapon == false)
         {
-            RhandConstraint.weight = 1.0f;
-            LhandConstraint.weight = 1.0f;
-            HeadConstraint.weight = 1.0f;
-            ShoulderConstraint.weight = 1.0f;
-        }
-        else
-        {
-            RhandConstraint.weight = 0f;
-            LhandConstraint.weight = 0f;
-            HeadConstraint.weight = 0f;
-            ShoulderConstraint.weight = 0f;
-        }
+            if (Controller.GetComponent<PlayerWeaponManager>().CurrentWeapon is Gun)
+            {
+                DOVirtual.DelayedCall(0.01f, () =>
+                {
+                    RhandConstraint.weight = 1.0f;
+                    LhandConstraint.weight = 1.0f;
+                    HeadConstraint.weight = 1.0f;
+                    ShoulderConstraint.weight = 1.0f;
+                });
 
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
+
+            }
+            else
+            {
+                RhandConstraint.weight = 0f;
+                LhandConstraint.weight = 0f;
+                HeadConstraint.weight = 0f;
+                ShoulderConstraint.weight = 0f;
+            }
+
+            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
+        }
     }
     private void OnCancelAiming()
     {
@@ -51,8 +58,6 @@ public class PlayerAnimationCallbacks : MonoBehaviour
 
         HeadConstraint.weight = 0f;
         ShoulderConstraint.weight = 0f;
-
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
     }
     #region Animation callbacks
     public void ChangeWeaponData()
@@ -63,6 +68,9 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     {
         Controller.EndChangeWeapon();
     }
-    
+    public void Attack()
+    {
+        Controller.AttackCallback?.Invoke();
+    }
     #endregion
 }
