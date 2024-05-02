@@ -10,7 +10,7 @@ public class UserInputController : MonoBehaviour
     public Action<float, float> OnMovementJoystick;
     public Action<float, float> OnAimingJoystick;
     public Action<float, float> OnCameraAxisChange;
-    public Action<int> OnChooseWeaponIndex;
+    public Action<WeaponType> OnSwitchWeapon;
     public Action<Vector3> OnChangeTargetAim;
     public Action OnJumpBtnClick;
     public Action OnStartAiming;

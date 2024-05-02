@@ -13,25 +13,25 @@ public class PlayerWeaponManager : MonoBehaviour
     IEnumerator Start()
     {
         Controller = GetComponent<PlayerController>();
-        UserInputController.Instance.OnChooseWeaponIndex += SwitchWeapon;
+        UserInputController.Instance.OnSwitchWeapon += SwitchWeapon;
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
         yield return null;
-        UserInputController.Instance.OnChooseWeaponIndex?.Invoke(0);
+        UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
     }
     private void OnDestroy()
     {
-        UserInputController.Instance.OnChooseWeaponIndex -= SwitchWeapon;
+        UserInputController.Instance.OnSwitchWeapon -= SwitchWeapon;
         UserInputController.Instance.OnAimingJoystick -= SetAimingState;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
     }
-    private void SwitchWeapon(int weaponIndex)
+    private void SwitchWeapon(WeaponType Type)
     {
         WeaponData data = null;
-        if (weaponIndex == 0 || weaponIndex == 3)
-            data = Resources.Load<WeaponData>(WeaponsConfiguration.AxeLink);
-        else if (weaponIndex == 1 || weaponIndex == 2)
-            data = Resources.Load<WeaponData>(WeaponsConfiguration.GunLink);
+        if (Type == WeaponType.Melee || Type == WeaponType.Special)
+            data = Resources.Load<WeaponData>(WeaponConfig.AxeLink);
+        else if (Type == WeaponType.Pistol || Type == WeaponType.Rifle)
+            data = Resources.Load<WeaponData>(WeaponConfig.GunLink);
         if (data != null) ActiveWeapon(data);
     }
     private void ActiveWeapon(WeaponData data)
@@ -48,12 +48,16 @@ public class PlayerWeaponManager : MonoBehaviour
             }
         }
 
-        BaseWeapon w = Instantiate(data.BaseWeapon, WeaponPosition);
-        w.Data = data;
-        w.transform.localPosition = Vector3.zero;
-        CurrentWeapons.Add(w);
-        if (CurrentWeapon != null) CurrentWeapon.gameObject.SetActive(false);
-        CurrentWeapon = w;
+        BaseWeapon wr = Resources.Load<BaseWeapon>(data.LinkPrefab);
+        if (wr != null)
+        {
+            BaseWeapon w = Instantiate(wr, WeaponPosition);
+            w.Data = data;
+            w.transform.localPosition = Vector3.zero;
+            CurrentWeapons.Add(w);
+            if (CurrentWeapon != null) CurrentWeapon.gameObject.SetActive(false);
+            CurrentWeapon = w;
+        }
     }
 
     float LastTimeAttack = 0;
@@ -76,6 +80,6 @@ public class PlayerWeaponManager : MonoBehaviour
     private void ShowAnimAttack()
     {
         Controller.SetAttackAnim();
-        CurrentWeapon.StartAttack(Controller.transform.forward);
+        CurrentWeapon.StartAttack(Controller.transform);
     }
 }

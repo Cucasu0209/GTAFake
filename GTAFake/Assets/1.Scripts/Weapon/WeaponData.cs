@@ -6,16 +6,19 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public WeaponType Type;
+    public int WeaponIndex;
     public string Name;
     public string Description;
-    public BaseWeapon BaseWeapon;
     public float BaseDmg;
     public float Duration;
+    public int BulletCount;
+    public string LinkPrefab;
 }
 public enum WeaponType
 {
     Melee,
-    Light,
+    Pistol,
     Rifle,
     Special,
+    None
 }

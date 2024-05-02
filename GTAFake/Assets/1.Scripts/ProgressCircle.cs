@@ -15,8 +15,6 @@ public class ProgressCircle : MonoBehaviour
     [SerializeField] private List<Transform> Items;
     [Header("Display")]
     [SerializeField] private Image CentraItem;
-    [SerializeField] private List<Sprite> Icons;
-
     private float TimeToShow = 0.3f;
 
     private int CurrentIndex = -1;
@@ -27,7 +25,7 @@ public class ProgressCircle : MonoBehaviour
     {
         joystick.OnStartDrag += OnStartDrag;
         joystick.OnEndDrag += OnEndDrag;
-        UserInputController.Instance.OnChooseWeaponIndex += UpdateIcon;
+        UserInputController.Instance.OnSwitchWeapon += UpdateIcon;
         for (int i = 0; i < BG.Count; i++)
         {
             BG[i].localScale = Vector3.zero;
@@ -41,7 +39,7 @@ public class ProgressCircle : MonoBehaviour
     {
         joystick.OnStartDrag -= OnStartDrag;
         joystick.OnEndDrag -= OnEndDrag;
-        UserInputController.Instance.OnChooseWeaponIndex -= UpdateIcon;
+        UserInputController.Instance.OnSwitchWeapon -= UpdateIcon;
     }
 
 
@@ -135,13 +133,25 @@ public class ProgressCircle : MonoBehaviour
             CurrentIndex = CacheIndex;
         }
         CacheIndex = CurrentIndex;
-        UserInputController.Instance.OnChooseWeaponIndex?.Invoke(CurrentIndex);
+        UserInputController.Instance.OnSwitchWeapon?.Invoke(GetTypeByIndex());
         IsDragging = false;
         InteractThreadhold = 0;
         HideIcons();
     }
-    private void UpdateIcon(int id)
+    private void UpdateIcon(WeaponType type)
     {
-        CentraItem.sprite = Icons[id];
+        CentraItem.sprite = Resources.Load<Sprite>(WeaponConfig.GetIconLink(GetTypeByIndex()));
     }
+    private WeaponType GetTypeByIndex()
+    {
+        switch(CurrentIndex)
+        {
+            case 0: return WeaponType.Melee;
+            case 1: return WeaponType.Pistol;
+            case 2: return WeaponType.Rifle;
+            case 3: return WeaponType.Special;
+        }
+        return WeaponType.None;
+    }
+
 }

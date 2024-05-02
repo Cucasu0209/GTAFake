@@ -9,9 +9,9 @@ public class Gun : BaseWeapon
     public GameObject Bullet;
     public Transform HeadGun;
 
-    public override void StartAttack(Vector3 forward)
+    public override void StartAttack(Transform character)
     {
         GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
-        newbu.GetComponent<Bullet>().SetVelocity(forward);
+        newbu.GetComponent<Bullet>().SetVelocity(character.forward);
     }
 }
