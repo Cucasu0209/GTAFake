@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer(float hzInput, float vInput)
     {
-        if (Controller.IsAiming == false && Controller.IsFlying == false)
+        if (Controller.IsAiming == false)
         {
             Vector2 MoveInput = new Vector2(hzInput, vInput);
             Vector2 Direction = (new Vector2(hzInput, vInput)).normalized;

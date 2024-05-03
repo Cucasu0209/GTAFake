@@ -22,13 +22,21 @@ public class KeyBoardInput : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Melee)
+        {
             UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Pistol)
+        {
             UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Pistol);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Rifle)
+        {
             UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Rifle);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && PlayerData.GetCurrentWeaponData().Type != WeaponType.Special)
+        {
             UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Special);
+        }
 
 
 

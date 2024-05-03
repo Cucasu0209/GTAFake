@@ -8,13 +8,13 @@ public class PlayerWeaponManager : MonoBehaviour
 {
     private PlayerController Controller;
     [SerializeField] private Transform WeaponPosition;
-    private List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
     [HideInInspector] public BaseWeapon CurrentWeapon;
+    private List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
 
     public Action ChangeWeaponDataCallback;
     private bool reloadingBullet = false;
 
-    #region Unity
+    #region Monobehaviour
     IEnumerator Start()
     {
         Controller = GetComponent<PlayerController>();
@@ -45,7 +45,10 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void ReloadBullet()
     {
-        CurrentWeapon.ReloadBullet();
+        if (CurrentWeapon.CheckRunoutOfBullet())
+        {
+            CurrentWeapon.ReloadBullet();
+        }
     }
     private void EndReloadBullet()
     {
@@ -61,6 +64,13 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void SwitchWeapon(WeaponType type)
     {
+        Controller.OnEndChangeWeapon = () =>
+        {
+            if (CurrentWeapon.CheckRunoutOfBullet())
+            {
+                ShowReloadBulletAnim();
+            }
+        };
         WeaponData data = Resources.Load<WeaponData>(WeaponConfig.GetDataLink(type));
         if (data != null)
         {
@@ -99,6 +109,7 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void StartAiming()
     {
+        Controller.EndAttackCallback = EndAttack;
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName),
             CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName),
@@ -106,12 +117,20 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void CancelAiming()
     {
-        if (reloadingBullet == false)
+        //if (reloadingBullet == false)
+        //{
+        //    Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
+        //    Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
+        //}
+
+    }
+    private void EndAttack()
+    {
+        if (reloadingBullet == false && Controller.IsFiring == false)
         {
             Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
             Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
         }
-
     }
     private void ShowAnimAttack()
     {

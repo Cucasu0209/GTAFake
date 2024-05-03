@@ -23,14 +23,12 @@ public class FollowPlayerCamera : MonoBehaviour
         UserInputController.Instance.OnCameraAxisChange += FollowPlayer;
         UserInputController.Instance.OnStartAiming += StartAiming;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
-
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnCameraAxisChange -= FollowPlayer;
         UserInputController.Instance.OnStartAiming -= StartAiming;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
-
     }
     private void CalculateNearPlaneSize()
     {

@@ -26,16 +26,20 @@ public class PlayerController : MonoBehaviour
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
-    [Header("Flying")]
-    public bool IsFlying;
+    //[Header("Flying")]
+    //public bool IsFlying;
+    [Header("Weapon")]
     public bool ChangingWeapon = false;
+    public bool IsFiring = false;
     #endregion
 
     #region Callbacks
     public Action ChangeWeaponDataCallback;
     public Action AttackCallback;
+    public Action EndAttackCallback;
     public Action ReloadBulletCallback;
     public Action EndReloadBulletCallback;
+    public Action OnEndChangeWeapon;
     #endregion
 
     #region Monobehaviour
@@ -45,8 +49,8 @@ public class PlayerController : MonoBehaviour
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
         UserInputController.Instance.OnStartAiming += StartAiming;
-        UserInputController.Instance.OnStartFlying += OnStartFlying;
-        UserInputController.Instance.OnEndFlying += OnEndFlying;
+        //UserInputController.Instance.OnStartFlying += OnStartFlying;
+        //UserInputController.Instance.OnEndFlying += OnEndFlying;
         UserInputController.Instance.OnChangeTargetAim += UpdateTarget;
     }
 
@@ -56,8 +60,8 @@ public class PlayerController : MonoBehaviour
         UserInputController.Instance.OnAimingJoystick -= SetAimingState;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
         UserInputController.Instance.OnStartAiming -= StartAiming;
-        UserInputController.Instance.OnStartFlying -= OnStartFlying;
-        UserInputController.Instance.OnEndFlying -= OnEndFlying;
+        //UserInputController.Instance.OnStartFlying -= OnStartFlying;
+        //UserInputController.Instance.OnEndFlying -= OnEndFlying;
         UserInputController.Instance.OnChangeTargetAim -= UpdateTarget;
 
     }
@@ -95,6 +99,7 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(IEndChangeWeapon());
         ChangingWeapon = false;
+        OnEndChangeWeapon?.Invoke();
         if (IsAiming) UserInputController.Instance.OnStartAiming?.Invoke();
     }
     IEnumerator IEndChangeWeapon()
@@ -160,27 +165,29 @@ public class PlayerController : MonoBehaviour
     }
     private void StartAiming()
     {
+        IsFiring = true;
         if (ChangingWeapon == false)
             LastTimeShoot = Time.time;
     }
     private void CancelAiming()
     {
         IsAiming = false;
+        IsFiring = false;
         SetAimingState(IsAiming);
     }
     #endregion
 
     #region Flying
-    private void OnStartFlying()
-    {
-        Gravity = 0;
-        Velocity.y = 0;
-        IsFlying = true;
-    }
-    private void OnEndFlying()
-    {
-        Gravity = DefaultGravity;
-        IsFlying = false;
-    }
+    //private void OnStartFlying()
+    //{
+    //    Gravity = 0;
+    //    Velocity.y = 0;
+    //    IsFlying = true;
+    //}
+    //private void OnEndFlying()
+    //{
+    //    Gravity = DefaultGravity;
+    //    IsFlying = false;
+    //}
     #endregion
 }

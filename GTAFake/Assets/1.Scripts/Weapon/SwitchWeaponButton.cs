@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System;
-public class SwitchWeaponButton : MonoBehaviour
+using UnityEngine.EventSystems;
+public class SwitchWeaponButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private WeaponType Type;
     [SerializeField] private Button Btn;
@@ -14,6 +15,7 @@ public class SwitchWeaponButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BulletCount;
 
     private bool CanClick = true;
+    private bool IsPressing = false;
     public void Setup()
     {
         Icon.sprite = Resources.Load<Sprite>(WeaponConfig.GetIconLink(Type));
@@ -74,4 +76,28 @@ public class SwitchWeaponButton : MonoBehaviour
         });
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (CanClick && Type == PlayerData.GetCurrentWeaponData().Type)
+        {
+            UserInputController.Instance.OnStartAiming?.Invoke();
+            IsPressing = true;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (CanClick && Type == PlayerData.GetCurrentWeaponData().Type)
+        {
+            UserInputController.Instance.OnCancelAiming?.Invoke();
+            IsPressing = false;
+        }
+    }
+    private void Update()
+    {
+        if (IsPressing)
+        {
+            UserInputController.Instance.OnAimingJoystick?.Invoke(0, 1);
+        }
+    }
 }

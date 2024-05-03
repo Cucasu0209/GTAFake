@@ -30,7 +30,6 @@ public class PlayerAnimationCallbacks : MonoBehaviour
         HeadConstraint.weight = isActive ? 1.0f : 0;
         ShoulderConstraint.weight = isActive ? 1.0f : 0;
     }
-
     private void OnStartAiming()
     {
         if (Controller.ChangingWeapon == false)
@@ -54,9 +53,10 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     }
     private void OnCancelAiming()
     {
-        SetConstraintAimingState(false);
+        //  SetConstraintAimingState(false);
     }
-    #region Animation callbacks
+
+    #region Animation callbacks (dont delete me please, unless you will regret)
     public void ChangeWeaponData()
     {
         Controller.ChangeWeaponDataCallback?.Invoke();
@@ -68,6 +68,17 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     public void Attack()
     {
         Controller.AttackCallback?.Invoke();
+    }
+    public void EndAttack()
+    {
+        Controller.EndAttackCallback?.Invoke();
+        if (Controller.IsFiring == false)
+        {
+            DOVirtual.DelayedCall(0.01f, () =>
+            {
+                SetConstraintAimingState(false);
+            });
+        }
     }
     public void StartReloadBullet()
     {

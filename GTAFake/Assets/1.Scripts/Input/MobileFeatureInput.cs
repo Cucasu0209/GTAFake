@@ -22,7 +22,6 @@ public class MobileFeatureInput : MonoBehaviour
         AimingJoystick.OnEndDrag -= OnEndAiming;
     }
 
-
     private void OnStartAiming()
     {
         UserInputController.Instance.OnStartAiming?.Invoke();
@@ -32,7 +31,6 @@ public class MobileFeatureInput : MonoBehaviour
     {
         UserInputController.Instance.OnCancelAiming?.Invoke();
         IsMousePressing = false;
-
     }
 
     private void Update()

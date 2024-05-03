@@ -40,7 +40,7 @@ public class PlayerAiming : MonoBehaviour
     }
     private void MovePlayer(float hzInput, float vInput)
     {
-        if (Controller.IsAiming == true && Controller.IsFlying == false)
+        if (Controller.IsAiming == true)
         {
 
             Vector2 MoveInput = new Vector2(hzInput, vInput);
