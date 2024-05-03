@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Animator PlayerAnimator;
     public CharacterController charController;
 
+    #region Variables
+
     [Header("Gravity")]
     [SerializeField] public float Gravity = -50;
     public readonly float DefaultGravity = -50;
@@ -19,17 +21,22 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement and Aiming")]
     public bool IsAiming;
-    public readonly string AimLayerName = "Aiming";
+    public readonly string AimLayerName = "GunAiming";
     public readonly string AimAxeLayerName = "AxeAttack";
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
     [Header("Flying")]
     public bool IsFlying;
+    public bool ChangingWeapon = false;
+    #endregion
+
+    #region Callbacks
     public Action ChangeWeaponDataCallback;
     public Action AttackCallback;
-
-    public bool ChangingWeapon = false;
+    public Action ReloadBulletCallback;
+    public Action EndReloadBulletCallback;
+    #endregion
 
     #region Monobehaviour
     private void Start()
@@ -60,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Animation
+    #region Animations
     public void SetSpeedAnim(float speed)
     {
         PlayerAnimator.SetFloat("speed", speed);
@@ -78,10 +85,6 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("jump");
     }
-    public void SetAttackAnim()
-    {
-        PlayerAnimator.SetTrigger("attack");
-    }
     public void StartChangeWeapon()
     {
         PlayerAnimator.SetTrigger("changeweapon");
@@ -97,14 +100,18 @@ public class PlayerController : MonoBehaviour
     IEnumerator IEndChangeWeapon()
     {
         int id = PlayerAnimator.GetLayerIndex("ChangeWeapon");
-        float a = 1;
-        float n = 30;
-        while (a > 0)
+        float intensity = 1;
+        float loopCount = 30;
+        while (intensity > 0)
         {
-            yield return new WaitForSeconds(0.3f / n);
-            a -= 1 / n;
-            PlayerAnimator.SetLayerWeight(id, a);
+            yield return new WaitForSeconds(0.3f / loopCount);
+            intensity -= 1 / loopCount;
+            PlayerAnimator.SetLayerWeight(id, intensity);
         }
+    }
+    public void SetAnimReload()
+    {
+        PlayerAnimator.SetTrigger("reload");
     }
     #endregion
 

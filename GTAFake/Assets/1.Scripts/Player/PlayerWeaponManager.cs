@@ -12,6 +12,9 @@ public class PlayerWeaponManager : MonoBehaviour
     [HideInInspector] public BaseWeapon CurrentWeapon;
 
     public Action ChangeWeaponDataCallback;
+    private bool reloadingBullet = false;
+
+    #region Unity
     IEnumerator Start()
     {
         Controller = GetComponent<PlayerController>();
@@ -29,7 +32,27 @@ public class PlayerWeaponManager : MonoBehaviour
         UserInputController.Instance.OnStartAiming -= StartAiming;
         UserInputController.Instance.OnCancelAiming -= CancelAiming;
     }
+    #endregion
 
+    #region Action
+    private void ShowReloadBulletAnim()
+    {
+        reloadingBullet = true;
+        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
+        Controller.SetAnimReload();
+        Controller.ReloadBulletCallback = ReloadBullet;
+        Controller.EndReloadBulletCallback = EndReloadBullet;
+    }
+    private void ReloadBullet()
+    {
+        CurrentWeapon.ReloadBullet();
+    }
+    private void EndReloadBullet()
+    {
+        reloadingBullet = false;
+        if (Controller.IsAiming == false) Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
+
+    }
     private void OnChangeWeapon(WeaponType type)
     {
         Controller.StartChangeWeapon();
@@ -83,12 +106,24 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void CancelAiming()
     {
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
+        if (reloadingBullet == false)
+        {
+            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
+            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
+        }
+
     }
     private void ShowAnimAttack()
     {
-        Controller.SetAttackAnim();
-        Controller.AttackCallback = () => CurrentWeapon.Attack(Controller.transform);
+        Controller.AttackCallback = () =>
+        {
+            CurrentWeapon.Attack(Controller.transform);
+            if (CurrentWeapon.CheckRunoutOfBullet())
+            {
+                ShowReloadBulletAnim();
+            }
+        };
+
     }
+    #endregion  
 }

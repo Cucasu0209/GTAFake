@@ -23,6 +23,13 @@ public class PlayerAnimationCallbacks : MonoBehaviour
         UserInputController.Instance.OnStartAiming -= OnStartAiming;
         UserInputController.Instance.OnCancelAiming -= OnCancelAiming;
     }
+    private void SetConstraintAimingState(bool isActive)
+    {
+        RhandConstraint.weight = isActive ? 1.0f : 0;
+        LhandConstraint.weight = isActive ? 1.0f : 0;
+        HeadConstraint.weight = isActive ? 1.0f : 0;
+        ShoulderConstraint.weight = isActive ? 1.0f : 0;
+    }
 
     private void OnStartAiming()
     {
@@ -32,20 +39,14 @@ public class PlayerAnimationCallbacks : MonoBehaviour
             {
                 DOVirtual.DelayedCall(0.01f, () =>
                 {
-                    RhandConstraint.weight = 1.0f;
-                    LhandConstraint.weight = 1.0f;
-                    HeadConstraint.weight = 1.0f;
-                    ShoulderConstraint.weight = 1.0f;
+                    SetConstraintAimingState(true);
                 });
 
 
             }
             else
             {
-                RhandConstraint.weight = 0f;
-                LhandConstraint.weight = 0f;
-                HeadConstraint.weight = 0f;
-                ShoulderConstraint.weight = 0f;
+                SetConstraintAimingState(false);
             }
 
             Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
@@ -53,11 +54,7 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     }
     private void OnCancelAiming()
     {
-        RhandConstraint.weight = 0f;
-        LhandConstraint.weight = 0f;
-
-        HeadConstraint.weight = 0f;
-        ShoulderConstraint.weight = 0f;
+        SetConstraintAimingState(false);
     }
     #region Animation callbacks
     public void ChangeWeaponData()
@@ -71,6 +68,25 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     public void Attack()
     {
         Controller.AttackCallback?.Invoke();
+    }
+    public void StartReloadBullet()
+    {
+        DOVirtual.DelayedCall(0.01f, () =>
+        {
+            SetConstraintAimingState(false);
+        });
+    }
+    public void ReloadBullet()
+    {
+        Controller.ReloadBulletCallback?.Invoke();
+    }
+    public void EndReloadBullet()
+    {
+        DOVirtual.DelayedCall(0.01f, () =>
+        {
+            SetConstraintAimingState(Controller.IsAiming);
+        });
+        Controller.EndReloadBulletCallback?.Invoke();
     }
     #endregion
 }
