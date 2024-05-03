@@ -14,5 +14,6 @@ public class Gun : BaseWeapon
         base.Attack(character);
         GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
         newbu.GetComponent<Bullet>().SetVelocity(character.forward);
+        newbu.GetComponent<Bullet>().SetDmg(Data.BaseDmg);
     }
 }

@@ -7,6 +7,11 @@ public class Bullet : MonoBehaviour
     public LayerMask EnemyMask;
     public GameObject EffectExplode;
 
+    private float Dmg=1;
+    public void SetDmg(float dmg)
+    {
+        Dmg = dmg;
+    }
     public void SetVelocity(Vector3 velocity)
     {
         Velocity = velocity;
@@ -23,7 +28,7 @@ public class Bullet : MonoBehaviour
         {
             if (hit.collider.gameObject.GetComponent<IActor>() != null)
             {
-                hit.collider.gameObject.GetComponent<IActor>().TakeDmg(1);
+                hit.collider.gameObject.GetComponent<IActor>().TakeDmg(Dmg);
             }
             GameObject newFx = LeanPool.Spawn(EffectExplode, transform.position, Quaternion.identity);
             LeanPool.Despawn(newFx, 1);

@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour, IActor
     public Rigidbody Body;
 
     float LastTimeCheckFollow = 0;
-    private float health = 5;
+    private float health = 10;
 
     public void Respawn()
     {
@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour, IActor
 
     public void TakeDmg(float dmg)
     {
-        health--;
+        health -= dmg;
         if (health <= 0)
         {
             OnDeath();

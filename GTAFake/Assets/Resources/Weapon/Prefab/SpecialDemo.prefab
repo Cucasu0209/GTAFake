@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 00cdf01eeb22c104e916bcbab3390693, type: 2}
+  HitEffect: {fileID: 1462625049709940, guid: 3505db2a7abf1c548903f7fbf2a3e868, type: 3}
+  EnemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &6484428459147664701
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 public class CameraChooseEnemy : MonoBehaviour
@@ -9,6 +10,20 @@ public class CameraChooseEnemy : MonoBehaviour
     float LastScale = 1;
     float Maxdistance = 0.25f;
     EnemyController ChosenEnemy;
+    private void Start()
+    {
+        UserInputController.Instance.OnSwitchWeapon += ShowCentra;
+    }
+
+    private void OnDestroy()
+    {
+        UserInputController.Instance.OnSwitchWeapon -= ShowCentra;
+    }
+
+    private void ShowCentra(WeaponType type)
+    {
+        Centra.enabled = type == WeaponType.Pistol || type == WeaponType.Rifle;
+    }
 
     private void Update()
     {
@@ -21,19 +36,22 @@ public class CameraChooseEnemy : MonoBehaviour
         Maxdistance = 0.25f;
         foreach (EnemyController enemy in GameManager.Instance.GetEnemies())
         {
-
-            if (enemy.GetHealth() > 0)
+            if (enemy != null)
             {
-                PosInCamera = Camera.main.WorldToViewportPoint(enemy.transform.position + Vector3.up);
-                if (Mathf.Abs(PosInCamera.x - 0.5f) < 0.5f && Mathf.Abs(PosInCamera.y - 0.5f) < 0.5f && PosInCamera.z > 0)
+                if (enemy.GetHealth() > 0)
                 {
-                    if (Mathf.Abs(PosInCamera.x - 0.5f) < Maxdistance)
+                    PosInCamera = Camera.main.WorldToViewportPoint(enemy.transform.position + Vector3.up);
+                    if (Mathf.Abs(PosInCamera.x - 0.5f) < 0.5f && Mathf.Abs(PosInCamera.y - 0.5f) < 0.5f && PosInCamera.z > 0)
                     {
-                        ChosenEnemy = enemy;
-                        Maxdistance = Mathf.Abs(PosInCamera.x - 0.5f);
+                        if (Mathf.Abs(PosInCamera.x - 0.5f) < Maxdistance)
+                        {
+                            ChosenEnemy = enemy;
+                            Maxdistance = Mathf.Abs(PosInCamera.x - 0.5f);
+                        }
                     }
                 }
             }
+
         }
 
         if (ChosenEnemy != null)

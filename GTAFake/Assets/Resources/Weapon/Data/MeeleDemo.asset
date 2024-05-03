@@ -16,8 +16,8 @@ MonoBehaviour:
   WeaponIndex: 0
   Name: Axe
   Description: Dangerous, dont touch me
-  BaseDmg: 100
+  BaseDmg: 10
   Duration: 1
-  BulletCount: -1
+  BulletCount: -101
   BulletMaxCount: -1
   LinkPrefab: Weapon/Prefab/MeeleDemo

@@ -16,7 +16,7 @@ MonoBehaviour:
   WeaponIndex: 1
   Name: SimpleGun
   Description: Ehe
-  BaseDmg: 100
+  BaseDmg: 3
   Duration: 0.2
   BulletCount: 22
   BulletMaxCount: 100
