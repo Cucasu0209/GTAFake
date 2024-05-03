@@ -19,5 +19,5 @@ MonoBehaviour:
   BaseDmg: 1
   Duration: 12
   BulletCount: 2
-  BulletMaxCount: 15
+  BulletMaxCount: 50
   LinkPrefab: Weapon/Prefab/RifleDemo

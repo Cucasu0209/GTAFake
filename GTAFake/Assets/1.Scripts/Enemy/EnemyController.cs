@@ -11,9 +11,11 @@ public class EnemyController : MonoBehaviour, IActor
     public NavMeshAgent Agent;
     public Animator Anim;
     public Rigidbody Body;
+    public HeartBar HeartBar;
 
     float LastTimeCheckFollow = 0;
-    private float health = 10;
+    private float Health = 10;
+    [SerializeField] private float MaxHealth = 10;
 
     public void Respawn()
     {
@@ -23,20 +25,25 @@ public class EnemyController : MonoBehaviour, IActor
         }
         Anim.enabled = true;
         Agent.enabled = true;
-        health = 10;
+        Health = MaxHealth;
+        HeartBar.UpdatePercentage(1);
+        HeartBar.gameObject.SetActive(true);
     }
     public float GetHealth()
     {
 
-        return health;
+        return Health;
     }
 
     public void TakeDmg(float dmg)
     {
-        health -= dmg;
-        if (health <= 0)
+        Health -= dmg;
+        HeartBar.UpdatePercentage(Health / MaxHealth);
+        FloatingBloodSystem.Instance.ShowFloatingBlood(HeartBar.transform.position + Vector3.up / 2, (-dmg).ToString());
+        if (Health <= 0)
         {
             OnDeath();
+            HeartBar.gameObject.SetActive(false);
         }
     }
     public void OnDeath()

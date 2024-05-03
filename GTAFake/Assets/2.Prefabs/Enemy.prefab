@@ -502,6 +502,8 @@ MonoBehaviour:
   Agent: {fileID: 2342449326721979079}
   Anim: {fileID: 8615507137614895066}
   Body: {fileID: 8901416851858395499}
+  HeartBar: {fileID: 4239936870287632763}
+  MaxHealth: 40
 --- !u!136 &3940264086165256251
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -786,6 +788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88975ba016d7b945918f35ed966ca1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Heartbar: {fileID: 1229037674256845172}
+  HeartbarFill: {fileID: 3798259116952976328}
+  Color100: {r: 0.3397383, g: 0.9716981, b: 0.32451043, a: 1}
+  Color50: {r: 1, g: 0.6655112, b: 0.1641509, a: 1}
+  Color25: {r: 1, g: 0.29254422, b: 0.2113207, a: 1}
 --- !u!1001 &2808834058377783883
 PrefabInstance:
   m_ObjectHideFlags: 0

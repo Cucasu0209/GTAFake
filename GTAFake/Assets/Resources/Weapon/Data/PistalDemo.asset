@@ -19,5 +19,5 @@ MonoBehaviour:
   BaseDmg: 3
   Duration: 0.2
   BulletCount: 22
-  BulletMaxCount: 100
+  BulletMaxCount: 10
   LinkPrefab: Weapon/Prefab/PistalDemo
