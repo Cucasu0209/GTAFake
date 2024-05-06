@@ -52,6 +52,7 @@ MonoBehaviour:
   EnemyMask:
     serializedVersion: 2
     m_Bits: 1024
+  SlashFx: {fileID: 729727838043291963, guid: ce1b2993d9145b84996ddb3e49aef88b, type: 3}
 --- !u!64 &5725554829286125680
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class Axe : BaseWeapon
 {
     public GameObject HitEffect;
     public LayerMask EnemyMask;
+    public GameObject SlashFx;
 
     public override void Attack(Transform character)
     {
@@ -26,5 +27,9 @@ public class Axe : BaseWeapon
             }
 
         }
+        GameObject slash = LeanPool.Spawn(SlashFx, character.position + Vector3.up * (transform.position.y - character.position.y), Quaternion.identity);
+        slash.transform.parent = character;
+        slash.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        LeanPool.Despawn(slash, 1);
     }
 }
