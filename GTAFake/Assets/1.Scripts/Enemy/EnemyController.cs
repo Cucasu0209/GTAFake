@@ -19,11 +19,13 @@ public class EnemyController : MonoBehaviour, IActor
 
     public void Respawn()
     {
-        foreach (Rigidbody r in GetComponentsInChildren<Rigidbody>())
+        Anim.applyRootMotion = false;
+        DOVirtual.DelayedCall(0.05f, () =>
         {
-            r.useGravity = false;
-        }
-        Anim.enabled = true;
+            Anim.transform.localPosition = Vector3.zero;
+            Anim.transform.localEulerAngles = Vector3.zero;
+        });
+
         Agent.enabled = true;
         Health = MaxHealth;
         HeartBar.UpdatePercentage(1);
@@ -48,12 +50,8 @@ public class EnemyController : MonoBehaviour, IActor
     }
     public void OnDeath()
     {
-        Anim.enabled = false;
-        foreach (Rigidbody r in GetComponentsInChildren<Rigidbody>())
-        {
-            r.useGravity = true;
-        }
-
+        Anim.applyRootMotion = true;
+        Anim.SetTrigger("death");
         Agent.enabled = false;
         GameManager.Instance.RemoveEnemy(this);
         DOVirtual.DelayedCall(3, () =>
@@ -73,8 +71,6 @@ public class EnemyController : MonoBehaviour, IActor
             if (player != null && Agent.enabled)
             {
                 Agent.SetDestination(player.transform.position);
-
-
 
             }
             if (Body.velocity.y < -3) Body.velocity = Vector3.zero;
