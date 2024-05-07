@@ -1,6 +1,4 @@
-
 using UnityEngine;
-
 public class PlayerAiming : MonoBehaviour
 {
     [SerializeField] private float Speed = 5;
@@ -28,8 +26,6 @@ public class PlayerAiming : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.GetAngle(), transform.rotation.eulerAngles.z);
         }
     }
-
-
     private void OnStartAiming()
     {
         if (Controller.ChangingWeapon == false)
@@ -58,6 +54,4 @@ public class PlayerAiming : MonoBehaviour
             Controller.SetAimingMovement(CurrenthzInput, CurrentvInput);
         }
     }
-
-
 }
