@@ -12,6 +12,8 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     public MultiAimConstraint HeadConstraint;
     public MultiAimConstraint ShoulderConstraint;
 
+    public Transform RightHand;
+
     public void Start()
     {
         if (Controller == null) Controller = GetComponentInParent<PlayerController>();

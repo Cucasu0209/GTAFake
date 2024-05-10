@@ -7,9 +7,9 @@ using System;
 public class PlayerWeaponManager : MonoBehaviour
 {
     private PlayerController Controller;
-    [SerializeField] private Transform WeaponPosition;
+    [SerializeField] public Transform WeaponPosition;
     [HideInInspector] public BaseWeapon CurrentWeapon;
-    private List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
+    public List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
 
     public Action ChangeWeaponDataCallback;
     private bool reloadingBullet = false;
