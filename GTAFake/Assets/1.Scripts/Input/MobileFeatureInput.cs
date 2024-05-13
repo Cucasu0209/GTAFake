@@ -7,11 +7,13 @@ public class MobileFeatureInput : MonoBehaviour
     public FixedJoystick MovementJoystick;
     public FixedJoystick AimingJoystick;
     public Button JumpBtn;
+    public Button SwitchModelBtn;
     private bool IsMousePressing = false;
 
     private void Start()
     {
         JumpBtn.onClick.AddListener(() => UserInputController.Instance.OnJumpBtnClick?.Invoke());
+        SwitchModelBtn.onClick.AddListener(() => UserInputController.Instance.OnSwitchModel?.Invoke());
         AimingJoystick.OnStartDrag += OnStartAiming;
         AimingJoystick.OnEndDrag += OnEndAiming;
     }

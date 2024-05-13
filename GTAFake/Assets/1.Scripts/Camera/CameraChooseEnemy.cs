@@ -38,7 +38,7 @@ public class CameraChooseEnemy : MonoBehaviour
         {
             if (enemy != null)
             {
-                if (enemy.GetHealth() > 0)
+                if (enemy.GetHealth() > 0 && Vector3.Distance(enemy.transform.position, Camera.main.transform.position) < 30)
                 {
                     PosInCamera = Camera.main.WorldToViewportPoint(enemy.transform.position + Vector3.up);
                     if (Mathf.Abs(PosInCamera.x - 0.5f) < 0.5f && Mathf.Abs(PosInCamera.y - 0.5f) < 0.5f && PosInCamera.z > 0)

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
-using DG.Tweening;
 using System;
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -110,6 +108,8 @@ public class PlayerWeaponManager : MonoBehaviour
     private void StartAiming()
     {
         Controller.EndAttackCallback = EndAttack;
+        Debug.Log(CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
+        Debug.Log(CurrentWeapon.Data.Type == WeaponType.Rifle || CurrentWeapon.Data.Type == WeaponType.Pistol ? 1 : 0);
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName),
             CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
         Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName),

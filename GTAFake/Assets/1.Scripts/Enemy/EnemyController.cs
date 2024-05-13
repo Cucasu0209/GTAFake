@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour, IActor
     void Update()
     {
         Anim.SetFloat("speed", Agent.velocity.magnitude);
-        if (Time.time - LastTimeCheckFollow > Random.Range(2, 4f))
+        if (Time.time - LastTimeCheckFollow > Random.Range(0.5f, 1))
         {
             LastTimeCheckFollow = Time.time;
             PlayerController player = FindAnyObjectByType<PlayerController>();

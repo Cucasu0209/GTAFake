@@ -17,6 +17,7 @@ public class UserInputController : MonoBehaviour
     public Action OnCancelAiming;
     public Action OnStartFlying;
     public Action OnEndFlying;
+    public Action OnSwitchModel;
 
     private void Awake()
     {

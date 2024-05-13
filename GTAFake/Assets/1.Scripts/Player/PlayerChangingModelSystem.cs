@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
+
 using UnityEngine;
 
 public class PlayerChangingModelSystem : MonoBehaviour
@@ -8,6 +6,11 @@ public class PlayerChangingModelSystem : MonoBehaviour
     public Animator CurrentAnim;
     public int currentIndex = -1;
     public GameObject[] Model;
+    private void Start()
+    {
+        UserInputController.Instance.OnSwitchModel += OnSwitchModel;
+
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchToPlayer(0);
@@ -17,8 +20,18 @@ public class PlayerChangingModelSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9)) SwitchToPlayer(4);
         if (Input.GetKeyDown(KeyCode.Alpha0)) SwitchToPlayer(5);
     }
+    private void OnDestroy()
+    {
+        UserInputController.Instance.OnSwitchModel -= OnSwitchModel;
+    }
+    private void OnSwitchModel()
+    {
+        int newIndex = currentIndex + 1;
+        SwitchToPlayer(newIndex);
+    }
     private void SwitchToPlayer(int playerIndex)
     {
+        playerIndex %= Model.Length;
         if (currentIndex == playerIndex) return;
         if (playerIndex >= Model.Length) return;
         Destroy(CurrentAnim.gameObject);
@@ -32,7 +45,7 @@ public class PlayerChangingModelSystem : MonoBehaviour
         {
             weapon.transform.parent = newmodel.GetComponent<PlayerAnimationCallbacks>().RightHand;
             weapon.transform.localPosition = Vector3.zero;
-            weapon.transform.localRotation =Quaternion.Euler(0f, 0f, 0f);
+            weapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 }

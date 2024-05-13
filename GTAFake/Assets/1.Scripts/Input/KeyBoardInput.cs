@@ -81,5 +81,7 @@ public class KeyBoardInput : MonoBehaviour
             UserInputController.Instance.OnAimingJoystick?.Invoke(Mousepos.x / MaxAxisValue, Mousepos.y / MaxAxisValue);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Q)) UserInputController.Instance.OnSwitchModel?.Invoke();
     }
 }

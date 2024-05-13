@@ -43,6 +43,7 @@ public class PlayerAnimationCallbacks : MonoBehaviour
                     SetConstraintAimingState(true);
                 });
 
+                Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
 
             }
             else
@@ -50,7 +51,6 @@ public class PlayerAnimationCallbacks : MonoBehaviour
                 SetConstraintAimingState(false);
             }
 
-            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
         }
     }
     private void OnCancelAiming()
