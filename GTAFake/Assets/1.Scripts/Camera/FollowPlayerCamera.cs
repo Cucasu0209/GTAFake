@@ -66,15 +66,15 @@ public class FollowPlayerCamera : MonoBehaviour
 
         RaycastHit hit;
         float distance = MaxDistance;
-        Vector3[] points = GetCameraCollisionPoints(direction);
+        //Vector3[] points = GetCameraCollisionPoints(direction);
 
-        foreach (Vector3 point in points)
-        {
-            if (Physics.Raycast(point, direction, out hit, MaxDistance))
-            {
-                distance = Mathf.Min((hit.point - TransformFollow.position).magnitude * 0.8f, distance);
-            }
-        }
+        //foreach (Vector3 point in points)
+        //{
+        //    if (Physics.Raycast(point, direction, out hit, MaxDistance))
+        //    {
+        //        distance = Mathf.Min((hit.point - TransformFollow.position).magnitude * 0.8f, distance);
+        //    }
+        //}
         //  transform.position = TransformFollow.position + direction * distance;
         transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 30 * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);

@@ -502,7 +502,7 @@ MonoBehaviour:
   camera: {fileID: 1257318884}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   currentHidden: []
 --- !u!65 &1645401724
 BoxCollider:

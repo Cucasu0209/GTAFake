@@ -63,7 +63,7 @@ public class TestAnything : MonoBehaviour
         // Tính khoảng cách từ camera đến player
         float distanceToPlayer = Vector3.Distance(camera.transform.position, player.position);
 
-        hits = Physics.RaycastAll(ray, distanceToPlayer);
+        hits = Physics.RaycastAll(ray, distanceToPlayer, layerMask);
         // Thực hiện Raycast, kiểm tra va chạm với tất cả các object trong scene
         if (hits.Length > 0)
         {
@@ -94,7 +94,7 @@ public class TestAnything : MonoBehaviour
 
         Vector3 targetCenter = targetCollider.bounds.center;
         Vector3 targetExtents = targetCollider.bounds.extents;
-        Collider[] colliders = Physics.OverlapBox(targetCenter, targetExtents * 30, Quaternion.identity, mask);
+        Collider[] colliders = Physics.OverlapBox(targetCenter, targetExtents * 100, Quaternion.identity, mask);
 
         for (int i = 0; i < colliders.Length; i++)
         {
