@@ -1,12 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.Burst.CompilerServices;
-using UnityEditor.Media;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using UnityEngine.UI;
-using Unity.VisualScripting;
+
 
 public class TestAnything : MonoBehaviour
 {
@@ -16,17 +10,19 @@ public class TestAnything : MonoBehaviour
     public List<MeshRenderer> currentHidden = new List<MeshRenderer>();
     void Update()
     {
-        string a = " ";
+        //string a = " ";
         List<GameObject> ObjectBlockingView = IsObjectBlockingView();
         List<MeshRenderer> currentHiddenCache = new List<MeshRenderer>(currentHidden);
         foreach (var obj in ObjectBlockingView)
         {
-            a += obj.name + " ";
+            //a += obj.name + " ";
             if (obj.GetComponent<MeshRenderer>() != null && currentHidden.Contains(obj.GetComponent<MeshRenderer>()) == false)
             {
                 currentHidden.Add(obj.GetComponent<MeshRenderer>());
                 obj.GetComponent<MeshRenderer>().enabled = false;
+                obj.transform.GetChild(0).GetComponent<Collider>().enabled = false;
             }
+
         }
         foreach (var obj in currentHiddenCache)
         {
@@ -34,6 +30,7 @@ public class TestAnything : MonoBehaviour
             {
                 currentHidden.Remove(obj);
                 obj.enabled = true;
+                obj.transform.GetChild(0).GetComponent<Collider>().enabled = true;
             }
         }
     }
@@ -85,25 +82,16 @@ public class TestAnything : MonoBehaviour
     {
         List<GameObject> overlappingObjects = new List<GameObject>();
 
-        Collider targetCollider = target.GetComponent<Collider>();
-        if (targetCollider == null)
-        {
-            Debug.LogWarning("The target object does not have a Collider component.");
-            return overlappingObjects;
-        }
-
-        Vector3 targetCenter = targetCollider.bounds.center;
-        Vector3 targetExtents = targetCollider.bounds.extents;
-        Collider[] colliders = Physics.OverlapBox(targetCenter, targetExtents * 100, Quaternion.identity, mask);
+        Collider[] colliders = Physics.OverlapBox(target.transform.position, Vector3.up * 1000, Quaternion.Euler(0, 0, 0), mask);
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject != target && Physics.OverlapBox(colliders[i].bounds.center, colliders[i].bounds.extents, Quaternion.identity, mask).Contains(targetCollider))
-            {
-                overlappingObjects.Add(colliders[i].gameObject);
-            }
+            overlappingObjects.Add(colliders[i].gameObject);
         }
 
         return overlappingObjects;
     }
+
+
+
 }
