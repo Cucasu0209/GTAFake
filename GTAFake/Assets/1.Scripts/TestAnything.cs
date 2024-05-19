@@ -20,7 +20,8 @@ public class TestAnything : MonoBehaviour
             {
                 currentHidden.Add(obj.GetComponent<MeshRenderer>());
                 obj.GetComponent<MeshRenderer>().enabled = false;
-                obj.transform.GetChild(0).GetComponent<Collider>().enabled = false;
+                if (obj.transform.childCount > 0)
+                    obj.transform.GetChild(0).GetComponent<Collider>().enabled = false;
             }
 
         }
@@ -30,7 +31,8 @@ public class TestAnything : MonoBehaviour
             {
                 currentHidden.Remove(obj);
                 obj.enabled = true;
-                obj.transform.GetChild(0).GetComponent<Collider>().enabled = true;
+                if (obj.transform.childCount > 0)
+                    obj.transform.GetChild(0).GetComponent<Collider>().enabled = true;
             }
         }
     }
@@ -38,8 +40,7 @@ public class TestAnything : MonoBehaviour
     List<GameObject> IsObjectBlockingView()
     {
         List<GameObject> result = new List<GameObject>();
-        List<GameObject> Cache = GetOverlappingObjects(player.gameObject, layerMask);
-        Cache.AddRange(GetOverlappingObjects(camera.gameObject, layerMask));
+        List<GameObject> Cache = GetOverlappingObjects(camera.gameObject, layerMask);
         foreach (var obj in Cache)
         {
             if (result.Contains(obj) == false && obj != player.gameObject && obj != camera.gameObject)
