@@ -9,8 +9,10 @@ public class FPSMeasurement : MonoBehaviour
     private TextMeshProUGUI m_TextMeshProUGUI;
     private void Start()
     {
+#if UNITY_ANDROID
         //QualitySettings.vSyncCount = 0;
-        //Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
+#endif
         m_TextMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
     void Update()
