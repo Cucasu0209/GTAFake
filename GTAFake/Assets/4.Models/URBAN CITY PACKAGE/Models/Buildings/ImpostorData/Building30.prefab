@@ -48,11 +48,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.4
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5373928850388456836}
-  - screenRelativeHeight: 0.02
+  - screenRelativeHeight: 0.05
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 471867002584941252}
@@ -88,7 +88,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2295177, y: 2.2295177, z: 2.2295177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8683183555316112209}
@@ -154,6 +154,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c32d0aba0e8433049bc0c5a52d86acb4, type: 3}
       propertyPath: m_Name
       value: Building30
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c32d0aba0e8433049bc0c5a52d86acb4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c32d0aba0e8433049bc0c5a52d86acb4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c32d0aba0e8433049bc0c5a52d86acb4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c32d0aba0e8433049bc0c5a52d86acb4, type: 3}
       propertyPath: m_LocalPosition.x

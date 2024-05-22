@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1317822140715102928}
+  - {fileID: 7766202199295004835}
   - {fileID: 1616205735023196284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,11 +48,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.4
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 1317822140712677424}
-  - screenRelativeHeight: 0.02
+    - renderer: {fileID: 7766202199296905795}
+  - screenRelativeHeight: 0.05
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1317822140714707024}
@@ -204,12 +204,7 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8625740465572472757}
   m_SourcePrefab: {fileID: 100100000, guid: b2216c5e4f4926b4695ffb6cca1a1e8e, type: 3}
---- !u!23 &1317822140712677424 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: b2216c5e4f4926b4695ffb6cca1a1e8e, type: 3}
-  m_PrefabInstance: {fileID: 7766202199294609955}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1317822140714610416 stripped
+--- !u!1 &7766202199294708867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b2216c5e4f4926b4695ffb6cca1a1e8e, type: 3}
   m_PrefabInstance: {fileID: 7766202199294609955}
@@ -220,25 +215,30 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1317822140714610416}
+  m_GameObject: {fileID: 7766202199294708867}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: ef1ebc757a5265c40b8b2fcb5f7ebd04, type: 2}
-  m_rootTransform: {fileID: 1317822140715102928}
+  m_rootTransform: {fileID: 7766202199295004835}
   m_lodGroup: {fileID: 0}
   m_renderers:
-  - {fileID: 1317822140712677424}
+  - {fileID: 7766202199296905795}
   m_lodReplacement: 2
   m_renderPipelineInUse: 0
   m_insertIndex: 0
   m_lastImpostor: {fileID: 7458396490752132376}
   m_folderPath: Assets/4.Models/URBAN CITY PACKAGE/Models/Buildings/ImpostorData/
   m_cutMode: 0
---- !u!4 &1317822140715102928 stripped
+--- !u!4 &7766202199295004835 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b2216c5e4f4926b4695ffb6cca1a1e8e, type: 3}
+  m_PrefabInstance: {fileID: 7766202199294609955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7766202199296905795 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: b2216c5e4f4926b4695ffb6cca1a1e8e, type: 3}
   m_PrefabInstance: {fileID: 7766202199294609955}
   m_PrefabAsset: {fileID: 0}

@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.325475, y: 2.325475, z: 2.325475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1954246386062480062}
@@ -131,11 +131,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.3
+  - screenRelativeHeight: 0.4
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3033184308725185483}
-  - screenRelativeHeight: 0.02
+  - screenRelativeHeight: 0.05
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4038532616517743739}
@@ -154,6 +154,18 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 91ee6fbe722494246bc078c97668e9ad, type: 3}
       propertyPath: m_Name
       value: Building27
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 91ee6fbe722494246bc078c97668e9ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 91ee6fbe722494246bc078c97668e9ad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 91ee6fbe722494246bc078c97668e9ad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 91ee6fbe722494246bc078c97668e9ad, type: 3}
       propertyPath: m_LocalPosition.x
