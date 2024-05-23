@@ -14,27 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Material: {fileID: 4797419866041383319}
   Mesh: {fileID: 3602342474803526524}
-  Version: 0
+  Version: 9904
   ImpostorType: 1
   LockedSizes: 1
   SelectedSize: 2048
   TexSize: {x: 2048, y: 2048}
   DecoupleAxisFrames: 0
-  HorizontalFrames: 16
-  VerticalFrames: 16
+  HorizontalFrames: 19
+  VerticalFrames: 19
   PixelPadding: 32
   MaxVertices: 8
   Tolerance: 0.15
-  NormalScale: 0.01
+  NormalScale: 0
   ShapePoints:
-  - {x: 0.2989403, y: 0.05207771}
-  - {x: 0.3007117, y: 0.98662287}
-  - {x: 0.3854969, y: 1}
-  - {x: 0.6109768, y: 1}
-  - {x: 0.6995187, y: 0.97850335}
-  - {x: 0.69980377, y: 0.029726565}
-  - {x: 0.6153798, y: 0}
-  - {x: 0.3355142, y: 0}
+  - {x: 0.30859375, y: 0.97265625}
+  - {x: 0.35546875, y: 1}
+  - {x: 0.6328125, y: 1}
+  - {x: 0.69140625, y: 0.96875}
+  - {x: 0.69140625, y: 0.015625}
+  - {x: 0.625, y: 0}
+  - {x: 0.375, y: 0}
+  - {x: 0.30859375, y: 0.05078125}
   Preset: {fileID: 11400000, guid: e4786beb7716da54dbb02a632681cc37, type: 2}
   OverrideOutput: []
 --- !u!43 &3602342474803526524
@@ -54,8 +54,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 8
     localAABB:
-      m_Center: {x: -0.078689575, y: -0.24570084, z: 0}
-      m_Extent: {x: 25.115755, y: 62.654137, z: 0}
+      m_Center: {x: 0, y: -0.24564362, z: 0}
+      m_Extent: {x: 23.978907, y: 62.63878, z: 0}
   m_Shapes:
     vertices: []
     shapes: []
@@ -134,7 +134,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 256
-    _typelessdata: 398ec9c1da875f42000000000000000000000000000080bfb40e993e09ab723fa0c7c7c1f1e474c2000000000000000000000000000080bfe2f6993ec02b5b3c299265c16f997bc2000000000000000000000000000080bfda5fc53e0000000042805e416f997bc2000000000000000000000000000080bffa681c3f00000000bf02c84114d370c2000000000000000000000000000080bfa813333fc019b03ce94bc841dabb6a42000000000000000000000000000080bf5726333fd763783f275467413da27942000000000000000000000000000080bf88891d3f0000803f37e4a4c13da27942000000000000000000000000ffff7fbf84c8ab3e0000803f
+    _typelessdata: cdd4bfc1e0d56dc2000000000000000000000000000080bf00009e3e0000e03c28da90c1a6897bc2000000000000000000000000000080bf0000b63e000000007f1b8541a6897bc2000000000000000000000000000080bf0000223f00000000cdd4bf41c4e06bc2000000000000000000000000000080bf0000313f0000003dcdd4bf4121be7142000000000000000000000000000080bf0000313f00007c3f1c8e7a4192927942000000000000000000000000000080bf0000203f0000803f1c8e7ac192927942000000000000000000000000000080bf0000c03e0000803fcdd4bfc124206042000000000000000000000000000080bf00009e3e0000733f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -247,15 +247,15 @@ Material:
     - _AI_ShadowBias: 0.25
     - _AI_ShadowView: 1
     - _ClipMask: 0.5
-    - _DepthSize: 125.292984
-    - _Frames: 16
+    - _DepthSize: 124.541855
+    - _Frames: 19
     - _Hemi: 0
     - _Hue: 0
-    - _ImpostorSize: 125.30827
+    - _ImpostorSize: 125.27756
     - _Parallax: 1
     - _TextureBias: -1
     m_Colors:
-    - _AI_SizeOffset: {r: 125.30827, g: 125.292984, b: 0, a: -0.00012254901}
+    - _AI_SizeOffset: {r: 125.27756, g: 124.541855, b: 0, a: -0.00010319918}
     - _HueVariation: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: 0, g: 58.271687, b: 0, a: 0.0019607842}
+    - _Offset: {r: 0, g: 58.271687, b: 0, a: 0.0019607844}
   m_BuildTextureStacks: []
