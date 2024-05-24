@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4644689587764528316}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.955734, y: 1.009784e-21, z: 66.58473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -131,7 +131,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.4
+  - screenRelativeHeight: 0.22228222
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5819820429298151212}
@@ -153,7 +153,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ded7bffebd6079e4b83d97d7e43ca4d5, type: 3}
       propertyPath: m_Name
-      value: Building50
+      value: LOD0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ded7bffebd6079e4b83d97d7e43ca4d5, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ded7bffebd6079e4b83d97d7e43ca4d5, type: 3}
       propertyPath: m_LocalPosition.x
