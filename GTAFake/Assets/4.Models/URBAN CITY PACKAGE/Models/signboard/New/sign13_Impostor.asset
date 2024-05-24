@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Material: {fileID: 8512750978288156302}
   Mesh: {fileID: 4594828352371182169}
-  Version: 0
+  Version: 9904
   ImpostorType: 1
   LockedSizes: 1
   SelectedSize: 2048
@@ -226,19 +226,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e39a0c7b13008984d8ed5ee5b5dfaff0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 23ad9fc9846b3734cb2f2f0e1d6950c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1b9af16c7d878e6499af412ae1d2bf8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Specular:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3cc1f06df760d06468567116825dc545, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -247,15 +247,15 @@ Material:
     - _AI_ShadowBias: 0.25
     - _AI_ShadowView: 1
     - _ClipMask: 0.5
-    - _DepthSize: 1
+    - _DepthSize: 8.847352
     - _Frames: 16
     - _Hemi: 0
     - _Hue: 0
-    - _ImpostorSize: 1
+    - _ImpostorSize: 8.808261
     - _Parallax: 1
     - _TextureBias: -1
     m_Colors:
-    - _AI_SizeOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _AI_SizeOffset: {r: 8.808261, g: 8.847352, b: -0.00012207031, a: 0}
     - _HueVariation: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Offset: {r: 0, g: 1.1127934, b: 0.059645794, a: -0}
   m_BuildTextureStacks: []
