@@ -17,8 +17,8 @@ MonoBehaviour:
   Version: 9904
   ImpostorType: 1
   LockedSizes: 1
-  SelectedSize: 2048
-  TexSize: {x: 2048, y: 2048}
+  SelectedSize: 512
+  TexSize: {x: 512, y: 512}
   DecoupleAxisFrames: 0
   HorizontalFrames: 16
   VerticalFrames: 16

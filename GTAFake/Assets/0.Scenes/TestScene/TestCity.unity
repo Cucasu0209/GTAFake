@@ -1614,6 +1614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RearrangeCity_New6
       objectReference: {fileID: 0}
+    - target: {fileID: 3664018351594911483, guid: 57f5efbedb8f1d048939c416e0f98d1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3711764323807047574, guid: 57f5efbedb8f1d048939c416e0f98d1b, type: 3}
       propertyPath: m_data
       value: 

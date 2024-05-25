@@ -55,7 +55,7 @@ Material:
     m_Colors:
     - _AI_SizeOffset: {r: 33.829994, g: 33.56494, b: 0, a: 0.000246063}
     - _HueVariation: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: -0.24501002, g: 7.6946187, b: 0.2412206, a: -0.003937008}
+    - _Offset: {r: -0.24501479, g: 7.6946187, b: 0.24122822, a: -0.003937008}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -74,8 +74,8 @@ MonoBehaviour:
   Version: 9904
   ImpostorType: 1
   LockedSizes: 1
-  SelectedSize: 2048
-  TexSize: {x: 2048, y: 2048}
+  SelectedSize: 512
+  TexSize: {x: 512, y: 512}
   DecoupleAxisFrames: 0
   HorizontalFrames: 16
   VerticalFrames: 16
@@ -245,7 +245,7 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: -0.24501002, y: 7.6946187, z: 0.2412206}
+    m_Center: {x: -0.24501479, y: 7.6946187, z: 0.24122822}
     m_Extent: {x: 10.764205, y: 7.6946187, z: 10.760412}
   m_MeshUsageFlags: 0
   m_CookingOptions: 30

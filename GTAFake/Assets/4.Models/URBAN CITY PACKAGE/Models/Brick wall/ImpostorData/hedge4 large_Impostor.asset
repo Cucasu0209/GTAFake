@@ -236,11 +236,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Material: {fileID: -8583326496821333121}
   Mesh: {fileID: -4876901533070942002}
-  Version: 0
+  Version: 9904
   ImpostorType: 1
   LockedSizes: 1
-  SelectedSize: 2048
-  TexSize: {x: 2048, y: 2048}
+  SelectedSize: 512
+  TexSize: {x: 512, y: 512}
   DecoupleAxisFrames: 0
   HorizontalFrames: 16
   VerticalFrames: 16
