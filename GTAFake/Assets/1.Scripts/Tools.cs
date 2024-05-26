@@ -102,7 +102,14 @@ public class Testeditor : EditorWindow
             }
         }
 
-
+        if (GUILayout.Button("Rename", buttonStyle))
+        {
+            foreach (var obj in children)
+            {
+                obj.transform.GetChild(0).gameObject.name = obj.name + "_LOD0";
+                obj.transform.GetChild(1).gameObject.name = obj.name + "_LOD1";
+            }
+        }
 
 
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4524176489093004282}
   - component: {fileID: 7160600716638830838}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: hedge3 curve_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: d5b763a0023f64c49851576581c98515, type: 3}
       propertyPath: m_Name
-      value: hedge3 curve
+      value: hedge3 curve_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d5b763a0023f64c49851576581c98515, type: 3}
       propertyPath: m_LocalPosition.x

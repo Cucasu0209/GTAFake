@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 2929903372434971243}
   - component: {fileID: 8270948585737124387}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: cypress tree2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 3aa86d04cab9c814e905ece183bf4ee3, type: 3}
       propertyPath: m_Name
-      value: cypress tree2
+      value: cypress tree2_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3aa86d04cab9c814e905ece183bf4ee3, type: 3}
       propertyPath: m_LocalPosition.x

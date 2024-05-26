@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4189397975750770725}
   - component: {fileID: 667847042041093472}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: Building4_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 3bb10f3cbdfcfd9468fa9cf018eb557d, type: 3}
       propertyPath: m_Name
-      value: LOD
+      value: Building4_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3bb10f3cbdfcfd9468fa9cf018eb557d, type: 3}
       propertyPath: m_Layer

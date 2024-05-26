@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 5161665725788673383}
   - component: {fileID: 2223801343943170459}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: traffic signal5_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 8f1499a0a348f5c4eb8d4faddd04ba20, type: 3}
       propertyPath: m_Name
-      value: traffic signal5
+      value: traffic signal5_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f1499a0a348f5c4eb8d4faddd04ba20, type: 3}
       propertyPath: m_LocalScale.x

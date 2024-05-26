@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6928044538085197932}
   - component: {fileID: 2033223896396060329}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: fire hydrant_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 9cbad96747b76ad45af0351015043d6b, type: 3}
       propertyPath: m_Name
-      value: fire hydrant
+      value: fire hydrant_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9cbad96747b76ad45af0351015043d6b, type: 3}
       propertyPath: m_LocalPosition.x

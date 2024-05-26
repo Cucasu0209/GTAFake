@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3813192817263000634}
   - component: {fileID: 4710211593915562951}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: bin red_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 95545747f17b6644185ad98c917c66e2, type: 3}
       propertyPath: m_Name
-      value: bin red
+      value: bin red_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95545747f17b6644185ad98c917c66e2, type: 3}
       propertyPath: m_LocalScale.x

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635489724476216293}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.896362, y: 0, z: 39.844788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6301629561428809128}
   - component: {fileID: 3056451063529505776}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: sewer lid3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 68b91873da53de94fbe0a6e39a06bbc6, type: 3}
       propertyPath: m_Name
-      value: sewer lid3
+      value: sewer lid3_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 68b91873da53de94fbe0a6e39a06bbc6, type: 3}
       propertyPath: m_LocalPosition.x

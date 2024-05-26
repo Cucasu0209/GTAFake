@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 757001750840759006}
   - component: {fileID: 7045708352527714280}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: vent pipe5a_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,12 +108,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8546676054099306603}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.979279, y: 0.15387726, z: 23.485657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7045708352527850856}
+  - {fileID: 5119599047727816736}
   - {fileID: 1511995326338241962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,7 +134,7 @@ LODGroup:
   - screenRelativeHeight: 0.52893937
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 7045708352525557640}
+    - renderer: {fileID: 5119599047725523648}
   - screenRelativeHeight: 0.09061638
     fadeTransitionWidth: 0
     renderers:
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
       propertyPath: m_Name
-      value: vent pipe5a
+      value: vent pipe5a_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,12 +204,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2963866657035398470}
   m_SourcePrefab: {fileID: 100100000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
---- !u!23 &7045708352525557640 stripped
+--- !u!23 &5119599047725523648 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
   m_PrefabInstance: {fileID: 5119599047727430304}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7045708352527745352 stripped
+--- !u!1 &5119599047727463424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
   m_PrefabInstance: {fileID: 5119599047727430304}
@@ -220,24 +220,24 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7045708352527745352}
+  m_GameObject: {fileID: 5119599047727463424}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 1fb7a5b53e956d24caac55eb11bf5a2f, type: 2}
-  m_rootTransform: {fileID: 7045708352527850856}
+  m_rootTransform: {fileID: 5119599047727816736}
   m_lodGroup: {fileID: 0}
   m_renderers:
-  - {fileID: 7045708352525557640}
+  - {fileID: 5119599047725523648}
   m_lodReplacement: 2
   m_renderPipelineInUse: 0
   m_insertIndex: 0
   m_lastImpostor: {fileID: 2215894884996993778}
   m_folderPath: Assets/4.Models/URBAN CITY PACKAGE/Models/rooftop props/
   m_cutMode: 0
---- !u!4 &7045708352527850856 stripped
+--- !u!4 &5119599047727816736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 03dffd92e4247aa4f8640d0cc8245ee6, type: 3}
   m_PrefabInstance: {fileID: 5119599047727430304}

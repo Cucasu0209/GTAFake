@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 5378691839855246033}
   - component: {fileID: 5975886976399916826}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: parking meter2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ec7c2fccb150a76468e81d7a729ed072, type: 3}
       propertyPath: m_Name
-      value: parking meter2
+      value: parking meter2_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec7c2fccb150a76468e81d7a729ed072, type: 3}
       propertyPath: m_LocalPosition.x

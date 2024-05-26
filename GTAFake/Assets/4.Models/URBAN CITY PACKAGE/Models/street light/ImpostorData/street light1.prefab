@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 8189958702109478195}
   - component: {fileID: 4532201547248619176}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: street light1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: b733fdbf974a4cd448f0a6570cecf7f9, type: 3}
       propertyPath: m_Name
-      value: street light1
+      value: street light1_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b733fdbf974a4cd448f0a6570cecf7f9, type: 3}
       propertyPath: m_LocalPosition.x

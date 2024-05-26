@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3726897642188613528}
   - component: {fileID: 6680738125629130625}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: brick wall1b_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 581a1d5de7a1f584f877e97bf3fc5215, type: 3}
       propertyPath: m_Name
-      value: brick wall1b
+      value: brick wall1b_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 581a1d5de7a1f584f877e97bf3fc5215, type: 3}
       propertyPath: m_IsActive

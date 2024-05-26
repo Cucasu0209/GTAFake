@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2429940826776426774}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.609879, y: 0, z: 11.230713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 19026531570626534}
   - component: {fileID: 8428787279617151104}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: traffic cone1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 93adf32aff9116e43ae396b27683193f, type: 3}
       propertyPath: m_Name
-      value: traffic cone1
+      value: traffic cone1_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 93adf32aff9116e43ae396b27683193f, type: 3}
       propertyPath: m_LocalPosition.x

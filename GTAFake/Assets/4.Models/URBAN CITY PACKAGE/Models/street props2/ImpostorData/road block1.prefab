@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3449166672586292693}
   - component: {fileID: 7945421124398128545}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: road block1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 21f8d281d556df548a93562633afc518, type: 3}
       propertyPath: m_Name
-      value: road block1
+      value: road block1_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21f8d281d556df548a93562633afc518, type: 3}
       propertyPath: m_LocalPosition.x

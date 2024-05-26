@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 6360338781993833529}
   - component: {fileID: 7813231510702498662}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: palm1b_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: cab264bd930c8d9489af99deb63c80af, type: 3}
       propertyPath: m_Name
-      value: palm1b
+      value: palm1b_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cab264bd930c8d9489af99deb63c80af, type: 3}
       propertyPath: m_LocalPosition.x

@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 8442180397165491265}
   - component: {fileID: 2210091112231632963}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: mailbox_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 7b3430f84a29fe8408e0ea00a918aeb6, type: 3}
       propertyPath: m_Name
-      value: mailbox
+      value: mailbox_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7b3430f84a29fe8408e0ea00a918aeb6, type: 3}
       propertyPath: m_LocalScale.x

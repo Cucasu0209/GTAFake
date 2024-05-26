@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8729246040780126734}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -66.43042, y: 0, z: 41.928894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 2223120881711956248}
   - component: {fileID: 5381461798830205968}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: street stump3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f98ff7b5c1eeca24dbe8607d23e15b27, type: 3}
       propertyPath: m_Name
-      value: street stump3
+      value: street stump3_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f98ff7b5c1eeca24dbe8607d23e15b27, type: 3}
       propertyPath: m_LocalPosition.x

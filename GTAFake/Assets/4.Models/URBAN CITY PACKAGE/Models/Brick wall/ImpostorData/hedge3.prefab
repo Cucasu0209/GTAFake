@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119712938676122230}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.461441, y: -1.5797462, z: -25.531555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 244408079554865724}
   - component: {fileID: 3867108022218360418}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: hedge3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f37c8e99543a667499f5bb0da1b8977b, type: 3}
       propertyPath: m_Name
-      value: hedge3
+      value: hedge3_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f37c8e99543a667499f5bb0da1b8977b, type: 3}
       propertyPath: m_LocalPosition.x

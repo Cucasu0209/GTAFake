@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2894978147421589546}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.707535, y: 0, z: -19.9328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 7473124257799289996}
   - component: {fileID: 6126756502129066336}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: sign big2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: c702e2d50e2fdd445b42926091c3c204, type: 3}
       propertyPath: m_Name
-      value: sign big2
+      value: sign big2_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c702e2d50e2fdd445b42926091c3c204, type: 3}
       propertyPath: m_LocalPosition.x

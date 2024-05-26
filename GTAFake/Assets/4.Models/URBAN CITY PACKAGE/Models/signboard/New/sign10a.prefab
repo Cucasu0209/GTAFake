@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399567934171618653}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.9628143, y: 0, z: 4.793579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 44772354918730668}
+  - {fileID: 8016805202976278506}
   - {fileID: 6963048951783668785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,7 +51,7 @@ LODGroup:
   - screenRelativeHeight: 0.48525244
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 44772354916960588}
+    - renderer: {fileID: 8016805202973852938}
   - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
     renderers:
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 3826464324040288249}
   - component: {fileID: 44772354919125292}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: sign10a_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
       propertyPath: m_Name
-      value: sign10a
+      value: sign10a_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,17 +204,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7304544364171527763}
   m_SourcePrefab: {fileID: 100100000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
---- !u!23 &44772354916960588 stripped
+--- !u!23 &8016805202973852938 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
   m_PrefabInstance: {fileID: 8016805202975890794}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &44772354918730668 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
-  m_PrefabInstance: {fileID: 8016805202975890794}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &44772354919225228 stripped
+--- !u!1 &8016805202975792074 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
   m_PrefabInstance: {fileID: 8016805202975890794}
@@ -225,20 +220,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44772354919225228}
+  m_GameObject: {fileID: 8016805202975792074}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: f50ade660e37e6c41ad557252bd362ed, type: 2}
-  m_rootTransform: {fileID: 44772354918730668}
+  m_rootTransform: {fileID: 8016805202976278506}
   m_lodGroup: {fileID: 0}
   m_renderers:
-  - {fileID: 44772354916960588}
+  - {fileID: 8016805202973852938}
   m_lodReplacement: 2
   m_renderPipelineInUse: 0
   m_insertIndex: 0
   m_lastImpostor: {fileID: 7228770889910608548}
   m_folderPath: Assets/4.Models/URBAN CITY PACKAGE/Models/signboard/New/
   m_cutMode: 0
+--- !u!4 &8016805202976278506 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: f6ed241c296b8524199188b6da37ca00, type: 3}
+  m_PrefabInstance: {fileID: 8016805202975890794}
+  m_PrefabAsset: {fileID: 0}

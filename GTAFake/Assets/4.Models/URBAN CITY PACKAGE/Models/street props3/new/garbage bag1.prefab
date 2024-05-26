@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819879909292929900}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -71.26312, y: 0, z: 49.82251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 1863672111302272075}
   - component: {fileID: 7315504642680829141}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: garbage bag1_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 813f89bf1629d374dae2d5519c4120bb, type: 3}
       propertyPath: m_Name
-      value: garbage bag1
+      value: garbage bag1_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 813f89bf1629d374dae2d5519c4120bb, type: 3}
       propertyPath: m_LocalPosition.x

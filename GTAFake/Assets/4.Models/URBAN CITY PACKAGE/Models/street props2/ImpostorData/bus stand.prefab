@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1751564024449304838}
   - component: {fileID: 625302046535143146}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: bus stand_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 3833034b7ec9a2948adbaf82af991274, type: 3}
       propertyPath: m_Name
-      value: bus stand
+      value: bus stand_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3833034b7ec9a2948adbaf82af991274, type: 3}
       propertyPath: m_LocalScale.x

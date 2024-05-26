@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4358224892608287053}
   - component: {fileID: 3510156470877460703}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: rooftop billboard3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 45468e0149799684ea999296a1c714e6, type: 3}
       propertyPath: m_Name
-      value: rooftop billboard3
+      value: rooftop billboard3_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45468e0149799684ea999296a1c714e6, type: 3}
       propertyPath: m_LocalScale.x

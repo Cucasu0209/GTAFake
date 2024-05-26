@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 678487260563850150}
   - component: {fileID: 1958937385926399251}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: traffic sign4_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,12 +108,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3264283694624602923}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.710251, y: 0, z: 38.441162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1958937385926791059}
+  - {fileID: 9069930123111505346}
   - {fileID: 5995486150982029908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,7 +134,7 @@ LODGroup:
   - screenRelativeHeight: 0.683899
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 1958937385924496755}
+    - renderer: {fileID: 9069930123109080866}
   - screenRelativeHeight: 0.23576985
     fadeTransitionWidth: 0
     renderers:
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
       propertyPath: m_Name
-      value: traffic sign4
+      value: traffic sign4_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,12 +204,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5679524704458166777}
   m_SourcePrefab: {fileID: 100100000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
---- !u!23 &1958937385924496755 stripped
+--- !u!23 &9069930123109080866 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
   m_PrefabInstance: {fileID: 9069930123111368514}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1958937385926497203 stripped
+--- !u!1 &9069930123111334370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
   m_PrefabInstance: {fileID: 9069930123111368514}
@@ -220,24 +220,24 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958937385926497203}
+  m_GameObject: {fileID: 9069930123111334370}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: bdb3bdbbded9f5f49a27772f1aa54143, type: 2}
-  m_rootTransform: {fileID: 1958937385926791059}
+  m_rootTransform: {fileID: 9069930123111505346}
   m_lodGroup: {fileID: 0}
   m_renderers:
-  - {fileID: 1958937385924496755}
+  - {fileID: 9069930123109080866}
   m_lodReplacement: 2
   m_renderPipelineInUse: 0
   m_insertIndex: 0
   m_lastImpostor: {fileID: 2732978206796336470}
   m_folderPath: Assets/4.Models/URBAN CITY PACKAGE/Models/street props2/New/
   m_cutMode: 0
---- !u!4 &1958937385926791059 stripped
+--- !u!4 &9069930123111505346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4c158658ba6cb864f830bdff89740db0, type: 3}
   m_PrefabInstance: {fileID: 9069930123111368514}

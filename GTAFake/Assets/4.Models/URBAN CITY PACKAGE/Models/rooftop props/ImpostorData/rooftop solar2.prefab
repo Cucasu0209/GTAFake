@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123766722556678152}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.163132, y: 0, z: 17.895264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 5667193868081249713}
   - component: {fileID: 1922500227723373639}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: rooftop solar2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 1123ffb36e8628048b80a38d725c55f6, type: 3}
       propertyPath: m_Name
-      value: rooftop solar2
+      value: rooftop solar2_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1123ffb36e8628048b80a38d725c55f6, type: 3}
       propertyPath: m_LocalPosition.x

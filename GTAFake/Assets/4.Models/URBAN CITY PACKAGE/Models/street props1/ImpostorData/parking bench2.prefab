@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2084331953187116783}
   - component: {fileID: 3273481659574695077}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: parking bench2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 15c797e3515e415428070510e0ce7cd8, type: 3}
       propertyPath: m_Name
-      value: parking bench2
+      value: parking bench2_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 15c797e3515e415428070510e0ce7cd8, type: 3}
       propertyPath: m_LocalPosition.x

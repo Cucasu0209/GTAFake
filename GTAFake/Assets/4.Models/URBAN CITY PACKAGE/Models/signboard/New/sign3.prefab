@@ -25,15 +25,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700342522053037997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0063226493, y: -0, z: -0, w: 0.99998003}
+  m_LocalRotation: {x: -0.0063266917, y: 0, z: 0, w: 0.99998003}
   m_LocalPosition: {x: 9.082306, y: 0.25400162, z: 26.53888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5325506972259905179}
+  - {fileID: 1786400729415743920}
   - {fileID: 5866061822861055443}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.725, y: 0, z: 0}
 --- !u!205 &7496823525201777834
 LODGroup:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ LODGroup:
   - screenRelativeHeight: 0.37480187
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 5325506972258135163}
+    - renderer: {fileID: 1786400729418169168}
   - screenRelativeHeight: 0.04340628
     fadeTransitionWidth: 0
     renderers:
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 7167576919965188865}
   - component: {fileID: 5325506972260037659}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: sign3_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
       propertyPath: m_Name
-      value: sign3
+      value: sign3_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,17 +204,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8142574592981488716}
   m_SourcePrefab: {fileID: 100100000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
---- !u!23 &5325506972258135163 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
-  m_PrefabInstance: {fileID: 1786400729415869232}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5325506972259905179 stripped
+--- !u!4 &1786400729415743920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
   m_PrefabInstance: {fileID: 1786400729415869232}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5325506972260070075 stripped
+--- !u!1 &1786400729415902608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
   m_PrefabInstance: {fileID: 1786400729415869232}
@@ -225,20 +220,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325506972260070075}
+  m_GameObject: {fileID: 1786400729415902608}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fadcc2d9a34a1a34f93d4962ec37e6e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: e14c7ba51bd0955449d1aa18d062894c, type: 2}
-  m_rootTransform: {fileID: 5325506972259905179}
+  m_rootTransform: {fileID: 1786400729415743920}
   m_lodGroup: {fileID: 0}
   m_renderers:
-  - {fileID: 5325506972258135163}
+  - {fileID: 1786400729418169168}
   m_lodReplacement: 2
   m_renderPipelineInUse: 0
   m_insertIndex: 0
   m_lastImpostor: {fileID: 4934828020864283704}
   m_folderPath: Assets/4.Models/URBAN CITY PACKAGE/Models/signboard/New/
   m_cutMode: 0
+--- !u!23 &1786400729418169168 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 79c1b129725712d408854ff4d3de3e94, type: 3}
+  m_PrefabInstance: {fileID: 1786400729415869232}
+  m_PrefabAsset: {fileID: 0}

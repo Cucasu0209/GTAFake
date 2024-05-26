@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5170215210766360716}
   - component: {fileID: 5962584229550429323}
   m_Layer: 0
-  m_Name: Impostor
+  m_Name: brick wall3b_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8660782361682352038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.109497, y: 0, z: 4.085083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -153,7 +153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 9465c0844f816504e8e1b09fa75f5e24, type: 3}
       propertyPath: m_Name
-      value: brick wall3b
+      value: brick wall3b_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9465c0844f816504e8e1b09fa75f5e24, type: 3}
       propertyPath: m_LocalPosition.x
