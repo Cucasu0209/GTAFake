@@ -19,11 +19,11 @@ public class FPSMeasurement : MonoBehaviour
     {
         LastTimeCheck += Time.deltaTime;
         i++;
-        if (LastTimeCheck >= 1)
+        if (LastTimeCheck >= 0.5f)
         {
             if (m_TextMeshProUGUI != null)
             {
-                m_TextMeshProUGUI.SetText("FPS:" + i);
+                m_TextMeshProUGUI.SetText("FPS:" + i * 2 + "\nTris:" + (UnityEditor.UnityStats.triangles/1000) + "k\n Verts:" + (UnityEditor.UnityStats.vertices/1000)+"k");
             }
             else
                 Debug.Log("FPS:" + i);

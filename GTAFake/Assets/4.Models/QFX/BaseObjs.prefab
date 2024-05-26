@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682a7f167dea0d04d91d778f99fdef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinMaxClampY: {x: -80, y: 20}
+  MinMaxClampY: {x: -15, y: -15}
   TransformFollow: {fileID: 7792397759222428897}
   MaxDistance: 7
   NormalSensitivity: {x: 0.2, y: 0.1}
