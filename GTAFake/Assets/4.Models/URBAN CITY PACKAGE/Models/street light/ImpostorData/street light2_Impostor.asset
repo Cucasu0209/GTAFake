@@ -45,17 +45,17 @@ Material:
     - _AI_ShadowBias: 0.25
     - _AI_ShadowView: 1
     - _ClipMask: 0.5
-    - _DepthSize: 13.153828
+    - _DepthSize: 13.153834
     - _Frames: 16
     - _Hemi: 0
     - _Hue: 0
-    - _ImpostorSize: 13.15262
+    - _ImpostorSize: 13.152627
     - _Parallax: 1
     - _TextureBias: -1
     m_Colors:
-    - _AI_SizeOffset: {r: 13.15262, g: 13.153828, b: 0, a: 0.0029380342}
+    - _AI_SizeOffset: {r: 13.152627, g: 13.153834, b: 0, a: 0.0029380342}
     - _HueVariation: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: 0, g: 5.8134227, b: -0.014132023, a: -0.047008548}
+    - _Offset: {r: 0, g: 5.8134103, b: -0.014132029, a: -0.047008548}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -75,7 +75,7 @@ MonoBehaviour:
   ImpostorType: 1
   LockedSizes: 1
   SelectedSize: 512
-  TexSize: {x: 512, y: 512}
+  TexSize: {x: 2048, y: 2048}
   DecoupleAxisFrames: 0
   HorizontalFrames: 16
   VerticalFrames: 16
@@ -111,8 +111,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 8
     localAABB:
-      m_Center: {x: -0.00009775162, y: 0.61828566, z: 0}
-      m_Extent: {x: 4.492347, y: 6.57631, z: 0}
+      m_Center: {x: -0.0000975132, y: 0.61828566, z: 0}
+      m_Extent: {x: 4.4923487, y: 6.5763135, z: 0}
   m_Shapes:
     vertices: []
     shapes: []
@@ -191,7 +191,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 256
-    _typelessdata: 1bc28fc054333abf000000000000000000000000ffff7fbf643d223e289ecb3e180f35bf23a8bec0000000000000000000000000000080bfcf77e43e00000000b686343f23a8bec0000000000000000000000000000080bfbab90d3f0000000081c08f40005b55bf000000000000000000000000ffff7fbfae6f573f147dc73ebc688f403fdbbf40000000000000000000000000000080bf4b3a573f4ba9683f00ed1240213ae640000000000000000000000000ffff7fbff0ae2c3f0000803f33d504c0213ae640000000000000000000000000000080bf8c34af3e0000803f67508fc07362c440000000000000000000000000000080bf0752233e5f6a6b3f
+    _typelessdata: 1fc28fc05a333abf000000000000000000000000ffff7fbf643d223e289ecb3e1e0f35bf2aa8bec0000000000000000000000000ffff7fbfcf77e43e00000000bc86343f2aa8bec0000000000000000000000000000080bfbab90d3f0000000086c08f40075b55bf000000000000000000000000000080bfae6f573f147dc73ec0688f4046dbbf40000000000000000000000000000080bf4b3a573f4ba9683f05ed1240283ae640000000000000000000000000000080bff0ae2c3f0000803f38d504c0283ae640000000000000000000000000000080bf8c34af3e0000803f6b508fc07a62c440000000000000000000000000ffff7fbf0752233e5f6a6b3f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -245,8 +245,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0, y: 5.8134227, z: -0.014132023}
-    m_Extent: {x: 0.38282055, y: 5.8134227, z: 4.2512994}
+    m_Center: {x: 0, y: 5.8134103, z: -0.014132029}
+    m_Extent: {x: 0.38282055, y: 5.8134255, z: 4.2513013}
   m_MeshUsageFlags: 0
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 

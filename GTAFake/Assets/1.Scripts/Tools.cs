@@ -112,176 +112,196 @@ public class Testeditor : EditorWindow
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //if (GUILayout.Button("1.Add Component Amplify imsposter", buttonStyle))
-        //{
-        //    foreach (var obj in children)
-        //    {
-        //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
-        //        if (instance == null)
-        //        {
-        //            obj.AddComponent<AmplifyImpostor>();
-        //        }
-        //    }
-        //}
-        //if (GUILayout.Button("2.Create folder", buttonStyle))
-        //{
-        //    foreach (var obj in children)
-        //    {
-        //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
-
-        //        string folderPath = Application.dataPath + "/AmplifyImposter/" + obj.name + "_Imposter";
-        //        string fileName = instance.name + "_Impostor";
-        //        if (!string.IsNullOrEmpty(instance.m_impostorName))
-        //            fileName = instance.m_impostorName;
-        //        if (!Directory.Exists(folderPath))
-        //        {
-        //            Directory.CreateDirectory(folderPath);
-        //            Debug.Log("Đã tạo thư mục mới: " + folderPath);
-        //            if (!string.IsNullOrEmpty(fileName))
-        //            {
-        //                folderPath = Path.GetDirectoryName(folderPath).Replace("\\", "/");
-        //                if (!string.IsNullOrEmpty(folderPath))
-        //                {
-        //                    if (!Preferences.GlobalDefaultMode)
-        //                    {
-        //                        instance.m_folderPath = folderPath;
-        //                    }
-        //                    else
-        //                    {
-        //                        Preferences.GlobalFolder = folderPath;
-        //                        EditorPrefs.SetString(Preferences.PrefGlobalFolder, Preferences.GlobalFolder);
-        //                    }
-        //                    instance.m_impostorName = fileName;
-        //                }
-        //            }
-
-        //        }
-        //    }
-
-        //}
-
-        //if (GUILayout.Button("3.Create Imposter Data", buttonStyle))
-        //{
-        //    foreach (var obj in children)
-        //    {
-
-        //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
-        //        if (instance.Data != null)
-        //        {
-        //            instance.Data.ImpostorType = ImpostorType.Spherical;
-        //        }
-        //        else
-        //        {
-        //            string folderPath = "Assets/AmplifyImposter/" + obj.name + "_Imposter/";
-        //            instance.m_impostorName = obj.name + "_Imposter";
-        //            instance.RootTransform = obj.transform;
-        //            //instance.CreateAssetFile(null, folderPath);
-        //            instance.Data.ImpostorType = ImpostorType.Spherical;
-        //        }
-
-        //    }
-        //}
-        //if (GUILayout.Button("4.Bake", buttonStyle))
-        //{
-
-        //    Debug.Log(m_children.Count);
-        //    DelayedBake();
-        //}
-        //if (GUILayout.Button("5.Create Prefab", buttonStyle))
-        //{
-        //    foreach (var obj in Parent2.GetComponentsInChildren<LODGroup>())
-        //    {
-        //        PrefabAssetType prefabType = PrefabUtility.GetPrefabAssetType(obj);
-
-        //        if (prefabType != PrefabAssetType.Regular)
-        //        {
-        //            // Chọn đường dẫn lưu Prefab
-        //            string prefabPath = Application.dataPath + "/AmplifyImposter/" + obj.name + "_Imposter/" + obj.name + ".prefab";
-
-        //            // Kiểm tra xem Prefab đã tồn tại chưa
-        //            GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
-
-        //            if (existingPrefab == null)
-        //            {
-        //                // Tạo Prefab từ GameObject được chọn
-        //                PrefabUtility.SaveAsPrefabAsset(obj.gameObject, prefabPath);
-
-        //                Debug.Log("Prefab đã được tạo tại đường dẫn: " + prefabPath);
-        //            }
-        //            else
-        //            {
-        //                Debug.LogWarning("Prefab với tên " + obj.name + " đã tồn tại tại đường dẫn: " + prefabPath);
-        //            }
-        //        }
-        //    }
-
-        //}
-
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("PrefabA");
-        prefabA = (GameObject)EditorGUILayout.ObjectField(prefabA, typeof(GameObject), true);
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("PrefabB");
-        prefabB = (GameObject)EditorGUILayout.ObjectField(prefabB, typeof(GameObject), true);
-        GUILayout.EndHorizontal();
-
-
-        if (GUILayout.Button("Replace", buttonStyle))
+        if (GUILayout.Button("ReBake", buttonStyle))
         {
-            ReplacePrefab();
+            if (children.Count > 0)
+            {
+                AmplifyImpostor impostor = children[0].GetComponent<AmplifyImpostor>();
+
+                impostor.Data.TexSize = new Vector2(2048, 2048);
+
+                try
+                {
+                    impostor.RenderAllDeferredGroups(impostor.Data);
+                }
+                catch (Exception e)
+                {
+                    EditorUtility.ClearProgressBar();
+                    Debug.LogWarning("[AmplifyImpostors] Something went wrong with the baking process, please contact support@amplify.pt with this log message.\n" + e.Message + e.StackTrace);
+                }
+                children.RemoveAt(0);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //if (GUILayout.Button("1.Add Component Amplify imsposter", buttonStyle))
+            //{
+            //    foreach (var obj in children)
+            //    {
+            //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
+            //        if (instance == null)
+            //        {
+            //            obj.AddComponent<AmplifyImpostor>();
+            //        }
+            //    }
+            //}
+            //if (GUILayout.Button("2.Create folder", buttonStyle))
+            //{
+            //    foreach (var obj in children)
+            //    {
+            //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
+
+            //        string folderPath = Application.dataPath + "/AmplifyImposter/" + obj.name + "_Imposter";
+            //        string fileName = instance.name + "_Impostor";
+            //        if (!string.IsNullOrEmpty(instance.m_impostorName))
+            //            fileName = instance.m_impostorName;
+            //        if (!Directory.Exists(folderPath))
+            //        {
+            //            Directory.CreateDirectory(folderPath);
+            //            Debug.Log("Đã tạo thư mục mới: " + folderPath);
+            //            if (!string.IsNullOrEmpty(fileName))
+            //            {
+            //                folderPath = Path.GetDirectoryName(folderPath).Replace("\\", "/");
+            //                if (!string.IsNullOrEmpty(folderPath))
+            //                {
+            //                    if (!Preferences.GlobalDefaultMode)
+            //                    {
+            //                        instance.m_folderPath = folderPath;
+            //                    }
+            //                    else
+            //                    {
+            //                        Preferences.GlobalFolder = folderPath;
+            //                        EditorPrefs.SetString(Preferences.PrefGlobalFolder, Preferences.GlobalFolder);
+            //                    }
+            //                    instance.m_impostorName = fileName;
+            //                }
+            //            }
+
+            //        }
+            //    }
+
+            //}
+
+            //if (GUILayout.Button("3.Create Imposter Data", buttonStyle))
+            //{
+            //    foreach (var obj in children)
+            //    {
+
+            //        AmplifyImpostor instance = obj.GetComponent<AmplifyImpostor>();
+            //        if (instance.Data != null)
+            //        {
+            //            instance.Data.ImpostorType = ImpostorType.Spherical;
+            //        }
+            //        else
+            //        {
+            //            string folderPath = "Assets/AmplifyImposter/" + obj.name + "_Imposter/";
+            //            instance.m_impostorName = obj.name + "_Imposter";
+            //            instance.RootTransform = obj.transform;
+            //            //instance.CreateAssetFile(null, folderPath);
+            //            instance.Data.ImpostorType = ImpostorType.Spherical;
+            //        }
+
+            //    }
+            //}
+            //if (GUILayout.Button("4.Bake", buttonStyle))
+            //{
+
+            //    Debug.Log(m_children.Count);
+            //    DelayedBake();
+            //}
+            //if (GUILayout.Button("5.Create Prefab", buttonStyle))
+            //{
+            //    foreach (var obj in Parent2.GetComponentsInChildren<LODGroup>())
+            //    {
+            //        PrefabAssetType prefabType = PrefabUtility.GetPrefabAssetType(obj);
+
+            //        if (prefabType != PrefabAssetType.Regular)
+            //        {
+            //            // Chọn đường dẫn lưu Prefab
+            //            string prefabPath = Application.dataPath + "/AmplifyImposter/" + obj.name + "_Imposter/" + obj.name + ".prefab";
+
+            //            // Kiểm tra xem Prefab đã tồn tại chưa
+            //            GameObject existingPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+
+            //            if (existingPrefab == null)
+            //            {
+            //                // Tạo Prefab từ GameObject được chọn
+            //                PrefabUtility.SaveAsPrefabAsset(obj.gameObject, prefabPath);
+
+            //                Debug.Log("Prefab đã được tạo tại đường dẫn: " + prefabPath);
+            //            }
+            //            else
+            //            {
+            //                Debug.LogWarning("Prefab với tên " + obj.name + " đã tồn tại tại đường dẫn: " + prefabPath);
+            //            }
+            //        }
+            //    }
+
+            //}
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("PrefabA");
+            prefabA = (GameObject)EditorGUILayout.ObjectField(prefabA, typeof(GameObject), true);
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("PrefabB");
+            prefabB = (GameObject)EditorGUILayout.ObjectField(prefabB, typeof(GameObject), true);
+            GUILayout.EndHorizontal();
+
+
+            if (GUILayout.Button("Replace", buttonStyle))
+            {
+                ReplacePrefab();
+            }
         }
     }
     void DelayedBake()

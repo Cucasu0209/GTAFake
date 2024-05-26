@@ -18,7 +18,7 @@ MonoBehaviour:
   ImpostorType: 1
   LockedSizes: 1
   SelectedSize: 512
-  TexSize: {x: 512, y: 512}
+  TexSize: {x: 2048, y: 2048}
   DecoupleAxisFrames: 0
   HorizontalFrames: 16
   VerticalFrames: 16
@@ -51,7 +51,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.49427915, y: 1.5892344, z: 0}
+      m_Extent: {x: 0.49427938, y: 1.5892351, z: 0}
   m_Shapes:
     vertices: []
     shapes: []
@@ -130,7 +130,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 2812fdbe086ccbbf000000000000000000000000000080bf2e61b03e000000002812fd3e086ccbbf000000000000000000000000000080bf69cf273f000000002812fd3e086ccb3f000000000000000000000000000080bf69cf273f0000803f2812fdbe086ccb3f000000000000000000000000000080bf2e61b03e0000803f
+    _typelessdata: 3012fdbe0e6ccbbf000000000000000000000000000080bf2e61b03e000000003012fd3e0e6ccbbf000000000000000000000000000080bf69cf273f000000003012fd3e0e6ccb3f000000000000000000000000000080bf69cf273f0000803f3012fdbe0e6ccb3f000000000000000000000000000080bf2e61b03e0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -184,8 +184,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: -0.011550531, y: 1.5239999, z: 0}
-    m_Extent: {x: 0.32905054, y: 1.5239999, z: 0.3175}
+    m_Center: {x: -0.011550531, y: 1.5239854, z: -2.9814367e-13}
+    m_Extent: {x: 0.32905054, y: 1.5240006, z: 0.31750014}
   m_MeshUsageFlags: 0
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
@@ -243,15 +243,15 @@ Material:
     - _AI_ShadowBias: 0.25
     - _AI_ShadowView: 1
     - _ClipMask: 0.5
-    - _DepthSize: 3.1796782
+    - _DepthSize: 3.1796794
     - _Frames: 16
     - _Hemi: 0
     - _Hue: 0
-    - _ImpostorSize: 3.1784687
+    - _ImpostorSize: 3.1784701
     - _Parallax: 1
     - _TextureBias: -1
     m_Colors:
-    - _AI_SizeOffset: {r: 3.1784687, g: 3.1796782, b: 0, a: 0}
+    - _AI_SizeOffset: {r: 3.1784701, g: 3.1796794, b: 0, a: 0}
     - _HueVariation: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: -0.011550531, g: 1.5239999, b: 0, a: -0}
+    - _Offset: {r: -0.011550531, g: 1.5239854, b: -2.9814367e-13, a: -0}
   m_BuildTextureStacks: []
