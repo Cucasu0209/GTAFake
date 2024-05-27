@@ -23,7 +23,7 @@ public class FPSMeasurement : MonoBehaviour
         {
             if (m_TextMeshProUGUI != null)
             {
-                m_TextMeshProUGUI.SetText("FPS:" + i * 2 + "\nTris:" + (UnityEditor.UnityStats.triangles/1000) + "k\n Verts:" + (UnityEditor.UnityStats.vertices/1000)+"k");
+                m_TextMeshProUGUI.SetText("FPS:" + i * 2/* + "\nTris:" + (UnityEditor.UnityStats.triangles/1000) + "k\n Verts:" + (UnityEditor.UnityStats.vertices/1000)+"k"*/);
             }
             else
                 Debug.Log("FPS:" + i);
