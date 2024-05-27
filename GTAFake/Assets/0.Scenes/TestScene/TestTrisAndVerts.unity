@@ -5021,6 +5021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street sign4
       objectReference: {fileID: 0}
+    - target: {fileID: 8753061978683959967, guid: 4e9fb37136245f747bf9aeb684ddb8e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5078,6 +5082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign big1
       objectReference: {fileID: 0}
+    - target: {fileID: 6222671830946447280, guid: c015e185bfcb3ed4c9ba518bfd12a133, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5094,6 +5102,10 @@ PrefabInstance:
     - target: {fileID: 3455623917161457554, guid: d1a96c17802bcd747a8fc93d3d5f9ff3, type: 3}
       propertyPath: m_Name
       value: sign8b
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455623917161457554, guid: d1a96c17802bcd747a8fc93d3d5f9ff3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7301500385092504309, guid: d1a96c17802bcd747a8fc93d3d5f9ff3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5151,6 +5163,10 @@ PrefabInstance:
     - target: {fileID: 236845695865325116, guid: 85b49419e46de5f4f9e56f3e4cd9b7a3, type: 3}
       propertyPath: m_Name
       value: tree4
+      objectReference: {fileID: 0}
+    - target: {fileID: 236845695865325116, guid: 85b49419e46de5f4f9e56f3e4cd9b7a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6183375887583040560, guid: 85b49419e46de5f4f9e56f3e4cd9b7a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5249,6 +5265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street sign3
       objectReference: {fileID: 0}
+    - target: {fileID: 7874398673908787900, guid: 8de3ddac016c91140820a92ec9380669, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5306,6 +5326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign2a
       objectReference: {fileID: 0}
+    - target: {fileID: 4770339641843516830, guid: 7a864d15eff71dc4b9ee774b10c21003, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5322,6 +5346,10 @@ PrefabInstance:
     - target: {fileID: 1564638929421215120, guid: 7050c93a9cb444945aa83e612f923571, type: 3}
       propertyPath: m_Name
       value: sign1a
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564638929421215120, guid: 7050c93a9cb444945aa83e612f923571, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934344413108361254, guid: 7050c93a9cb444945aa83e612f923571, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5380,6 +5408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cypress tree2
       objectReference: {fileID: 0}
+    - target: {fileID: 4677321571874697200, guid: dcab80c02ec190f4b8fa37cbf876f98d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6822301882573217496, guid: dcab80c02ec190f4b8fa37cbf876f98d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.620392
@@ -5437,6 +5469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street light3
       objectReference: {fileID: 0}
+    - target: {fileID: 7324929453681630607, guid: 264e8029e11e7f44b8716228fca85b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9056448802627272015, guid: 264e8029e11e7f44b8716228fca85b61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.4318695
@@ -5493,6 +5529,10 @@ PrefabInstance:
     - target: {fileID: 399567934171618653, guid: 04a5e034c6dc135479c4d0f755ebda26, type: 3}
       propertyPath: m_Name
       value: sign10a
+      objectReference: {fileID: 0}
+    - target: {fileID: 399567934171618653, guid: 04a5e034c6dc135479c4d0f755ebda26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825186558973854607, guid: 04a5e034c6dc135479c4d0f755ebda26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5591,6 +5631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign big3
       objectReference: {fileID: 0}
+    - target: {fileID: 8608499179096553129, guid: dfc78ca0ada9ccd43804130baef04a83, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5647,6 +5691,10 @@ PrefabInstance:
     - target: {fileID: 8729246040780126734, guid: 98726082d3a672f4ea1c655239ec5fd3, type: 3}
       propertyPath: m_Name
       value: street stump3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729246040780126734, guid: 98726082d3a672f4ea1c655239ec5fd3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5705,6 +5753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic sign6
       objectReference: {fileID: 0}
+    - target: {fileID: 2869476491445139709, guid: d5bdbf7d70d1a9242a63bb52008f0a04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5762,6 +5814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street sign1
       objectReference: {fileID: 0}
+    - target: {fileID: 2427571825116233675, guid: ad5402ccdd98d464dbdd662bb2247c5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5778,6 +5834,10 @@ PrefabInstance:
     - target: {fileID: 1249812762484187841, guid: f97d8a40a423cb74cbe3f85cbd172487, type: 3}
       propertyPath: m_Name
       value: traffic signal3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249812762484187841, guid: f97d8a40a423cb74cbe3f85cbd172487, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6380390876023582497, guid: f97d8a40a423cb74cbe3f85cbd172487, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5836,6 +5896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic sign9
       objectReference: {fileID: 0}
+    - target: {fileID: 2678997195517720078, guid: 2a706e95e54c0a64c9571b313cf48edc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2681987241172558258, guid: 2a706e95e54c0a64c9571b313cf48edc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.710251
@@ -5892,6 +5956,10 @@ PrefabInstance:
     - target: {fileID: 5456680402560803781, guid: df1e58d96d7b8584d84b070965a1ec3e, type: 3}
       propertyPath: m_Name
       value: street light2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456680402560803781, guid: df1e58d96d7b8584d84b070965a1ec3e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7491072365658584081, guid: df1e58d96d7b8584d84b070965a1ec3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5950,6 +6018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign3
       objectReference: {fileID: 0}
+    - target: {fileID: 1700342522053037997, guid: e6fcc32d090bfcf4ca5a5a0ffd499130, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9142804504329244849, guid: e6fcc32d090bfcf4ca5a5a0ffd499130, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.082306
@@ -6006,6 +6078,10 @@ PrefabInstance:
     - target: {fileID: 6186619967109747913, guid: 5e0c2414f1af61947acf53eefa9b928f, type: 3}
       propertyPath: m_Name
       value: tree5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186619967109747913, guid: 5e0c2414f1af61947acf53eefa9b928f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6248522542429435595, guid: 5e0c2414f1af61947acf53eefa9b928f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6064,6 +6140,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: road block2
       objectReference: {fileID: 0}
+    - target: {fileID: 4787086901094447976, guid: a7a6765877dadbd41aa26c8fc0cfc65e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5033854706165026109, guid: a7a6765877dadbd41aa26c8fc0cfc65e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.0078125
@@ -6121,6 +6201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garbage container small
       objectReference: {fileID: 0}
+    - target: {fileID: 2626851242684093219, guid: 80b8b3381a25dc841bd9502f29f3dfb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2976561467981570909, guid: 80b8b3381a25dc841bd9502f29f3dfb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65.29971
@@ -6177,6 +6261,10 @@ PrefabInstance:
     - target: {fileID: 181753163312855121, guid: 7dd4bae0ae28b98409b2b3654933b4d6, type: 3}
       propertyPath: m_Name
       value: bin red
+      objectReference: {fileID: 0}
+    - target: {fileID: 181753163312855121, guid: 7dd4bae0ae28b98409b2b3654933b4d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029861645368347542, guid: 7dd4bae0ae28b98409b2b3654933b4d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6275,6 +6363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fire hydrant
       objectReference: {fileID: 0}
+    - target: {fileID: 6837580196920956120, guid: 2af886fbc5409d641827f736919d06b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6291,6 +6383,10 @@ PrefabInstance:
     - target: {fileID: 3264283694624602923, guid: a65e0da1f5eb2044c90a1ae730f45c6f, type: 3}
       propertyPath: m_Name
       value: traffic sign4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264283694624602923, guid: a65e0da1f5eb2044c90a1ae730f45c6f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7898392068292432199, guid: a65e0da1f5eb2044c90a1ae730f45c6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6348,6 +6444,10 @@ PrefabInstance:
     - target: {fileID: 1598311081127338996, guid: ad22848879a9ad3468f6f88dfc62ed36, type: 3}
       propertyPath: m_Name
       value: traffic sign2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598311081127338996, guid: ad22848879a9ad3468f6f88dfc62ed36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3985312937694704356, guid: ad22848879a9ad3468f6f88dfc62ed36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6446,6 +6546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garbage bag2
       objectReference: {fileID: 0}
+    - target: {fileID: 8853432678340434452, guid: bf8040a413f00544e9aba14e6e7fc842, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6462,6 +6566,10 @@ PrefabInstance:
     - target: {fileID: 2740193779208269723, guid: 0e8a3213a7141274086afbcf39970c1d, type: 3}
       propertyPath: m_Name
       value: palm1a
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740193779208269723, guid: 0e8a3213a7141274086afbcf39970c1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7232109002522575158, guid: 0e8a3213a7141274086afbcf39970c1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6560,6 +6668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree6
       objectReference: {fileID: 0}
+    - target: {fileID: 6216536107251694757, guid: 95f63083d772bfd499ad9ddf17740eff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6576,6 +6688,10 @@ PrefabInstance:
     - target: {fileID: 2764330860868385057, guid: 876d7e11bb862034580b9d8cdc119ab3, type: 3}
       propertyPath: m_Name
       value: traffic sign8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764330860868385057, guid: 876d7e11bb862034580b9d8cdc119ab3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3205014316375001839, guid: 876d7e11bb862034580b9d8cdc119ab3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6674,6 +6790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign6
       objectReference: {fileID: 0}
+    - target: {fileID: 7808968975379121493, guid: 8f652333d180b3443855a831ff1fdb26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6690,6 +6810,10 @@ PrefabInstance:
     - target: {fileID: 1261276106872107909, guid: 76091847ffce96d43a6d78ec6b0e0b8c, type: 3}
       propertyPath: m_Name
       value: bush2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261276106872107909, guid: 76091847ffce96d43a6d78ec6b0e0b8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5112461085866059868, guid: 76091847ffce96d43a6d78ec6b0e0b8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6788,6 +6912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: park bench1
       objectReference: {fileID: 0}
+    - target: {fileID: 2711468635048892435, guid: 287312176e226a04e9d151b6d92d68af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6845,6 +6973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign13
       objectReference: {fileID: 0}
+    - target: {fileID: 2327295940912774384, guid: a11fc2f50b8666c40a0ca9add6f7817f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6861,6 +6993,10 @@ PrefabInstance:
     - target: {fileID: 5668907174502615513, guid: 7a4fd4475a3217a4880444a84039e21a, type: 3}
       propertyPath: m_Name
       value: newsbox green
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668907174502615513, guid: 7a4fd4475a3217a4880444a84039e21a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7511619291511187680, guid: 7a4fd4475a3217a4880444a84039e21a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6959,6 +7095,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: palm1c
       objectReference: {fileID: 0}
+    - target: {fileID: 3944074325299467480, guid: 8f2c718413650164abff6a7d7fad04bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6975,6 +7115,10 @@ PrefabInstance:
     - target: {fileID: 296991384720964805, guid: 9654b63bbbbbfc843af20d1bb4083f5a, type: 3}
       propertyPath: m_Name
       value: sign9
+      objectReference: {fileID: 0}
+    - target: {fileID: 296991384720964805, guid: 9654b63bbbbbfc843af20d1bb4083f5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9219099248052511547, guid: 9654b63bbbbbfc843af20d1bb4083f5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7032,6 +7176,10 @@ PrefabInstance:
     - target: {fileID: 5413275360309333672, guid: 24ae3b9db3003f7419b801671ade5fac, type: 3}
       propertyPath: m_Name
       value: garbage container big2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5413275360309333672, guid: 24ae3b9db3003f7419b801671ade5fac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7657795122085133374, guid: 24ae3b9db3003f7419b801671ade5fac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7130,6 +7278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: road block3
       objectReference: {fileID: 0}
+    - target: {fileID: 1939907384343877837, guid: e1125427189dc7a498607ab9b18ef801, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7186,6 +7338,10 @@ PrefabInstance:
     - target: {fileID: 8197635540337819499, guid: ff2b1d4150a614747834ab4135e78a03, type: 3}
       propertyPath: m_Name
       value: bin green
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197635540337819499, guid: ff2b1d4150a614747834ab4135e78a03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7244,6 +7400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign10b
       objectReference: {fileID: 0}
+    - target: {fileID: 6360401703756582547, guid: c00778fe5449d90438bb7ab44b8155d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7300,6 +7460,10 @@ PrefabInstance:
     - target: {fileID: 2016107893736126845, guid: d5001acf92f8e324783ed60f074db35f, type: 3}
       propertyPath: m_Name
       value: parking meter2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2016107893736126845, guid: d5001acf92f8e324783ed60f074db35f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7358,6 +7522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: fuse box
       objectReference: {fileID: 0}
+    - target: {fileID: 2904833203688625050, guid: 0969585d27e56e74395cefb04d584584, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7374,6 +7542,10 @@ PrefabInstance:
     - target: {fileID: 819879909292929900, guid: 4c719347de9adbe47b4a17e37beef065, type: 3}
       propertyPath: m_Name
       value: garbage bag1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819879909292929900, guid: 4c719347de9adbe47b4a17e37beef065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235717979574265767, guid: 4c719347de9adbe47b4a17e37beef065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7472,6 +7644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic signal2
       objectReference: {fileID: 0}
+    - target: {fileID: 2226351508397946811, guid: 949aea2467257a1498587e6a887aee7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7488,6 +7664,10 @@ PrefabInstance:
     - target: {fileID: 473818278912906903, guid: b29d44e6220a39745ba448f3882fd051, type: 3}
       propertyPath: m_Name
       value: palm1b
+      objectReference: {fileID: 0}
+    - target: {fileID: 473818278912906903, guid: b29d44e6220a39745ba448f3882fd051, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3630953686014845653, guid: b29d44e6220a39745ba448f3882fd051, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7586,6 +7766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic sign7
       objectReference: {fileID: 0}
+    - target: {fileID: 8145541119610870880, guid: 97b10468afa9dff408ee173278d326d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7602,6 +7786,10 @@ PrefabInstance:
     - target: {fileID: 2565766401057020780, guid: 79ebdda00a054f54dbc7ead8b7b30a43, type: 3}
       propertyPath: m_Name
       value: street light1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565766401057020780, guid: 79ebdda00a054f54dbc7ead8b7b30a43, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6728070136849499049, guid: 79ebdda00a054f54dbc7ead8b7b30a43, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7700,6 +7888,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign5
       objectReference: {fileID: 0}
+    - target: {fileID: 4627537223013338985, guid: 2d8af76e91c6a234b87deaa1dcc6524d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7757,6 +7949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: phone booth
       objectReference: {fileID: 0}
+    - target: {fileID: 4382296452955263257, guid: 1e74d2b542cb4e54ca9d2f640ecceaf4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7773,6 +7969,10 @@ PrefabInstance:
     - target: {fileID: 2577605482838687944, guid: 58e5464c032aaf64f9f4d80afe53289d, type: 3}
       propertyPath: m_Name
       value: newsbox yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577605482838687944, guid: 58e5464c032aaf64f9f4d80afe53289d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4655133016841830036, guid: 58e5464c032aaf64f9f4d80afe53289d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7871,6 +8071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: palm3
       objectReference: {fileID: 0}
+    - target: {fileID: 6702449079683619508, guid: 64626981e588ecc4ca6cf4e9408486ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7927,6 +8131,10 @@ PrefabInstance:
     - target: {fileID: 8053253889153803685, guid: 13d87d2a8a9489f4e9d5ad0a1161f4d1, type: 3}
       propertyPath: m_Name
       value: traffic signal5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053253889153803685, guid: 13d87d2a8a9489f4e9d5ad0a1161f4d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8046,6 +8254,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: newsbox yellow1
       objectReference: {fileID: 0}
+    - target: {fileID: 8730431519473546016, guid: 05a2ddcc3fd2b254b9ec445474e6c350, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8062,6 +8274,10 @@ PrefabInstance:
     - target: {fileID: 5078504473485628144, guid: 9fd5a7c6af6786e469e47bb11ae7dc90, type: 3}
       propertyPath: m_Name
       value: bush1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078504473485628144, guid: 9fd5a7c6af6786e469e47bb11ae7dc90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6529119559009025339, guid: 9fd5a7c6af6786e469e47bb11ae7dc90, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8120,6 +8336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bin yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 1533030482480743292, guid: 38aa42c8842aa7646930022ffca6b15e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3268718326809322862, guid: 38aa42c8842aa7646930022ffca6b15e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.292587
@@ -8176,6 +8396,10 @@ PrefabInstance:
     - target: {fileID: 5445335664483824453, guid: 5545eebac5a690743805233a4c69b0a4, type: 3}
       propertyPath: m_Name
       value: sign8a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445335664483824453, guid: 5545eebac5a690743805233a4c69b0a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108621661543349908, guid: 5545eebac5a690743805233a4c69b0a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8274,6 +8498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign1b
       objectReference: {fileID: 0}
+    - target: {fileID: 7989424808151931767, guid: 0ca66a10074429f4ba93df38e3f60a6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8290,6 +8518,10 @@ PrefabInstance:
     - target: {fileID: 2894978147421589546, guid: 5a2db5b183b4b234e938bb811a44e410, type: 3}
       propertyPath: m_Name
       value: sign big2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894978147421589546, guid: 5a2db5b183b4b234e938bb811a44e410, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9014776284850403458, guid: 5a2db5b183b4b234e938bb811a44e410, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8347,6 +8579,10 @@ PrefabInstance:
     - target: {fileID: 4550380468208121445, guid: 356f62814e6aa464bb28cfacc40ebc8b, type: 3}
       propertyPath: m_Name
       value: traffic signal4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550380468208121445, guid: 356f62814e6aa464bb28cfacc40ebc8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105081242383722263, guid: 356f62814e6aa464bb28cfacc40ebc8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8445,6 +8681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bus stand
       objectReference: {fileID: 0}
+    - target: {fileID: 4960055357791880992, guid: 624191f39909a59409f64d12f7b21608, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8461,6 +8701,10 @@ PrefabInstance:
     - target: {fileID: 5351700107496658810, guid: 28fa956c091203c46a5b895ca999a01a, type: 3}
       propertyPath: m_Name
       value: traffic signal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351700107496658810, guid: 28fa956c091203c46a5b895ca999a01a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7964193084900419926, guid: 28fa956c091203c46a5b895ca999a01a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8519,6 +8763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign2b
       objectReference: {fileID: 0}
+    - target: {fileID: 736137470805318752, guid: 58ff2f4294958cf459018a8a76ab7baf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4821778380067238559, guid: 58ff2f4294958cf459018a8a76ab7baf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1775208
@@ -8576,6 +8824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic cone2
       objectReference: {fileID: 0}
+    - target: {fileID: 2629759638744600913, guid: ee040296dfb5a4d449ce870020b70e74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3170843018421375528, guid: ee040296dfb5a4d449ce870020b70e74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.736877
@@ -8632,6 +8884,10 @@ PrefabInstance:
     - target: {fileID: 3570981887418420512, guid: 462228f046c181d4dbb8568f5b197460, type: 3}
       propertyPath: m_Name
       value: tree3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570981887418420512, guid: 462228f046c181d4dbb8568f5b197460, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7992523145069394625, guid: 462228f046c181d4dbb8568f5b197460, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8730,6 +8986,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cypress tree1
       objectReference: {fileID: 0}
+    - target: {fileID: 4504351631606082195, guid: fdfba60e837e9244f9fa4ebf813a5f84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8787,6 +9047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: newsbox red
       objectReference: {fileID: 0}
+    - target: {fileID: 6193629064140017921, guid: fe44a5e2ba431a94e9ebb4aed910299d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8803,6 +9067,10 @@ PrefabInstance:
     - target: {fileID: 3777611199366370252, guid: 43270a75c2811514cb91e7285532701f, type: 3}
       propertyPath: m_Name
       value: tree2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777611199366370252, guid: 43270a75c2811514cb91e7285532701f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6538913255427860999, guid: 43270a75c2811514cb91e7285532701f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8861,6 +9129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic cone3
       objectReference: {fileID: 0}
+    - target: {fileID: 2585632516111222287, guid: 05f3fb862eeebe5408952e3090893a0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6463577019758660900, guid: 05f3fb862eeebe5408952e3090893a0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.518143
@@ -8917,6 +9189,10 @@ PrefabInstance:
     - target: {fileID: 5223305006942017159, guid: e24db869a1a71174ea1e1cb88525429f, type: 3}
       propertyPath: m_Name
       value: traffic sign3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223305006942017159, guid: e24db869a1a71174ea1e1cb88525429f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7091726566229283643, guid: e24db869a1a71174ea1e1cb88525429f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8975,6 +9251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic cone1
       objectReference: {fileID: 0}
+    - target: {fileID: 2429940826776426774, guid: 5903b7f763b2a304ca3ee860d31f5edb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5621725619075901235, guid: 5903b7f763b2a304ca3ee860d31f5edb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.609879
@@ -9032,6 +9312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street stump2
       objectReference: {fileID: 0}
+    - target: {fileID: 13962016191347849, guid: d02005d5656136a4db46a081c2d5eefe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6876693716065336674, guid: d02005d5656136a4db46a081c2d5eefe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.407944
@@ -9088,6 +9372,10 @@ PrefabInstance:
     - target: {fileID: 1078562366662223550, guid: 3418f7136b6c9e64298169c916a18444, type: 3}
       propertyPath: m_Name
       value: palm2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078562366662223550, guid: 3418f7136b6c9e64298169c916a18444, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1787232834811827424, guid: 3418f7136b6c9e64298169c916a18444, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9186,6 +9474,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street sign2
       objectReference: {fileID: 0}
+    - target: {fileID: 5540300152396878154, guid: 3c5a23195ae53b24c88b92bca1b26d82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9243,6 +9535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cypress bush
       objectReference: {fileID: 0}
+    - target: {fileID: 7391966063792943595, guid: b7b4367fffbecf242b4216c63d37fb84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9259,6 +9555,10 @@ PrefabInstance:
     - target: {fileID: 247942044047334625, guid: e1e70a9bed3720a4b934a11520696aa6, type: 3}
       propertyPath: m_Name
       value: sign11
+      objectReference: {fileID: 0}
+    - target: {fileID: 247942044047334625, guid: e1e70a9bed3720a4b934a11520696aa6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 829726645903929377, guid: e1e70a9bed3720a4b934a11520696aa6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9317,6 +9617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic sign10
       objectReference: {fileID: 0}
+    - target: {fileID: 2249074253819429673, guid: 2291e9a10d00775408510e64bd76fa6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6405059457125232703, guid: 2291e9a10d00775408510e64bd76fa6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.6727295
@@ -9373,6 +9677,10 @@ PrefabInstance:
     - target: {fileID: 4821928783895726484, guid: a561e33d384d9054894760a797ccbe1d, type: 3}
       propertyPath: m_Name
       value: road block1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821928783895726484, guid: a561e33d384d9054894760a797ccbe1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9055095009343399777, guid: a561e33d384d9054894760a797ccbe1d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9471,6 +9779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: street stump1
       objectReference: {fileID: 0}
+    - target: {fileID: 8777710535444171823, guid: ac90ad04b4411624a9d06c21b307694c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9487,6 +9799,10 @@ PrefabInstance:
     - target: {fileID: 3186775134004678502, guid: 0204d80f0cdf6da4e9b6881a6182dc36, type: 3}
       propertyPath: m_Name
       value: metal barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186775134004678502, guid: 0204d80f0cdf6da4e9b6881a6182dc36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7736338407310589301, guid: 0204d80f0cdf6da4e9b6881a6182dc36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9544,6 +9860,10 @@ PrefabInstance:
     - target: {fileID: 1635489724476216293, guid: 0580efd63c6f63e479ad49c9cfa0d380, type: 3}
       propertyPath: m_Name
       value: sewer lid3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635489724476216293, guid: 0580efd63c6f63e479ad49c9cfa0d380, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7202831129029541483, guid: 0580efd63c6f63e479ad49c9cfa0d380, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9642,6 +9962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garbage container big1
       objectReference: {fileID: 0}
+    - target: {fileID: 6845325138616068543, guid: 081d58baae80d7c43b6cc0de76b001ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9698,6 +10022,10 @@ PrefabInstance:
     - target: {fileID: 7386734774554435408, guid: ddc284452f17aa64d8af0e43f0c1b79c, type: 3}
       propertyPath: m_Name
       value: sign7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386734774554435408, guid: ddc284452f17aa64d8af0e43f0c1b79c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9756,6 +10084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: parking bench2
       objectReference: {fileID: 0}
+    - target: {fileID: 8067598617108709563, guid: b1e2beb5c6a1abb4f9d277ed2e461682, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9772,6 +10104,10 @@ PrefabInstance:
     - target: {fileID: 4210833741065565660, guid: 5cccc36f7750cf244bd8520ab6af95be, type: 3}
       propertyPath: m_Name
       value: parking meter1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4210833741065565660, guid: 5cccc36f7750cf244bd8520ab6af95be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7847774564521656452, guid: 5cccc36f7750cf244bd8520ab6af95be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9869,6 +10205,10 @@ PrefabInstance:
     - target: {fileID: 3099133204467296390, guid: 2713dcac0a8980a4f8a1df070dc3efd0, type: 3}
       propertyPath: m_Name
       value: mailbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099133204467296390, guid: 2713dcac0a8980a4f8a1df070dc3efd0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

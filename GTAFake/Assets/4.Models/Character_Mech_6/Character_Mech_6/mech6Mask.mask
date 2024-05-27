@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mech6Mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: god_M_root_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_l_upr_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_l_upr_jnt/leg002_l_knee_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_l_upr_jnt/leg002_l_knee_jnt/leg002_l_foot_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_l_upr_jnt/leg002_l_knee_jnt/leg002_l_foot_jnt/leg002_l_ball_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_l_upr_jnt/leg002_l_knee_jnt/leg002_l_foot_jnt/leg002_l_ball_jnt/leg002_l_toe_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_r_upr_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_r_upr_jnt/leg002_r_knee_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_r_upr_jnt/leg002_r_knee_jnt/leg002_r_foot_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_r_upr_jnt/leg002_r_knee_jnt/leg002_r_foot_jnt/leg002_r_ball_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg002_r_upr_jnt/leg002_r_knee_jnt/leg002_r_foot_jnt/leg002_r_ball_jnt/leg002_r_toe_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_L_upr_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_L_upr_jnt/leg_L_knee_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_L_upr_jnt/leg_L_knee_jnt/leg_L_foot_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_L_upr_jnt/leg_L_knee_jnt/leg_L_foot_jnt/leg_L_ball_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_L_upr_jnt/leg_L_knee_jnt/leg_L_foot_jnt/leg_L_ball_jnt/leg_L_toe_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_R_upr_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_R_upr_jnt/leg_R_knee_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_R_upr_jnt/leg_R_knee_jnt/leg_R_foot_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_R_upr_jnt/leg_R_knee_jnt/leg_R_foot_jnt/leg_R_ball_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/leg_R_upr_jnt/leg_R_knee_jnt/leg_R_foot_jnt/leg_R_ball_jnt/leg_R_toe_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt
+    m_Weight: 0
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt/arm_L_shldr_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt/arm_L_shldr_jnt/arm_L_elbow_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt/arm_L_shldr_jnt/arm_L_elbow_jnt/arm_L_wrist_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt/arm_L_shldr_jnt/arm_L_elbow_jnt/arm_L_wrist_jnt/index_L_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_L_00_jnt/arm_L_shldr_jnt/arm_L_elbow_jnt/arm_L_wrist_jnt/thumb_L_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt/arm_R_shldr_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt/arm_R_shldr_jnt/arm_R_elbow_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt/arm_R_shldr_jnt/arm_R_elbow_jnt/arm_R_wrist_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt/arm_R_shldr_jnt/arm_R_elbow_jnt/arm_R_wrist_jnt/index_R_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/clav_R_00_jnt/arm_R_shldr_jnt/arm_R_elbow_jnt/arm_R_wrist_jnt/thumb_R_00_jnt
+    m_Weight: 1
+  - m_Path: god_M_root_jnt/spine_M_cog_jnt/spine_M_01_jnt/spine_M_02_jnt/spine_M_03_jnt/SawBlade_jnt
+    m_Weight: 1
+  - m_Path: robot_geo_hrc
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/ghe_low
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube9
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube11
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube12
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube13
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube14
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube15
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube16
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCube17
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder26
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder29
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder30
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder32
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder34
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder35
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder38
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder39
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder40
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder41
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder42
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder43
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder44
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder45
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder46
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder47
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder48
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder49
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder50
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/pCylinder51
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface40
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface48
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface49
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface50
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface52
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface53
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface54
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface55
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface56
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface57
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/polySurface61
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/robot_geo_hrc_Mesh
+    m_Weight: 0
+  - m_Path: robot_geo_hrc/SawBlade
+    m_Weight: 1
