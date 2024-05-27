@@ -68,7 +68,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
+  m_ScaleInLightmap: 0.26
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -125,17 +125,17 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8204943283312912323}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 56.443737, z: 0}
-  m_Size: 20
+  m_LocalReferencePoint: {x: 0, y: 56.44375, z: 0}
+  m_Size: 112.88753
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.13
+  - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 7756356027735381373}
-  - screenRelativeHeight: 0.04
+  - screenRelativeHeight: 0.08
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4097982137291887742}
@@ -158,6 +158,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 15f2c1012ad4a394389794002e4e17bc, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 15f2c1012ad4a394389794002e4e17bc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 15f2c1012ad4a394389794002e4e17bc, type: 3}
       propertyPath: m_LocalPosition.x
