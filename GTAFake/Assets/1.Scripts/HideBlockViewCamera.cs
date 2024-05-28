@@ -19,7 +19,8 @@ public class HideBlockViewCamera : MonoBehaviour
             if (obj.GetComponent<MeshRenderer>() != null && currentHidden.Contains(obj.GetComponent<MeshRenderer>()) == false)
             {
                 currentHidden.Add(obj.GetComponent<MeshRenderer>());
-                obj.GetComponent<MeshRenderer>().enabled = false;
+                SetAlpha(obj.GetComponent<MeshRenderer>().material, 0.6f);
+                //obj.GetComponent<MeshRenderer>().enabled = false;
                 if (obj.transform.childCount > 0)
                     obj.transform.GetChild(0).GetComponent<Collider>().enabled = false;
             }
@@ -30,7 +31,8 @@ public class HideBlockViewCamera : MonoBehaviour
             if (ObjectBlockingView.Contains(obj.gameObject) == false)
             {
                 currentHidden.Remove(obj);
-                obj.enabled = true;
+                //obj.enabled = true;
+                SetAlpha(obj.material, 1);
                 if (obj.transform.childCount > 0)
                     obj.transform.GetChild(0).GetComponent<Collider>().enabled = true;
             }
@@ -52,7 +54,7 @@ public class HideBlockViewCamera : MonoBehaviour
         // Tính toán vị trí bắt đầu của ray (từ vị trí của camera)
         Vector3 rayOrigin = camera.transform.position;
         // Tính toán hướng của ray (từ camera đến player)
-        Vector3 rayDirection = player.position - camera.transform.position;
+        Vector3 rayDirection = player.position + Vector3.up - camera.transform.position;
 
         // Tạo ray từ vị trí camera đến vị trí của player
         Ray ray = new Ray(rayOrigin, rayDirection);
@@ -78,7 +80,6 @@ public class HideBlockViewCamera : MonoBehaviour
         return result;
     }
 
-
     List<GameObject> GetOverlappingObjects(GameObject target, LayerMask mask)
     {
         List<GameObject> overlappingObjects = new List<GameObject>();
@@ -93,6 +94,11 @@ public class HideBlockViewCamera : MonoBehaviour
         return overlappingObjects;
     }
 
-
+    void SetAlpha(Material objectMaterial, float alpha)
+    {
+        Color color = objectMaterial.GetColor("_Color");
+        color.a = alpha;
+        objectMaterial.SetColor("_Color", color);
+    }
 
 }
