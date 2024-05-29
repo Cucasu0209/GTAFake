@@ -19,7 +19,7 @@ public class HideBlockViewCamera : MonoBehaviour
             if (obj.GetComponent<MeshRenderer>() != null && currentHidden.Contains(obj.GetComponent<MeshRenderer>()) == false)
             {
                 currentHidden.Add(obj.GetComponent<MeshRenderer>());
-                SetAlpha(obj.GetComponent<MeshRenderer>().material, 0.6f);
+                SetAlpha(obj.GetComponent<MeshRenderer>().material, 0.4f);
                 //obj.GetComponent<MeshRenderer>().enabled = false;
                 if (obj.transform.childCount > 0)
                     obj.transform.GetChild(0).GetComponent<Collider>().enabled = false;
@@ -61,7 +61,7 @@ public class HideBlockViewCamera : MonoBehaviour
         RaycastHit[] hits;
 
         // Tính khoảng cách từ camera đến player
-        float distanceToPlayer = Vector3.Distance(camera.transform.position, player.position);
+        float distanceToPlayer = Vector3.Distance(camera.transform.position, player.position + Vector3.up);
 
         hits = Physics.RaycastAll(ray, distanceToPlayer, layerMask);
         // Thực hiện Raycast, kiểm tra va chạm với tất cả các object trong scene
@@ -84,7 +84,7 @@ public class HideBlockViewCamera : MonoBehaviour
     {
         List<GameObject> overlappingObjects = new List<GameObject>();
 
-        Collider[] colliders = Physics.OverlapBox(target.transform.position, Vector3.up * 1000, Quaternion.Euler(0, 0, 0), mask);
+        Collider[] colliders = Physics.OverlapBox(target.transform.position + Vector3.up * 500, Vector3.one + Vector3.up * 499, Quaternion.Euler(0, 0, 0), mask);
 
         for (int i = 0; i < colliders.Length; i++)
         {
