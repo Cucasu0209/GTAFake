@@ -3,10 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Lean.Pool;
+using DG.Tweening;
 
 public class MatrixMap : MonoBehaviour
 {
     #region Variables
+    public GameObject GreenBlock;
+    public GameObject RedBlock;
+    public Dictionary<string, GameObject> BlockDictionaty = new Dictionary<string, GameObject>();
+    public Dictionary<Transform, string> BlockFollowing = new Dictionary<Transform, string>();
     //pure data
     public float AreaSize = 13;
     [HideInInspector] public int column = 1;
@@ -18,7 +24,7 @@ public class MatrixMap : MonoBehaviour
         new Vector3(13,0,13),
         new Vector3(13,0,0)
     };
-    int MAXCEL = 100;
+    private const int MAXCEL = 300;
 
     //data using when setup
     private string data;
@@ -29,12 +35,13 @@ public class MatrixMap : MonoBehaviour
     //data using to save file
     private string RealData;
     private string filePath;
+    public string dataFileName = "data";
     #endregion
 
     #region Mono
     private void OnEnable()
     {
-        filePath = System.IO.Path.Combine(Application.dataPath, "data.txt");
+        LoadDataFromFile();
     }
     #endregion
 
@@ -114,23 +121,30 @@ public class MatrixMap : MonoBehaviour
     {
         return CellMarked.ContainsKey(getKey(i, j));
     }
+
+    public bool CheckCellMarked(int i, int j)
+    {
+        return CellMarked.ContainsKey(getKey(i, j));
+    }
     public void MarkCell(int i, int j)
     {
-        if (CellMarked.ContainsKey(getKey(i, j)))
-        {
-            CellMarked.Remove(getKey(i, j));
-        }
-        else
+        if (CellMarked.ContainsKey(getKey(i, j)) == false)
         {
             CellMarked.Add(getKey(i, j), true);
         }
-        SaveCellMark();
+    }
+
+    public void UnmarkCell(int i, int j)
+    {
+        CellMarked.Remove(getKey(i, j));
+
     }
 
     #endregion
 
     #region Get Infomation about grid
     private string getKey(int i, int j) => i + "_" + j;
+    private string getKey(Vector2Int index) => index.x + "_" + index.y;
     private Vector2Int getKey(string i)
     {
         string[] a = i.Split('_');
@@ -199,7 +213,7 @@ public class MatrixMap : MonoBehaviour
     }
     #endregion
 
-    #region Save and laod file
+    #region Save and load file
     public void GetDataFromFile()
     {
         MapInfo inf = new MapInfo();
@@ -254,6 +268,8 @@ public class MatrixMap : MonoBehaviour
     }
     private void SaveStringToFile(string content)
     {
+        filePath = System.IO.Path.Combine(Application.dataPath, dataFileName + ".txt");
+
         try
         {
             using (StreamWriter writer = new StreamWriter(filePath, false)) // false để ghi đè lên file nếu tồn tại
@@ -269,6 +285,7 @@ public class MatrixMap : MonoBehaviour
     }
     private string ReadStringFromFile()
     {
+        filePath = System.IO.Path.Combine(Application.dataPath, dataFileName + ".txt");
         try
         {
             if (File.Exists(filePath))
@@ -291,6 +308,68 @@ public class MatrixMap : MonoBehaviour
             Debug.LogError("Error reading from file: " + ex.Message);
             return null;
         }
+    }
+    #endregion
+
+    #region GamePlayCallbacks
+
+    public void RegisterTransformFollow(Transform target)
+    {
+#if UNITY_EDITOR
+        if (BlockFollowing.ContainsKey(target) == false)
+            BlockFollowing.Add(target, getKey(-1, -1));
+#endif
+    }
+    public void UpdateFollowing(Transform target)
+    {
+#if UNITY_EDITOR
+        if (getKey(GetCellIndexByPos(target.position)) != BlockFollowing[target])
+        {
+            HideCell(getKey(BlockFollowing[target]));
+            BlockFollowing[target] = getKey(GetCellIndexByPos(target.position));
+            DisplayCell(getKey(BlockFollowing[target]));
+        }
+#endif
+    }
+    public void UnsubTransformFollow(Transform target)
+    {
+#if UNITY_EDITOR
+        BlockFollowing.Remove(target);
+#endif
+    }
+    public Vector2Int GetCellIndexByPos(Vector3 pos)
+    {
+        return new Vector2Int(Mathf.CeilToInt((pos.x - Getdownleft().x) / AreaSize) - 1,
+           Mathf.CeilToInt((pos.z - Getdownleft().z) / AreaSize) - 1);
+    }
+    public void DisplayCell(Vector2Int index)
+    {
+#if UNITY_EDITOR
+        if (BlockDictionaty.ContainsKey(getKey(index)) == false)
+        {
+            GameObject NewObj = LeanPool.Spawn(isMarked(index.x, index.y) ? GreenBlock : RedBlock);
+            NewObj.transform.localScale = Vector3.up;
+            NewObj.transform.position = Getdownleft() + Vector3.right * (index.x + 0.5f) * AreaSize + Vector3.forward * (index.y + 0.5f) * AreaSize + Vector3.up * (23.35f);
+            NewObj.transform.DOScale(new Vector3(AreaSize, 1, AreaSize), 0.1f);
+            BlockDictionaty[getKey(index)] = NewObj;
+        }
+
+#endif
+    }
+    public void HideCell(Vector2Int index)
+    {
+#if UNITY_EDITOR
+        if (BlockDictionaty.ContainsKey(getKey(index)))
+        {
+            GameObject block = BlockDictionaty[getKey(index)];
+            block.transform.DOScale(Vector3.up, 0.1f).OnComplete(() =>
+            {
+                LeanPool.Despawn(block);
+
+            });
+            BlockDictionaty.Remove(getKey(index));
+        }
+#endif
     }
     #endregion
 }
@@ -364,18 +443,4 @@ public class MapInfo
     }
     public int GetRow() => Mathf.RoundToInt((MaxX - MinX) / Size);
     public int GetColumn() => Mathf.RoundToInt((MaxZ - MinZ) / Size);
-    public string GetIllusiveGrid()
-    {
-        string result = "";
-        List<string> marked= new List<string>();
-
-        for (int i = 0; i < GetRow(); i++)
-        {
-            for (int j = 0; j < GetColumn(); j++)
-            {
-
-            }
-        }
-        return "";
-    }
 }

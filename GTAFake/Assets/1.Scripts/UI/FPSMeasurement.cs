@@ -11,7 +11,11 @@ public class FPSMeasurement : MonoBehaviour
     {
         //#if and
         //QualitySettings.vSyncCount = 0;
+#if UNITY_EDITOR
+#else
         Application.targetFrameRate = 60;
+#endif
+
         //#endif
         m_TextMeshProUGUI = GetComponent<TextMeshProUGUI>();
     }
