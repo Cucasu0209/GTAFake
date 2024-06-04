@@ -43,16 +43,16 @@ LODGroup:
   m_GameObject: {fileID: 989462636853892692}
   serializedVersion: 2
   m_LocalReferencePoint: {x: -7.539299, y: 5.0241575, z: -8.91865}
-  m_Size: 36.41129
+  m_Size: 100
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.4
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8076199249040298914}
-  - screenRelativeHeight: 0.05
+  - screenRelativeHeight: 0.03
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2587770283432644945}
@@ -158,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 152eced767ea1c842add4e1f5d618214, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -26.4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 152eced767ea1c842add4e1f5d618214, type: 3}
       propertyPath: m_LocalPosition.y
@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 152eced767ea1c842add4e1f5d618214, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 152eced767ea1c842add4e1f5d618214, type: 3}
       propertyPath: m_LocalRotation.w

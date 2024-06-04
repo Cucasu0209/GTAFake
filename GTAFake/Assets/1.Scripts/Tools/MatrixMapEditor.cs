@@ -13,7 +13,8 @@ public class MatrixMapEditor : Editor
 
     static MatrixMapEditor()
     {
-        SceneView.duringSceneGui += OnSceneGUI;
+        if (example != null)
+            SceneView.duringSceneGui += OnSceneGUI;
     }
 
     private static void OnSceneGUI(SceneView sceneView)
@@ -28,7 +29,6 @@ public class MatrixMapEditor : Editor
         XArea = new Vector2Int(0, example.column);
         if (!sceneView.camera.orthographic)
         {
-            Debug.LogWarning("Scene camera is not in orthographic mode.");
             return;
         }
 

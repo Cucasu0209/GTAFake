@@ -28,7 +28,7 @@ public class Testeditor : EditorWindow
 
     public int c;
     public int r;
-    [MenuItem("Tools/Mail")]
+    [MenuItem("Tools/MyTool")]
     public static void OpenWindow()
     {
         Testeditor window = (Testeditor)GetWindow(typeof(Testeditor));
@@ -120,8 +120,8 @@ public class Testeditor : EditorWindow
         {
             if (children.Count > 0)
             {
-                AmplifyImpostor impostor = children[0].GetComponent<AmplifyImpostor>();
-
+                AmplifyImpostor impostor = children[0].transform.GetChild(0).GetComponent<AmplifyImpostor>();
+                Debug.Log(impostor != null);
                 impostor.Data.TexSize = new Vector2(2048, 2048);
 
                 try
