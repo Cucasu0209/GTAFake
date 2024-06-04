@@ -13,6 +13,7 @@ public class MatrixMap : MonoBehaviour
     public GameObject RedBlock;
     public Dictionary<string, GameObject> BlockDictionaty = new Dictionary<string, GameObject>();
     public Dictionary<Transform, string> BlockFollowing = new Dictionary<Transform, string>();
+    public Dictionary<Transform, float> BlockExpanding = new Dictionary<Transform, float>();
     //pure data
     public float AreaSize = 13;
     [HideInInspector] public int column = 1;
@@ -318,16 +319,27 @@ public class MatrixMap : MonoBehaviour
 #if UNITY_EDITOR
         if (BlockFollowing.ContainsKey(target) == false)
             BlockFollowing.Add(target, getKey(-1, -1));
+        if (BlockExpanding.ContainsKey(target) == false)
+            BlockExpanding.Add(target, -1);
 #endif
     }
-    public void UpdateFollowing(Transform target)
+    public void UpdateFollowing(Transform target, float expand)
     {
 #if UNITY_EDITOR
-        if (getKey(GetCellIndexByPos(target.position)) != BlockFollowing[target])
+        if (getKey(GetCellIndexByPos(target.position)) != BlockFollowing[target] || expand != BlockExpanding[target])
         {
-            HideCell(getKey(BlockFollowing[target]));
+            if (Mathf.FloorToInt(expand / AreaSize) < 1)
+            {
+                HideCell(getKey(BlockFollowing[target]));
+                DisplayCell(getKey(getKey(GetCellIndexByPos(target.position))));
+            }
+
+            HideCircle(getKey(BlockFollowing[target]), Mathf.FloorToInt(BlockExpanding[target] / AreaSize));
+            DisplayCircle(GetCellIndexByPos(target.position), Mathf.FloorToInt(expand / AreaSize));
+
+
             BlockFollowing[target] = getKey(GetCellIndexByPos(target.position));
-            DisplayCell(getKey(BlockFollowing[target]));
+            BlockExpanding[target] = expand;
         }
 #endif
     }
@@ -348,28 +360,67 @@ public class MatrixMap : MonoBehaviour
         if (BlockDictionaty.ContainsKey(getKey(index)) == false)
         {
             GameObject NewObj = LeanPool.Spawn(isMarked(index.x, index.y) ? GreenBlock : RedBlock);
-            NewObj.transform.localScale = Vector3.up;
             NewObj.transform.position = Getdownleft() + Vector3.right * (index.x + 0.5f) * AreaSize + Vector3.forward * (index.y + 0.5f) * AreaSize + Vector3.up * (23.35f);
-            NewObj.transform.DOScale(new Vector3(AreaSize, 1, AreaSize), 0.1f);
+            NewObj.transform.localScale = new Vector3(AreaSize, 1, AreaSize);
             BlockDictionaty[getKey(index)] = NewObj;
         }
 
 #endif
+    }
+    public void DisplayCircle(Vector2Int center, int radious)
+    {
+        for (int i = -radious; i <= radious; i++)
+        {
+            for (int j = -radious; j <= radious; j++)
+            {
+                if ((i * i + j * j) < radious * radious)
+                {
+
+                    DisplayCell(new Vector2Int(Mathf.Clamp(center.x + i, 0, row - 1), Mathf.Clamp(center.y + j, 0, column - 1)));
+                }
+            }
+        }
+    }
+    public void HideCircle(Vector2Int center, int radious)
+    {
+        for (int i = -radious; i <= radious; i++)
+        {
+            for (int j = -radious; j <= radious; j++)
+            {
+                if ((i * i + j * j) < radious * radious)
+                {
+                    HideCell(new Vector2Int(Mathf.Clamp(center.x + i, 0, row - 1), Mathf.Clamp(center.y + j, 0, column - 1)));
+                }
+            }
+        }
     }
     public void HideCell(Vector2Int index)
     {
 #if UNITY_EDITOR
         if (BlockDictionaty.ContainsKey(getKey(index)))
         {
-            GameObject block = BlockDictionaty[getKey(index)];
-            block.transform.DOScale(Vector3.up, 0.1f).OnComplete(() =>
-            {
-                LeanPool.Despawn(block);
-
-            });
+            LeanPool.Despawn(BlockDictionaty[getKey(index)]);
             BlockDictionaty.Remove(getKey(index));
         }
 #endif
+    }
+    public Vector3 GetRandomPositionInCircle(Transform target, float expand)
+    {
+        int radious = Mathf.FloorToInt(expand / AreaSize);
+        Vector2Int center = getKey(BlockFollowing[target]);
+        List<Vector2Int> result = new List<Vector2Int>();
+        for (int i = -radious; i <= radious; i++)
+        {
+            for (int j = -radious; j <= radious; j++)
+            {
+                if ((i * i + j * j) < radious * radious)
+                {
+                    result.Add(new Vector2Int(Mathf.Clamp(center.x + i, 0, row - 1), Mathf.Clamp(center.y + j, 0, column - 1)));
+                }
+            }
+        }
+        Vector2Int randomresult = result[UnityEngine.Random.Range(0, result.Count)];
+        return Getdownleft() + new Vector3((randomresult.x + 0.5f) * AreaSize, 30, (randomresult.y + 0.5f) * AreaSize);
     }
     #endregion
 }
