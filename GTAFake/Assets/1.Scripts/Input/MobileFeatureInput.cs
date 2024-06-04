@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MobileFeatureInput : MonoBehaviour
 {
-    public FixedJoystick MovementJoystick;
+    public Joystick MovementJoystick;
     public FixedJoystick AimingJoystick;
     public Button JumpBtn;
     public Button SwitchModelBtn;
