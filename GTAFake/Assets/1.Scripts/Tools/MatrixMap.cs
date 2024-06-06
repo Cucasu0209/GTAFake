@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Lean.Pool;
-using DG.Tweening;
+
 
 public class MatrixMap : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class MatrixMap : MonoBehaviour
     public Dictionary<Transform, float> BlockExpanding = new Dictionary<Transform, float>();
     //pure data
     public float AreaSize = 13;
+    public int BrushSize = 1;
     [HideInInspector] public int column = 1;
     [HideInInspector] public int row = 1;
     [HideInInspector]
@@ -25,10 +26,10 @@ public class MatrixMap : MonoBehaviour
         new Vector3(13,0,13),
         new Vector3(13,0,0)
     };
-    private const int MAXCEL = 300;
+    private const int MAXCEL = 400;
 
     //data using when setup
-    private string data;
+    [HideInInspector] public string data;
     Dictionary<string, bool> CellMarked = new Dictionary<string, bool>();
     private Vector3 lastdownleft = Vector3.one * 99;
     private float lastSize = -1;
@@ -49,6 +50,7 @@ public class MatrixMap : MonoBehaviour
     #region public event called to setup
     public void UpdateSquare(Vector3[] _c, bool recall = false)
     {
+
         LoadCellMark();
 
         int i;
@@ -129,7 +131,7 @@ public class MatrixMap : MonoBehaviour
     }
     public void MarkCell(int i, int j)
     {
-        if (CellMarked.ContainsKey(getKey(i, j)) == false)
+        if (CellMarked.ContainsKey(getKey(i, j)) == false && i < row && j < column)
         {
             CellMarked.Add(getKey(i, j), true);
         }
@@ -180,6 +182,7 @@ public class MatrixMap : MonoBehaviour
     private void LoadCellMark()
     {
         if (Vector3.Distance(lastdownleft, Getdownleft()) < 0.1f && Mathf.Abs(lastSize - AreaSize) < 0.1f) return;
+        SaveCellMark();
         lastdownleft = Getdownleft();
         lastSize = AreaSize;
         CellMarked = new Dictionary<string, bool>();
@@ -223,16 +226,51 @@ public class MatrixMap : MonoBehaviour
         inf.MaxZ = GetupRight().z;
         inf.MinX = Getdownleft().x;
         inf.MinZ = Getdownleft().z;
-        inf.SpawnableCellx = new List<int>();
-        inf.SpawnableCelly = new List<int>();
+        inf.MarkedCells = new List<int>();
         int x, y;
-        foreach (var key in CellMarked.Keys)
+        int size;
+        Dictionary<string, bool> cache = new Dictionary<string, bool>(CellMarked);
+        for (int a = 0; a < row; a++)
         {
-            x = getKey(key).x;
-            y = getKey(key).y;
-            if (y < 0 || x < 0 || x >= row || y >= column) continue;
-            inf.SpawnableCellx.Add(getKey(key).x);
-            inf.SpawnableCelly.Add(getKey(key).y);
+            for (int b = 0; b < column; b++)
+            {
+                string key = getKey(a, b);
+                if (cache.ContainsKey(key))
+                {
+                    size = 1;
+                    x = getKey(key).x;
+                    y = getKey(key).y;
+                    for (int i = 2; i < 300; i++)
+                    {
+                        bool isNotOK = false;
+                        for (int i1 = 0; i1 <= size; i1++)
+                        {
+                            for (int i2 = 0; i2 <= size; i2++)
+                            {
+                                if (cache.ContainsKey(getKey(x + i1, y + i2)) == false)
+                                {
+                                    isNotOK = true;
+                                    break;
+                                }
+                            }
+                            if (isNotOK) break;
+                        }
+
+                        if (isNotOK) break;
+                        size++;
+                    }
+                    for (int i1 = 0; i1 < size; i1++)
+                    {
+                        for (int i2 = 0; i2 < size; i2++)
+                        {
+                            cache.Remove(getKey(x + i1, y + i2));
+                        }
+                    }
+                    inf.MarkedCells.Add(x);
+                    inf.MarkedCells.Add(y);
+                    inf.MarkedCells.Add(size);
+                }
+            }
         }
         RealData = inf.ToString();
         SaveStringToFile(RealData);
@@ -253,17 +291,22 @@ public class MatrixMap : MonoBehaviour
         AreaSize = mapInfo.Size;
 
         CellMarked = new Dictionary<string, bool>();
-        for (int i = 0; i < mapInfo.SpawnableCellx.Count; i++)
+
+        for (int i = 0; i < mapInfo.MarkedCells.Count / 3; i++)
         {
-            if (CellMarked.ContainsKey(getKey(mapInfo.SpawnableCellx[i], mapInfo.SpawnableCelly[i])))
+            int x = mapInfo.MarkedCells[i * 3];
+            int y = mapInfo.MarkedCells[i * 3 + 1];
+            int size = mapInfo.MarkedCells[i * 3 + 2];
+            for (int i1 = 0; i1 < size; i1++)
             {
-                CellMarked.Remove(getKey(mapInfo.SpawnableCellx[i], mapInfo.SpawnableCelly[i]));
-            }
-            else
-            {
-                CellMarked.Add(getKey(mapInfo.SpawnableCellx[i], mapInfo.SpawnableCelly[i]), true);
+                for (int i2 = 0; i2 < size; i2++)
+                {
+                    CellMarked.Add(getKey(i1 + x, i2 + y), true);
+                }
             }
         }
+
+
         SaveCellMark();
         UpdateSquare(c, true);
     }
@@ -477,8 +520,10 @@ public class MapInfo
     public float MinZ;
     public float Size;
 
-    public List<int> SpawnableCellx;
-    public List<int> SpawnableCelly;
+    public List<int> MarkedCells;
+
+
+
     public void SaveData()
     {
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public PlayerController playerController;
     public Action<EnemyController> OnSpawnNewEnemy;
     public Action<EnemyController> OnEnemyDied;
     public Action OnPlayerFired;
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        playerController = FindAnyObjectByType<PlayerController>();
     }
     public List<EnemyController> GetEnemies() => Enemies;
     public void AddNewEnemy(EnemyController enemy)

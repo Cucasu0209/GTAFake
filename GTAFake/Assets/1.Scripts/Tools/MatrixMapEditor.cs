@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.TerrainTools;
-using UnityEditor.PackageManager.UI;
 
 
 
@@ -10,15 +8,22 @@ using UnityEditor;
 [CustomEditor(typeof(MatrixMap)), CanEditMultipleObjects, InitializeOnLoad]
 public class MatrixMapEditor : Editor
 {
-
+    static bool isorthor=false;
     static MatrixMapEditor()
     {
-        if (example != null)
-            SceneView.duringSceneGui += OnSceneGUI;
+        //if (example != null)
+        SceneView.duringSceneGui += OnSceneGUI;
     }
 
     private static void OnSceneGUI(SceneView sceneView)
     {
+        if (example == null) return;
+        isorthor = sceneView.camera.orthographic;
+        if (!isorthor)
+        {
+
+            return;
+        }
         Event e = Event.current;
         if (e.type == EventType.MouseMove || e.type == EventType.Repaint)
         {
@@ -27,10 +32,7 @@ public class MatrixMapEditor : Editor
         }
         XArea = new Vector2Int(0, example.row);
         XArea = new Vector2Int(0, example.column);
-        if (!sceneView.camera.orthographic)
-        {
-            return;
-        }
+       
 
         // Lấy kích thước của cửa sổ Scene
         Rect sceneViewRect = sceneView.position;
@@ -39,9 +41,8 @@ public class MatrixMapEditor : Editor
         Camera camera = sceneView.camera;
 
         // Lấy tọa độ 4 góc của cửa sổ Scene trong screen space
-        Vector3 bottomLeftScreen = new Vector3(sceneViewRect.xMin, sceneViewRect.yMin, camera.nearClipPlane);
-        Vector3 topRightScreen = new Vector3(sceneViewRect.xMax, sceneViewRect.yMax, camera.nearClipPlane);
-
+        Vector3 bottomLeftScreen = new Vector3(0, 0, camera.nearClipPlane);
+        Vector3 topRightScreen = new Vector3(-sceneViewRect.xMin + sceneViewRect.xMax, -sceneViewRect.yMin + sceneViewRect.yMax, camera.nearClipPlane);
         // Chuyển đổi tọa độ từ screen space sang world space
         Vector3 bottomLeftWorld = camera.ScreenToWorldPoint(bottomLeftScreen);
         Vector3 topRightWorld = camera.ScreenToWorldPoint(topRightScreen);
@@ -49,8 +50,8 @@ public class MatrixMapEditor : Editor
         Vector2Int bottomLeftIndex = example.GetCellIndexByPos(bottomLeftWorld);
         Vector2Int topRightIndex = example.GetCellIndexByPos(topRightWorld);
 
-        XArea = new Vector2Int(bottomLeftIndex.x - 20, topRightIndex.x + 20);
-        YArea = new Vector2Int(bottomLeftIndex.y - 20, topRightIndex.y + 20);
+        XArea = new Vector2Int(bottomLeftIndex.x, topRightIndex.x);
+        YArea = new Vector2Int(bottomLeftIndex.y, topRightIndex.y);
     }
 
     static Vector2Int XArea;
@@ -59,7 +60,11 @@ public class MatrixMapEditor : Editor
     protected virtual void OnSceneGUI()
     {
 
+        if (!isorthor)
+        {
 
+            return;
+        }
         example = (MatrixMap)target;
 
         float size = HandleUtility.GetHandleSize(example.c[0]) * 0.1f;
@@ -70,21 +75,21 @@ public class MatrixMapEditor : Editor
         Vector3 c2 = Handles.FreeMoveHandle(example.c[1], size, snap, Handles.SphereHandleCap);
         Vector3 c3 = Handles.FreeMoveHandle(example.c[2], size, snap, Handles.SphereHandleCap);
         Vector3 c4 = Handles.FreeMoveHandle(example.c[3], size, snap, Handles.SphereHandleCap);
-
+        Handles.color = new Color(0, 0, 0, 0.5f);
+        float high = -999;
         for (i = Mathf.Max(0, YArea.x); i <= Mathf.Min(example.column, YArea.y); i++)
         {
-            if ((XArea.y - XArea.x) / example.AreaSize > 50 && (i) % 3 != 0) continue;
-            if ((XArea.y - XArea.x) / example.AreaSize > 35 && (i) % 2 != 0) continue;
-            Handles.color = Color.black;
-            Handles.DrawLine(Vector3.up * -200 + (example.Getupleft() * (example.column - i) + example.GetupRight() * i) / example.column,
-                      Vector3.up * -200 + (example.Getdownleft() * (example.column - i) + example.GetdownRight() * i) / example.column);
+            if ((YArea.y - YArea.x) > 250 && (i) % 3 != 0) continue;
+            if ((YArea.y - YArea.x) > 100 && (i) % 2 != 0) continue;
+            Handles.DrawLine(Vector3.up * high + (example.Getupleft() * (example.column - i) + example.GetupRight() * i) / example.column,
+                      Vector3.up * high + (example.Getdownleft() * (example.column - i) + example.GetdownRight() * i) / example.column);
         }
         for (i = Mathf.Max(0, XArea.x); i <= Mathf.Min(example.row, XArea.y); i++)
         {
-            if ((XArea.y - XArea.x) / example.AreaSize > 50 && (i) % 3 != 0) continue;
-            if ((XArea.y - XArea.x) / example.AreaSize > 35 && (i) % 2 != 0) continue;
-            Handles.DrawLine(Vector3.up * -200 + (example.Getupleft() * i + example.Getdownleft() * (example.row - i)) / example.row,
-              Vector3.up * -200 + (example.GetupRight() * i + example.GetdownRight() * (example.row - i)) / example.row);
+            if ((YArea.y - YArea.x) > 250 && (i) % 3 != 0) continue;
+            if ((YArea.y - YArea.x) > 100 && (i) % 2 != 0) continue;
+            Handles.DrawLine(Vector3.up * high + (example.Getupleft() * i + example.Getdownleft() * (example.row - i)) / example.row,
+              Vector3.up * high + (example.GetupRight() * i + example.GetdownRight() * (example.row - i)) / example.row);
         }
 
         Vector3 downleft = new Vector3(Mathf.Min(example.c[1].x, example.c[3].x), 0, Mathf.Min(example.c[1].z, example.c[3].z));
@@ -94,13 +99,11 @@ public class MatrixMapEditor : Editor
         {
             for (j = Mathf.Max(0, YArea.x); j <= Mathf.Min(example.column, YArea.y); j++)
             {
-                if ((XArea.y - XArea.x) / example.AreaSize > 150) continue;
-                if ((XArea.y - XArea.x) / example.AreaSize > 100 && (i + j) % 4 != 0) continue;
+                if ((YArea.y - YArea.x) > 300) continue;
+                if ((YArea.y - YArea.x) > 250 && (i + j) % 3 != 0) continue;
+                if ((YArea.y - YArea.x) > 150 && (i + j) % 3.5f != 0) continue;
+                if ((YArea.y - YArea.x) > 50 && (i + j) % 2 != 0) continue;
 
-                if ((XArea.y - XArea.x) / example.AreaSize > 65 && (i + j) % 3 != 0) continue;
-                if ((XArea.y - XArea.x) / example.AreaSize > 55 && (i + j) % 3.5f != 0) continue;
-                if ((XArea.y - XArea.x) / example.AreaSize > 40 && (i + j) % 2 != 0) continue;
-                if ((XArea.y - XArea.x) / example.AreaSize > 25 && (i + j) % 1.5f != 0) continue;
 
 
                 if (example.isMarked(i, j))
@@ -108,41 +111,69 @@ public class MatrixMapEditor : Editor
                     position = new Vector3((Mathf.Abs(example.c[3].x - example.c[1].x) / example.row) * (i + 0.5f), 0,
                         (Mathf.Abs(example.c[3].z - example.c[1].z) / example.column) * (j + 0.5f));
                     Handles.color = Color.green;
-                    Handles.DrawLine(Vector3.up * -200 + downleft + position + new Vector3(0.5f, 0, 0.5f) * example.AreaSize, Vector3.up * -200 + downleft + position + new Vector3(-0.5f, 0, -0.5f) * example.AreaSize);
-                    Handles.DrawLine(Vector3.up * -200 + downleft + position + new Vector3(-0.5f, 0, 0.5f) * example.AreaSize, Vector3.up * -200 + downleft + position + new Vector3(0.5f, 0, -0.5f) * example.AreaSize);
+                    Handles.DrawLine(Vector3.up * high + downleft + position + new Vector3(0.5f, 0, 0.5f) * example.AreaSize, Vector3.up * high + downleft + position + new Vector3(-0.5f, 0, -0.5f) * example.AreaSize);
+                    Handles.DrawLine(Vector3.up * high + downleft + position + new Vector3(-0.5f, 0, 0.5f) * example.AreaSize, Vector3.up * high + downleft + position + new Vector3(0.5f, 0, -0.5f) * example.AreaSize);
                 }
             }
         }
 
         Event e = Event.current;
 
+        Vector2 mousePosition1 = e.mousePosition;
+        Ray worldRay1 = HandleUtility.GUIPointToWorldRay(mousePosition1);
+
+        if (Physics.Raycast(worldRay1, out RaycastHit hitInfo1))
+        {
+            Vector3 worldPosition = hitInfo1.point;
+            worldPosition.y = 0;
+            Vector2Int mouseIndex = example.GetCellIndexByPos(worldPosition);
+            Handles.color = Color.blue;
+
+            Handles.DrawLine(Vector3.up * high + worldPosition + new Vector3(1, 0, 1) * example.AreaSize * (example.BrushSize - 1), Vector3.up * high + worldPosition + new Vector3(1, 0, -1) * example.AreaSize * (example.BrushSize - 1));
+            Handles.DrawLine(Vector3.up * high + worldPosition + new Vector3(1, 0, 1) * example.AreaSize * (example.BrushSize - 1), Vector3.up * high + worldPosition + new Vector3(-1, 0, 1) * example.AreaSize * (example.BrushSize - 1));
+            Handles.DrawLine(Vector3.up * high + worldPosition + new Vector3(-1, 0, -1) * example.AreaSize * (example.BrushSize - 1), Vector3.up * high + worldPosition + new Vector3(1, 0, -1) * example.AreaSize * (example.BrushSize - 1));
+            Handles.DrawLine(Vector3.up * high + worldPosition + new Vector3(-1, 0, -1) * example.AreaSize * (example.BrushSize - 1), Vector3.up * high + worldPosition + new Vector3(-1, 0, 1) * example.AreaSize * (example.BrushSize - 1));
+
+        }
+
+
+
         // Kiểm tra nếu sự kiện hiện tại là phím được nhấn xuống
         if (e.type == EventType.KeyDown && e.keyCode == KeyCode.A)
         {
             Vector2 mousePosition = e.mousePosition;
             Ray worldRay = HandleUtility.GUIPointToWorldRay(mousePosition);
-            Debug.Log("Mouse position in Scene view: " + mousePosition);
 
             if (Physics.Raycast(worldRay, out RaycastHit hitInfo))
             {
                 Vector3 worldPosition = hitInfo.point;
-                Debug.Log("World position: " + worldPosition);
                 Vector2Int mouseIndex = example.GetCellIndexByPos(worldPosition);
-                example.MarkCell(mouseIndex.x, mouseIndex.y);
+                for (int g = -example.BrushSize + 1; g < example.BrushSize; g++)
+                {
+                    for (int h = -example.BrushSize + 1; h < example.BrushSize; h++)
+                    {
+                        example.MarkCell(mouseIndex.x + g, mouseIndex.y + h);
+                    }
+                }
             }
         }
         if (e.type == EventType.KeyDown && e.keyCode == KeyCode.D)
         {
             Vector2 mousePosition = e.mousePosition;
             Ray worldRay = HandleUtility.GUIPointToWorldRay(mousePosition);
-            Debug.Log("Mouse position in Scene view: " + mousePosition);
 
             if (Physics.Raycast(worldRay, out RaycastHit hitInfo))
             {
                 Vector3 worldPosition = hitInfo.point;
-                Debug.Log("World position: " + worldPosition);
                 Vector2Int mouseIndex = example.GetCellIndexByPos(worldPosition);
-                example.UnmarkCell(mouseIndex.x, mouseIndex.y);
+                for (int g = -example.BrushSize + 1; g < example.BrushSize; g++)
+                {
+                    for (int h = -example.BrushSize + 1; h < example.BrushSize; h++)
+                    {
+                        example.UnmarkCell(mouseIndex.x + g, mouseIndex.y + h);
+
+                    }
+                }
             }
         }
 
@@ -211,6 +242,7 @@ public class MatrixMapEditor : Editor
             }
 
         }
+        GUILayout.Label("data: " + example.data);
     }
 }
 
