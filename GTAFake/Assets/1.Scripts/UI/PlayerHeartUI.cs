@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerHeartUI : MonoBehaviour
 {
     Vector3 PosInCamera;
-    Transform player;
+    public Transform player;
     public RectTransform Viewport;
     public RectTransform Slider;
 
@@ -14,7 +14,7 @@ public class PlayerHeartUI : MonoBehaviour
         yield return null;
         yield return null;
         yield return null;
-        player = GameManager.Instance.playerController.transform;
+        if (player == null) player = GameManager.Instance.playerController.transform;
     }
 
     // Update is called once per frame

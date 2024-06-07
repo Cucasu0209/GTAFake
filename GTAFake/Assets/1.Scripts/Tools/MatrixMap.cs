@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Lean.Pool;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Lean.Pool;
 
 
 public class MatrixMap : MonoBehaviour
@@ -17,6 +17,7 @@ public class MatrixMap : MonoBehaviour
     //pure data
     public float AreaSize = 13;
     public int BrushSize = 1;
+    public int CompressdSize = 4;
     [HideInInspector] public int column = 1;
     [HideInInspector] public int row = 1;
     [HideInInspector]
@@ -29,8 +30,7 @@ public class MatrixMap : MonoBehaviour
     private const int MAXCEL = 400;
 
     //data using when setup
-    [HideInInspector] public string data;
-    Dictionary<string, bool> CellMarked = new Dictionary<string, bool>();
+    public Dictionary<string, string> CellMarked = new Dictionary<string, string>();
     private Vector3 lastdownleft = Vector3.one * 99;
     private float lastSize = -1;
 
@@ -51,7 +51,7 @@ public class MatrixMap : MonoBehaviour
     public void UpdateSquare(Vector3[] _c, bool recall = false)
     {
 
-        LoadCellMark();
+        //  LoadCellMark();
 
         int i;
         row = Mathf.Abs(Mathf.RoundToInt((Getdownleft().x - GetupRight().x) / AreaSize));
@@ -122,30 +122,51 @@ public class MatrixMap : MonoBehaviour
     }
     public bool isMarked(int i, int j)
     {
-        return CellMarked.ContainsKey(getKey(i, j));
-    }
-
-    public bool CheckCellMarked(int i, int j)
-    {
-        return CellMarked.ContainsKey(getKey(i, j));
+        Vector2Int root = GetRoot(new Vector2Int(i, j));
+        if (CellMarked.ContainsKey(getKey(root)) == false) return false;
+        string data = CellMarked[getKey(root)];
+        return data.Contains("_" + GetIndexInSmallSquare(new Vector2Int(i, j)) + "_");
     }
     public void MarkCell(int i, int j)
     {
-        if (CellMarked.ContainsKey(getKey(i, j)) == false && i < row && j < column)
+        if (i < row && j < column)
         {
-            CellMarked.Add(getKey(i, j), true);
+            Vector2Int root = GetRoot(new Vector2Int(i, j));
+            if (CellMarked.ContainsKey(getKey(root)) == false) CellMarked.Add(getKey(root), "_");
+            if (CellMarked[getKey(root)].Contains("_" + GetIndexInSmallSquare(new Vector2Int(i, j)) + "_") == false)
+            {
+                CellMarked[getKey(root)] += GetIndexInSmallSquare(new Vector2Int(i, j)) + "_";
+            }
         }
     }
-
     public void UnmarkCell(int i, int j)
     {
-        CellMarked.Remove(getKey(i, j));
+        if (i < row && j < column)
+        {
+            Vector2Int root = GetRoot(new Vector2Int(i, j));
+            if (CellMarked.ContainsKey(getKey(root)))
+            {
+                if (CellMarked[getKey(root)].Contains("_" + GetIndexInSmallSquare(new Vector2Int(i, j)) + "_"))
+                {
+                    CellMarked[getKey(root)] = CellMarked[getKey(root)].Replace("_" + GetIndexInSmallSquare(new Vector2Int(i, j)) + "_", "_");
+                    if (CellMarked[getKey(root)].Length == 1) CellMarked.Remove(getKey(root));
 
+                }
+            }
+
+        }
     }
-
     #endregion
 
     #region Get Infomation about grid
+    public Vector2Int GetRoot(Vector2Int index)
+    {
+        return new Vector2Int((index.x / CompressdSize) * CompressdSize, (index.y / CompressdSize) * CompressdSize);
+    }
+    public int GetIndexInSmallSquare(Vector2Int index)
+    {
+        return (index.y % CompressdSize) * CompressdSize + index.x % CompressdSize;
+    }
     private string getKey(int i, int j) => i + "_" + j;
     private string getKey(Vector2Int index) => index.x + "_" + index.y;
     private Vector2Int getKey(string i)
@@ -176,42 +197,42 @@ public class MatrixMap : MonoBehaviour
         }
 
         //PlayerPrefs.SetString("Marked", result);
-        data = result;
+        //data = result;
 
     }
     private void LoadCellMark()
     {
-        if (Vector3.Distance(lastdownleft, Getdownleft()) < 0.1f && Mathf.Abs(lastSize - AreaSize) < 0.1f) return;
-        SaveCellMark();
-        lastdownleft = Getdownleft();
-        lastSize = AreaSize;
-        CellMarked = new Dictionary<string, bool>();
-        //string result = PlayerPrefs.GetString("Marked", "");
-        string result = data;
-        if (data != null)
-        {
-            string[] keys = result.Split('_');
-            SquareInfo newSq;
-            if (keys != null && keys.Length > 0)
-                for (int i = 0; i < keys.Length; i++)
-                {
-                    newSq = SquareInfo.GetInfoByString(keys[i]);
-                    if (newSq != null)
-                    {
-                        List<Vector2Int> IndexMArked = newSq.getSqsWrapedInBigSquare(new Vector2(Getdownleft().x, Getdownleft().z), AreaSize);
-                        foreach (var index in IndexMArked)
-                        {
-                            if (CellMarked.ContainsKey(getKey(index.x, index.y)) == false)
-                                CellMarked.Add(getKey(index.x, index.y), true);
-                        }
-                    }
-                }
-        }
+        //if (Vector3.Distance(lastdownleft, Getdownleft()) < 0.1f && Mathf.Abs(lastSize - AreaSize) < 0.1f) return;
+        //SaveCellMark();
+        //lastdownleft = Getdownleft();
+        //lastSize = AreaSize;
+        //CellMarked = new Dictionary<string, bool>();
+        ////string result = PlayerPrefs.GetString("Marked", "");
+        //string result = data;
+        //if (data != null)
+        //{
+        //    string[] keys = result.Split('_');
+        //    SquareInfo newSq;
+        //    if (keys != null && keys.Length > 0)
+        //        for (int i = 0; i < keys.Length; i++)
+        //        {
+        //            newSq = SquareInfo.GetInfoByString(keys[i]);
+        //            if (newSq != null)
+        //            {
+        //                List<Vector2Int> IndexMArked = newSq.getSqsWrapedInBigSquare(new Vector2(Getdownleft().x, Getdownleft().z), AreaSize);
+        //                foreach (var index in IndexMArked)
+        //                {
+        //                    if (CellMarked.ContainsKey(getKey(index.x, index.y)) == false)
+        //                        CellMarked.Add(getKey(index.x, index.y), true);
+        //                }
+        //            }
+        //        }
+        //}
 
     }
     public void ClearAllCellMarked()
     {
-        data = "";
+        //data = "";
         CellMarked.Clear();
         //PlayerPrefs.SetString("Marked", "");
     }
@@ -226,54 +247,55 @@ public class MatrixMap : MonoBehaviour
         inf.MaxZ = GetupRight().z;
         inf.MinX = Getdownleft().x;
         inf.MinZ = Getdownleft().z;
-        inf.MarkedCells = new List<int>();
-        int x, y;
-        int size;
-        Dictionary<string, bool> cache = new Dictionary<string, bool>(CellMarked);
-        for (int a = 0; a < row; a++)
+        inf.MarkedCells = new List<string>();
+        inf.CompressSize = CompressdSize;
+        foreach (var key in CellMarked.Keys)
         {
-            for (int b = 0; b < column; b++)
+            if (CellMarked[key].Length == 1) continue;
+            string resul = key;
+            bool ismark = false;
+            int markedCout = 0;
+            for (int i = 0; i < CompressdSize * CompressdSize; i++)
             {
-                string key = getKey(a, b);
-                if (cache.ContainsKey(key))
+                if (CellMarked[key].Contains("_" + i + "_"))
                 {
-                    size = 1;
-                    x = getKey(key).x;
-                    y = getKey(key).y;
-                    for (int i = 2; i < 300; i++)
+                    if (ismark == false)
                     {
-                        bool isNotOK = false;
-                        for (int i1 = 0; i1 <= size; i1++)
-                        {
-                            for (int i2 = 0; i2 <= size; i2++)
-                            {
-                                if (cache.ContainsKey(getKey(x + i1, y + i2)) == false)
-                                {
-                                    isNotOK = true;
-                                    break;
-                                }
-                            }
-                            if (isNotOK) break;
-                        }
-
-                        if (isNotOK) break;
-                        size++;
+                        markedCout = 0;
+                        ismark = true;
+                        resul += "_" + i;
                     }
-                    for (int i1 = 0; i1 < size; i1++)
+                    markedCout++;
+                }
+                else
+                {
+                    if (ismark)
                     {
-                        for (int i2 = 0; i2 < size; i2++)
-                        {
-                            cache.Remove(getKey(x + i1, y + i2));
-                        }
+                        resul += "_" + markedCout;
                     }
-                    inf.MarkedCells.Add(x);
-                    inf.MarkedCells.Add(y);
-                    inf.MarkedCells.Add(size);
+                    ismark = false;
                 }
             }
+            if (ismark) resul += "_" + markedCout;
+            inf.MarkedCells.Add(resul);
         }
         RealData = inf.ToString();
         SaveStringToFile(RealData);
+
+        SpawnManagerScriptableObject a = Resources.Load<SpawnManagerScriptableObject>("Map/MapData");
+        a.prefabName = new string[RealData.Length / 1000 + 1];
+        for (int i = 0; i <= RealData.Length / 1000; i++)
+        {
+            a.prefabName[i] = "";
+            for (int j = i * 1000; j < Mathf.Min(RealData.Length, i * 1000 + 1000); j++)
+            {
+                a.prefabName[i] += RealData[j];
+            }
+        }
+        a.row = row;
+        a.colum = column;
+        a.sizeSaved = RealData.Length.ToString();
+        a.log();
     }
     public MapInfo LoadMapSaved()
     {
@@ -281,7 +303,16 @@ public class MatrixMap : MonoBehaviour
     }
     public void LoadDataFromFile()
     {
+        SpawnManagerScriptableObject a = Resources.Load<SpawnManagerScriptableObject>("Map/MapData");
+        // Đọc lại nội dung từ persistent data
+        for (int i = 0; i < a.prefabName.Length; i++)
+        {
+            RealData += a.prefabName[i];
+        }
+
+#if UNITY_EDITOR
         RealData = ReadStringFromFile();
+#endif
         MapInfo mapInfo = MapInfo.ParseData(RealData);
 
         c[0] = new Vector3(mapInfo.MinX, 0, mapInfo.MaxZ);
@@ -289,25 +320,26 @@ public class MatrixMap : MonoBehaviour
         c[2] = new Vector3(mapInfo.MaxX, 0, mapInfo.MinZ);
         c[3] = new Vector3(mapInfo.MinX, 0, mapInfo.MinZ);
         AreaSize = mapInfo.Size;
+        if (mapInfo.CompressSize != 0) CompressdSize = mapInfo.CompressSize;
 
-        CellMarked = new Dictionary<string, bool>();
+        CellMarked = new Dictionary<string, string>();
 
-        for (int i = 0; i < mapInfo.MarkedCells.Count / 3; i++)
+        foreach (var data in mapInfo.MarkedCells)
         {
-            int x = mapInfo.MarkedCells[i * 3];
-            int y = mapInfo.MarkedCells[i * 3 + 1];
-            int size = mapInfo.MarkedCells[i * 3 + 2];
-            for (int i1 = 0; i1 < size; i1++)
+            string[] val = data.ToString().Split('_');
+            CellMarked.Add(val[0] + "_" + val[1], "_");
+            for (int i = 1; i <= (val.Length - 2) / 2; i++)
             {
-                for (int i2 = 0; i2 < size; i2++)
+                int start = int.Parse(val[i * 2]);
+                int end = int.Parse(val[i * 2]) + int.Parse(val[i * 2 + 1]) - 1;
+                for (int i2 = start; i2 <= end; i2++)
                 {
-                    CellMarked.Add(getKey(i1 + x, i2 + y), true);
+                    CellMarked[val[0] + "_" + val[1]] += i2 + "_";
                 }
             }
+
         }
 
-
-        SaveCellMark();
         UpdateSquare(c, true);
     }
     private void SaveStringToFile(string content)
@@ -397,6 +429,10 @@ public class MatrixMap : MonoBehaviour
         return new Vector2Int(Mathf.CeilToInt((pos.x - Getdownleft().x) / AreaSize) - 1,
            Mathf.CeilToInt((pos.z - Getdownleft().z) / AreaSize) - 1);
     }
+    public Vector3 GetRealWorldPosByIndex(Vector2Int index)
+    {
+        return new Vector3(Getdownleft().x + AreaSize * (index.x + 0.5f), 0, Getdownleft().z + AreaSize * (index.y + 0.5f));
+    }
     public void DisplayCell(Vector2Int index)
     {
 #if UNITY_EDITOR
@@ -450,7 +486,7 @@ public class MatrixMap : MonoBehaviour
     public Vector3 GetRandomPositionInCircle(Transform target, float expand)
     {
         int radious = Mathf.FloorToInt(expand / AreaSize);
-        Vector2Int center = getKey(BlockFollowing[target]);
+        Vector2Int center = GetCellIndexByPos(target.position);
         List<Vector2Int> result = new List<Vector2Int>();
         for (int i = -radious; i <= radious; i++)
         {
@@ -458,10 +494,12 @@ public class MatrixMap : MonoBehaviour
             {
                 if ((i * i + j * j) < radious * radious)
                 {
-                    result.Add(new Vector2Int(Mathf.Clamp(center.x + i, 0, row - 1), Mathf.Clamp(center.y + j, 0, column - 1)));
+                    if (isMarked(center.x + i, center.y + j))
+                        result.Add(new Vector2Int(Mathf.Clamp(center.x + i, 0, row - 1), Mathf.Clamp(center.y + j, 0, column - 1)));
                 }
             }
         }
+        if (result.Count <= 0) return target.position;
         Vector2Int randomresult = result[UnityEngine.Random.Range(0, result.Count)];
         return Getdownleft() + new Vector3((randomresult.x + 0.5f) * AreaSize, 30, (randomresult.y + 0.5f) * AreaSize);
     }
@@ -519,8 +557,9 @@ public class MapInfo
     public float MaxZ;
     public float MinZ;
     public float Size;
+    public int CompressSize;
 
-    public List<int> MarkedCells;
+    public List<string> MarkedCells;
 
 
 
@@ -530,7 +569,7 @@ public class MapInfo
     }
     public override string ToString()
     {
-        return JsonConvert.SerializeObject(this, Formatting.Indented);
+        return JsonConvert.SerializeObject(this, Formatting.None);
     }
     public static MapInfo ParseData(string data)
     {

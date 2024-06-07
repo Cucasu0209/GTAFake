@@ -37,47 +37,28 @@ public class FollowPlayerCamera : MonoBehaviour
 
         NearPlaneSize = new Vector2(width, height);
     }
-    private Vector3[] GetCameraCollisionPoints(Vector3 direction)
-    {
-        Vector3 position = TransformFollow.position;
-        Vector3 center = position + direction * (Camera.nearClipPlane + 0.2f);
 
-        Vector3 right = transform.right * NearPlaneSize.x;
-        Vector3 up = transform.up * NearPlaneSize.y;
-
-        return new Vector3[]
-        {
-            center - right + up,
-            center + right + up,
-            center - right - up,
-            center + right - up
-        };
-    }
     private void FollowPlayer(float hor, float ver)
     {
+        //transform.position = TransformFollow.position - Vector3.forward * MaxDistance;
+
+
         Angle.x += hor * Mathf.Deg2Rad * Sensitivity.x;
         Angle.y += ver * Mathf.Deg2Rad * Sensitivity.y;
         Angle.y = Mathf.Clamp(Angle.y, MinMaxClampY.x * Mathf.Deg2Rad, MinMaxClampY.y * Mathf.Deg2Rad);
-
+        Debug.Log(Angle.x / Mathf.Deg2Rad + " a " + Angle.y / Mathf.Deg2Rad);
         Vector3 direction = new Vector3(
             Mathf.Cos(Angle.x) * Mathf.Cos(Angle.y),
             -Mathf.Sin(Angle.y),
             -Mathf.Sin(Angle.x) * Mathf.Cos(Angle.y));
 
-        RaycastHit hit;
         float distance = MaxDistance;
-        //Vector3[] points = GetCameraCollisionPoints(direction);
+        //transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 30 * Time.deltaTime);
+        // transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
+        transform.position = TransformFollow.position + direction * distance;
+        transform.rotation = Quaternion.Euler(-Angle.y / Mathf.Deg2Rad, Angle.x / Mathf.Deg2Rad - 90, 0);
+        Debug.Log(transform.rotation.eulerAngles);
 
-        //foreach (Vector3 point in points)
-        //{
-        //    if (Physics.Raycast(point, direction, out hit, MaxDistance))
-        //    {
-        //        distance = Mathf.Min((hit.point - TransformFollow.position).magnitude * 0.8f, distance);
-        //    }
-        //}
-        //  transform.position = TransformFollow.position + direction * distance;
-        transform.position = Vector3.Lerp(transform.position, TransformFollow.position + direction * distance, 30 * Time.deltaTime);
-        transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
     }
 
     public void StartAiming()

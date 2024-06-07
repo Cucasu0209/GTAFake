@@ -6,12 +6,14 @@ public class FPSMeasurement : MonoBehaviour
 {
     float LastTimeCheck = 0;
     int i = 0;
+    public MatrixMap map;
     private TextMeshProUGUI m_TextMeshProUGUI;
     private void Start()
     {
         //#if and
         //QualitySettings.vSyncCount = 0;
 #if UNITY_EDITOR
+        Application.targetFrameRate = 60;
 #else
         Application.targetFrameRate = 60;
 #endif
@@ -27,7 +29,8 @@ public class FPSMeasurement : MonoBehaviour
         {
             if (m_TextMeshProUGUI != null)
             {
-                m_TextMeshProUGUI.SetText("FPS:" + i * 2/* + "\nTris:" + (UnityEditor.UnityStats.triangles/1000) + "k\n Verts:" + (UnityEditor.UnityStats.vertices/1000)+"k"*/);
+                m_TextMeshProUGUI.SetText("FPS:" + i * 2 + "" +
+                    "\n" + map.row + " " + map.column + " " + map.CellMarked.Count);
             }
             else
                 Debug.Log("FPS:" + i);

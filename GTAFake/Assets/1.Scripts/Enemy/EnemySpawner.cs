@@ -11,15 +11,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float SpawnTime = 7;
     [SerializeField] private float MaxCount = 10;
 
+    public bool isShow;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        if (Map.enabled == true) Map.RegisterTransformFollow(Player.transform);
-        else
-        {
-            transform.parent = Player.transform;
-            transform.localPosition = Vector3.zero;
-        }
+     //   if (Map.enabled == true) Map.RegisterTransformFollow(Player.transform);
+        //else
+        //{
+        //    transform.parent = Player.transform;
+        //    transform.localPosition = Vector3.zero;
+        //}
         while (true)
         {
 
@@ -33,7 +35,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Map.enabled == true) Map.UpdateFollowing(Player.transform, RadiousExpanding);
+        //if (isShow)
+        //    if (Map.enabled == true) Map.UpdateFollowing(Player.transform, RadiousExpanding);
     }
 
 }
