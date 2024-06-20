@@ -57,7 +57,6 @@ public class FollowPlayerCamera : MonoBehaviour
         // transform.rotation = Quaternion.LookRotation(TransformFollow.position - transform.position);
         transform.position = TransformFollow.position + direction * distance;
         transform.rotation = Quaternion.Euler(-Angle.y / Mathf.Deg2Rad, Angle.x / Mathf.Deg2Rad - 90, 0);
-        Debug.Log(transform.rotation.eulerAngles);
 
     }
 
