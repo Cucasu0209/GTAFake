@@ -2,8 +2,9 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System;
+using Sirenix.OdinInspector;
 
-public class GameDataManager: CustomAPI
+public class GameDataManager : CustomAPI
 {
     public static GameDataManager Instance;
 
@@ -143,20 +144,33 @@ public class GameDataManager: CustomAPI
 
     #region LOAD DATA
     [HideInInspector] public Action OnLoadGameDataFinish;
+
+    [Button("LoadData")]
     public void LoadGameData()
     {
         SendGetRequest($"{GameConfig.ServerURL}/api/data/get?user_id={UserData.UserId}", OnGameDataResult);
     }
-
+    public PlayerDataResult playerdataresult;
     private void OnGameDataResult(string responseData)
     {
         Debug.LogError(responseData);
-        GameData = JsonConvert.DeserializeObject<GameData>(responseData);
+        playerdataresult = JsonConvert.DeserializeObject<PlayerDataResult>(responseData);
 
         if (OnLoadGameDataFinish != null)
         {
             OnLoadGameDataFinish();
         }
+    }
+
+    [Button("LoadData daily mission")]
+    public void LoadGameDatadailymission()
+    {
+        SendGetRequest($"{GameConfig.ServerURL}/api/data/daily_mission/get?user_id={UserData.UserId}", OnGameDatamisionResult);
+    }
+    private void OnGameDatamisionResult(string responseData)
+    {
+        Debug.LogError(responseData);
+
     }
     #endregion LOAD DATA
 }
@@ -500,3 +514,23 @@ public class ClaimDailyShopElement
     public int ClaimCount;
 }
 #endregion GAME DATA
+
+public class PlayerDataResult
+{
+    [JsonProperty("id")]
+    public string Id;
+
+    [JsonProperty("user_id")]
+    public string user_id;
+
+    [JsonProperty("user_name")]
+    public string user_name;
+
+    [JsonProperty("claim_remove_ads")]
+    public bool claim_remove_ads;
+    [JsonProperty("claim_starter_pack")]
+    public bool claim_starter_pack;
+    [JsonProperty("mission_random_ads_count")]
+    public int mission_random_ads_count;
+
+}

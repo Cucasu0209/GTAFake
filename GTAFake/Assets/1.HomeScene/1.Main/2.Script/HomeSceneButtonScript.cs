@@ -34,4 +34,7 @@ public enum PopupType
 {
     Setting = 0,
     MissionInfo = 1,
+    Shop = 2,
+    DailyReward = 3,
+    DailyMission = 4,
 }

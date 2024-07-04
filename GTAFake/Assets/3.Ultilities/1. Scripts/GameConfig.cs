@@ -50,4 +50,27 @@ public static class GameConfig
     //"Nhiệm vụ hoàn thành khi tìm được thuốc giải(thuốc cho zombie về lại thành người) Spawn xa người chơi" +
     //"\nNhiệm vụ fail khi chết / hết giờ" +
     //"\n(có 3' để chơi mission)";
+
+    public static string ZombieKilledDes = "Kill 10000 zombie";
+    public static string BossKilledDes = "Kill 50 boss";
+    public static string AliveInSurvivalDes = "Alive in survival mode 300 second(s)";
+    public static string HardMissionCompleteTimesDes = "Complete mission mode 1 time(s) - Hard Difficulty";
+    public static string RerollMissionDes = "Reroll mission 1 time(s)";
+    public static string GetStreakDes = "Get 100 streak";
+
+
+    public static int ZombieKilledTarget = 1000;
+    public static int BossKilledTarget = 50;
+    public static int AliveInSurvivalTarget = 300;
+    public static int HardMissionCompleteTimesTarget = 1;
+    public static int RerollMissionTarget = 1;
+    public static int GetStreakTarget = 100;
+
+    public static int ZombieKilledBaseReward = 5000;
+    public static int BossKilledBaseReward = 5;
+    public static int AliveInSurvivalBaseReward = 3;
+    public static int HardMissionCompleteTimesBaseReward = 3;
+    public static int RerollMissionBaseReward = 5;
+    public static int GetStreakBaseReward = 5;
+
 }

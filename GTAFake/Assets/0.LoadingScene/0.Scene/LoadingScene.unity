@@ -467,6 +467,9 @@ MonoBehaviour:
     - Name: OnLoadGameDataFinish
       Entry: 6
       Data: 
+    - Name: playerdataresult
+      Entry: 6
+      Data: 
 --- !u!4 &512517617
 Transform:
   m_ObjectHideFlags: 0

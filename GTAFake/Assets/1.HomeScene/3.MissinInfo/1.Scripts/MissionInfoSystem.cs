@@ -1,6 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class MissionInfoSystem : CustomAPI
     public Button btnCloseConfirmPopup;
     public Button BtnRerollByAds;
     public Button btnRerollByGold;
+    public TextMeshProUGUI randomAdsRemaining;
 
     private void Start()
     {
@@ -32,7 +34,7 @@ public class MissionInfoSystem : CustomAPI
     }
     private void RerollByAds()
     {
-        string data = JsonConvert.SerializeObject(new RandomMissionByAds()
+        string data = JsonConvert.SerializeObject(new PackageInfo()
         {
             PackageName = "",
             ProductId = "",
@@ -47,7 +49,7 @@ public class MissionInfoSystem : CustomAPI
     }
     private void RerollByGold()
     {
-        string data = JsonConvert.SerializeObject(new RandomMissionByAds()
+        string data = JsonConvert.SerializeObject(new PackageInfo()
         {
             PackageName = "",
             ProductId = "",
@@ -59,6 +61,10 @@ public class MissionInfoSystem : CustomAPI
                   });
 
         SendPostRequest($"{GameConfig.ServerURL}/api/game/random_mission_by_gold?id={GameDataManager.Instance.UserData.UserId}", data, UpdateMissionInfoUI);
+    }
+    private void GetMissionData()
+    {
+        SendGetRequest($"{GameConfig.ServerURL}/api/game/mission_data?user_id={GameDataManager.Instance.UserData.UserId}", UpdateMissionInfoUI);
     }
     public void GetMissionInfo()
     {
@@ -79,13 +85,12 @@ public class MissionInfoSystem : CustomAPI
         PlayerPrefs.SetString(KeyMissionInfo, responseData);
         Debug.LogError(responseData);
         MissionsResponse missions = JsonConvert.DeserializeObject<MissionsResponse>(responseData);
-
+        randomAdsRemaining.SetText(missions.RandomRemaining.ToString());
         for (int i = 0; i < Missions.Length; i++)
         {
-            MissionType type = (MissionType)(missions.MissionInfo[i].Type - 1);
-            int contentIndex = 0;
+            MissionType type = (MissionType)(int.Parse(missions.MissionInfo[i].Type.Split("-")[0]));
+            int contentIndex = (int.Parse(missions.MissionInfo[i].Type.Split("-")[1]));
             MissionDifficulty difficulty = (MissionDifficulty)(missions.MissionInfo[i].Difficulty - 1);
-            float randomWeight = UnityEngine.Random.Range(0, 100f);
             Missions[i].SetContent(type, contentIndex);
             Missions[i].SetDifficulty(difficulty);
             Missions[i].UpdateReward(missions.MissionInfo[i].Rewards);
@@ -107,7 +112,7 @@ public enum MissionDifficulty
     Hard = 2
 }
 
-public class RandomMissionByAds
+public class PackageInfo
 {
     [JsonProperty("package_name")]
     public string PackageName;
@@ -124,12 +129,16 @@ public class MissionsResponse
 {
     [JsonProperty("mission_info")]
     public MissionInfo[] MissionInfo;
+    [JsonProperty("random_remaining")]
+    public int RandomRemaining;
+
+
 }
 [Serializable]
 public class MissionInfo
 {
     [JsonProperty("type")]
-    public int Type;
+    public string Type;
 
     [JsonProperty("difficulty")]
     public int Difficulty;

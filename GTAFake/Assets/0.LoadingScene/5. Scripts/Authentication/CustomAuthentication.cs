@@ -45,7 +45,7 @@ public class CustomAuthentication: CustomAPI
         }
 
 #if UNITY_ANDROID
-        UserID = "dafsdfaa";
+        UserID = "2ad3sw";
         SubURL = $"android_id={UserID}";
         //SubURL = $"user_name={UserID}"; // TOAN TOAN TOAN
         return;
