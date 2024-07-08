@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/2.Gameplay/0.Scenes/MainNoRoofTop.unity
     guid: 6c9567a8d4c4ed242843b5e1c691582a
   - enabled: 1
-    path: Assets/1.HomeScene/0.General/HomeScene.unity
-    guid: eff32fb9f85203145bf1626de3250fcc
-  - enabled: 1
     path: Assets/0.LoadingScene/0.Scene/LoadingScene.unity
     guid: 9b1d69d8cef80614f99e2e1ac71b98a7
+  - enabled: 1
+    path: Assets/1.HomeScene/0.General/HomeScene.unity
+    guid: eff32fb9f85203145bf1626de3250fcc
   m_configObjects: {}

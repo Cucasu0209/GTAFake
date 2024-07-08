@@ -1,3 +1,5 @@
+
+#if UNITY_EDITOR_WIN
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,3 +49,4 @@ public static class FindMissingScripts
         }
     }
 }
+#endif
