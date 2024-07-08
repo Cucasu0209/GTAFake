@@ -46,7 +46,6 @@ public class FollowPlayerCamera : MonoBehaviour
         Angle.x += hor * Mathf.Deg2Rad * Sensitivity.x;
         Angle.y += ver * Mathf.Deg2Rad * Sensitivity.y;
         Angle.y = Mathf.Clamp(Angle.y, MinMaxClampY.x * Mathf.Deg2Rad, MinMaxClampY.y * Mathf.Deg2Rad);
-        Debug.Log(Angle.x / Mathf.Deg2Rad + " a " + Angle.y / Mathf.Deg2Rad);
         Vector3 direction = new Vector3(
             Mathf.Cos(Angle.x) * Mathf.Cos(Angle.y),
             -Mathf.Sin(Angle.y),
