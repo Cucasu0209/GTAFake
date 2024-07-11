@@ -7,10 +7,6 @@ using UnityEngine.Animations.Rigging;
 public class PlayerAnimationCallbacks : MonoBehaviour
 {
     [HideInInspector] public PlayerController Controller;
-    public MultiAimConstraint RhandConstraint;
-    public TwoBoneIKConstraint LhandConstraint;
-    public MultiAimConstraint HeadConstraint;
-    public MultiAimConstraint ShoulderConstraint;
 
     public Transform RightHand;
 
@@ -27,10 +23,6 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     }
     private void SetConstraintAimingState(bool isActive)
     {
-        RhandConstraint.weight = isActive ? 1.0f : 0;
-        LhandConstraint.weight = isActive ? 1.0f : 0;
-        HeadConstraint.weight = isActive ? 1.0f : 0;
-        ShoulderConstraint.weight = isActive ? 1.0f : 0;
     }
     private void OnStartAiming()
     {
@@ -43,7 +35,7 @@ public class PlayerAnimationCallbacks : MonoBehaviour
                     SetConstraintAimingState(true);
                 });
 
-                Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
+              //  Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 1);
 
             }
             else

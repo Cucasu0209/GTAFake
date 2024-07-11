@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/2.Gameplay/0.Scenes/Main 7.unity
     guid: 3dc29450421e30047877e45bca29ba02
-  - enabled: 0
+  - enabled: 1
     path: Assets/2.Gameplay/0.Scenes/MainNoRoofTop.unity
     guid: 6c9567a8d4c4ed242843b5e1c691582a
   - enabled: 1
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.HomeScene/0.General/HomeScene.unity
     guid: eff32fb9f85203145bf1626de3250fcc
+  - enabled: 0
+    path: Assets/2.Gameplay/4.Models/Zombie_2/Avatar/SceneTest.unity
+    guid: 5d39e1a8780e39640a592dbff8946c07
   m_configObjects: {}

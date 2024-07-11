@@ -4,31 +4,53 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 public class MissionInfo_Item : MonoBehaviour
 {
     private MissionDifficulty _missionDifficulty;
     private MissionType _missionType;
     private int _missionContentIndex;
     public TextMeshProUGUI Type;
-    public Image Type_Hunt_Icon;
-    public Image Type_Rescue_Icon;
-    public Image Type_Defeat_Icon;
+    [Header("Icon")]
+    public Image TypeIcon;
+    public Sprite HuntIcon;
+    public Sprite RescueIcon;
+    public Sprite FindItemIcon;
 
-    public Image Dissiculty_Easy_BG;
-    public Image Dissiculty_Mid_BG;
-    public Image Dissiculty_Hard_BG;
+    [Header("Header BG")]
+    public Image DifficultyIcon;
+    public Sprite EasyBG;
+    public Sprite NormalBG;
+    public Sprite HardBG;
 
+    [Header("Content")]
     public TextMeshProUGUI Content;
 
     public Button ButtonStart;
 
     public MissionRewardItem[] missionRewardItems;
+
+    private void Start()
+    {
+        ButtonStart.onClick.AddListener(() => SceneManager.LoadScene(GameConfig.GAME_PLAY_SCENE));
+    }
     public void SetDifficulty(MissionDifficulty diff)
     {
         _missionDifficulty = diff;
-        Dissiculty_Easy_BG.gameObject.SetActive(diff == MissionDifficulty.Easy);
-        Dissiculty_Mid_BG.gameObject.SetActive(diff == MissionDifficulty.Normal);
-        Dissiculty_Hard_BG.gameObject.SetActive(diff == MissionDifficulty.Hard);
+        switch (diff)
+        {
+            case MissionDifficulty.Easy:
+                DifficultyIcon.sprite = EasyBG;
+                break;
+            case MissionDifficulty.Normal:
+                DifficultyIcon.sprite = NormalBG;
+                break;
+            case MissionDifficulty.Hard:
+                DifficultyIcon.sprite = HardBG;
+                break;
+
+        }
     }
 
     public void SetContent(MissionType type, int contentIndex)
@@ -37,11 +59,25 @@ public class MissionInfo_Item : MonoBehaviour
         _missionContentIndex = contentIndex;
         Type.SetText(GetMissionType(type));
         Content.SetText(GetMissionContent(type, contentIndex));
-        Type_Hunt_Icon.gameObject.SetActive(type == MissionType.Hunt);
-        Type_Rescue_Icon.gameObject.SetActive(type == MissionType.Rescue);
-        Type_Defeat_Icon.gameObject.SetActive(type == MissionType.FindItem);
+
+        switch (type)
+        {
+            case MissionType.Hunt:
+                DifficultyIcon.sprite = HuntIcon;
+                break;
+            case MissionType.Rescue:
+                DifficultyIcon.sprite = RescueIcon;
+                break;
+            case MissionType.FindItem:
+                DifficultyIcon.sprite = FindItemIcon;
+                break;
+
+
+
+        }
+
     }
-    
+
     public void UpdateReward(MissionRewards Rewards)
     {
         for (int g = 0; g < missionRewardItems.Length; g++) missionRewardItems[g].gameObject.SetActive(false);

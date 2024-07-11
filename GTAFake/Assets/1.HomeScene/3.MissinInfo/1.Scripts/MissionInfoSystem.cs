@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class MissionInfoSystem : CustomAPI
 {
-    public MissionInfo_Item[] Missions;
-    public Button ButtonReroll;
-    public string KeyMissionInfo = "MISSION_INFO_DATA";
-    public GameObject ConfirmPopup;
-    public Button btnCloseConfirmPopup;
-    public Button BtnRerollByAds;
-    public Button btnRerollByGold;
-    public TextMeshProUGUI randomAdsRemaining;
+    [SerializeField] private MissionInfo_Item[] Missions;
+    [SerializeField] private Button ButtonReroll;
+    private string KeyMissionInfo = "MISSION_INFO_DATA";
+    [SerializeField] private GameObject ConfirmPopup;
+    [SerializeField] private Button btnCloseConfirmPopup;
+    [SerializeField] private Button BtnRerollByAds;
+    [SerializeField] private Button btnRerollByGold;
+    [SerializeField] private TextMeshProUGUI randomAdsRemaining;
 
     private void Start()
     {
@@ -40,10 +40,10 @@ public class MissionInfoSystem : CustomAPI
             ProductId = "",
             PurchaseToken = ""
         }
-                  , Formatting.Indented, new JsonSerializerSettings
-                  {
-                      NullValueHandling = NullValueHandling.Ignore
-                  });
+        , Formatting.Indented, new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore
+        });
 
         SendPostRequest($"{GameConfig.ServerURL}/api/game/random_mission_by_ads?id={GameDataManager.Instance.UserData.UserId}", data, UpdateMissionInfoUI);
     }

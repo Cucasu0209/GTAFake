@@ -36,7 +36,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private void ShowReloadBulletAnim()
     {
         reloadingBullet = true;
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 1);
+        // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 1);
         Controller.SetAnimReload();
         Controller.ReloadBulletCallback = ReloadBullet;
         Controller.EndReloadBulletCallback = EndReloadBullet;
@@ -51,29 +51,35 @@ public class PlayerWeaponManager : MonoBehaviour
     private void EndReloadBullet()
     {
         reloadingBullet = false;
-        if (Controller.IsAiming == false) Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
+        //   if (Controller.IsAiming == false) Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
 
     }
     private void OnChangeWeapon(WeaponType type)
     {
-        Controller.StartChangeWeapon();
+        Controller.StartChangeWeapon(type);
         if (Controller.IsAiming) UserInputController.Instance.OnCancelAiming?.Invoke();
         Controller.ChangeWeaponDataCallback = () => SwitchWeapon(type);
     }
     private void SwitchWeapon(WeaponType type)
     {
-        Controller.OnEndChangeWeapon = () =>
-        {
-            if (CurrentWeapon.CheckRunoutOfBullet())
-            {
-                ShowReloadBulletAnim();
-            }
-        };
+        //Controller.OnEndChangeWeapon = () =>
+        //{
+        //    if (CurrentWeapon.CheckRunoutOfBullet())
+        //    {
+        //        ShowReloadBulletAnim();
+        //    }
+        //};
         WeaponData data = Resources.Load<WeaponData>(WeaponConfig.GetDataLink(type));
         if (data != null)
         {
+            Debug.Log(type.ToString() + data.LinkPrefab);
+
             PlayerData.SetCurrentWeaponData(data);
             ActiveWeapon(data);
+        }
+        else
+        {
+            Debug.Log("????");
         }
     }
     private void ActiveWeapon(WeaponData data)
@@ -108,10 +114,10 @@ public class PlayerWeaponManager : MonoBehaviour
     private void StartAiming()
     {
         Controller.EndAttackCallback = EndAttack;
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName),
-            CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
-        Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName),
-            CurrentWeapon.Data.Type == WeaponType.Rifle || CurrentWeapon.Data.Type == WeaponType.Pistol ? 1 : 0);
+        //Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName),
+        //    CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
+        //Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName),
+        //    CurrentWeapon.Data.Type == WeaponType.Rifle || CurrentWeapon.Data.Type == WeaponType.Pistol ? 1 : 0);
     }
     private void CancelAiming()
     {
@@ -126,8 +132,8 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         if (reloadingBullet == false && Controller.IsFiring == false)
         {
-            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
-            Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
+            // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
+            // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName), 0);
         }
     }
     private void ShowAnimAttack()

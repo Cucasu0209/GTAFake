@@ -21,8 +21,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement and Aiming")]
     public bool IsAiming;
-    public readonly string AimLayerName = "GunAiming";
-    public readonly string AimAxeLayerName = "AxeAttack";
+    public readonly string PistolLayerName = "Pistol";
+    public readonly string RifleLayerName = "Rifle";
+    public readonly string MeeleLayerName = "Melee";
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
@@ -89,10 +90,34 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("jump");
     }
-    public void StartChangeWeapon()
+    public void StartChangeWeapon(WeaponType type)
     {
+        switch (type)
+        {
+            case WeaponType.Melee:
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 1);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
+                break;
+            case WeaponType.Pistol:
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 1);
+                break;
+            case WeaponType.Rifle:
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 1);
+                break;
+            default:
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 1);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
+                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
+                break;
+
+        }
+
         PlayerAnimator.SetTrigger("changeweapon");
-        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex("ChangeWeapon"), 1);
         ChangingWeapon = true;
     }
     public void EndChangeWeapon()
