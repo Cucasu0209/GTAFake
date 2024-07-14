@@ -12,7 +12,7 @@ public static class GameConfig
 {
     public const string LOADING_SCENE = "LoadingScene";
     public const string HOME_SCENE = "HomeScene";
-    public const string GAME_PLAY_SCENE = "MainNoRoofTop";
+    public const string GAME_PLAY_SCENE = "GamePlayScene";
     public const string BATTLE_ROYALE_SCENE = "Gameplay";
     public const string CAMPAIGN_SCENE = "ChapterScene";
     public const string Version = "1.0.0.0";
