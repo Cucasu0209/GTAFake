@@ -82,6 +82,7 @@ public class DailyRewardItemUI : SerializedMonoBehaviour
         Day.SetText("Day " + day);
         Count.SetText("x" + data.Count.ToString());
         Icon.sprite = RewardIcons[data.Type];
+        Icon.SetNativeSize();
     }
 }
 [Serializable]
