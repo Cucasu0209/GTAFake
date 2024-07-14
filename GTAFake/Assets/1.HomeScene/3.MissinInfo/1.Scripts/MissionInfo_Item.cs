@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class MissionInfo_Item : MonoBehaviour
 {
-    private MissionDifficulty _missionDifficulty;
-    private MissionType _missionType;
-    private int _missionContentIndex;
+    private MissionDifficulty MissionDifficulty;
+    private MissionType MissionType;
+    private int MissionContentIndex;
     public TextMeshProUGUI Type;
     [Header("Icon")]
     public Image TypeIcon;
@@ -20,9 +20,9 @@ public class MissionInfo_Item : MonoBehaviour
 
     [Header("Header BG")]
     public Image DifficultyIcon;
-    public Sprite EasyBG;
-    public Sprite NormalBG;
-    public Sprite HardBG;
+    public Color EasyBG;
+    public Color NormalBG;
+    public Color HardBG;
 
     [Header("Content")]
     public TextMeshProUGUI Content;
@@ -37,17 +37,17 @@ public class MissionInfo_Item : MonoBehaviour
     }
     public void SetDifficulty(MissionDifficulty diff)
     {
-        _missionDifficulty = diff;
+        MissionDifficulty = diff;
         switch (diff)
         {
             case MissionDifficulty.Easy:
-                DifficultyIcon.sprite = EasyBG;
+                DifficultyIcon.color = EasyBG;
                 break;
             case MissionDifficulty.Normal:
-                DifficultyIcon.sprite = NormalBG;
+                DifficultyIcon.color = NormalBG;
                 break;
             case MissionDifficulty.Hard:
-                DifficultyIcon.sprite = HardBG;
+                DifficultyIcon.color = HardBG;
                 break;
 
         }
@@ -55,25 +55,22 @@ public class MissionInfo_Item : MonoBehaviour
 
     public void SetContent(MissionType type, int contentIndex)
     {
-        _missionType = type;
-        _missionContentIndex = contentIndex;
+        MissionType = type;
+        MissionContentIndex = contentIndex;
         Type.SetText(GetMissionType(type));
         Content.SetText(GetMissionContent(type, contentIndex));
 
         switch (type)
         {
             case MissionType.Hunt:
-                DifficultyIcon.sprite = HuntIcon;
+                TypeIcon.sprite = HuntIcon;
                 break;
             case MissionType.Rescue:
-                DifficultyIcon.sprite = RescueIcon;
+                TypeIcon.sprite = RescueIcon;
                 break;
             case MissionType.FindItem:
-                DifficultyIcon.sprite = FindItemIcon;
+                TypeIcon.sprite = FindItemIcon;
                 break;
-
-
-
         }
 
     }

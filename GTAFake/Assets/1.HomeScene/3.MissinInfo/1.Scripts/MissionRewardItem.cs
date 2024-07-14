@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,7 +8,8 @@ public class MissionRewardItem : SerializedMonoBehaviour
 {
     public MissionRewardType Type;
     [SerializeField] public Dictionary<MissionRewardType, Sprite> RewardIcon;
-    public Image[] BGs;
+    public Image Background;
+    public Sprite[] BgSprites;
     public Image Icon;
     public TextMeshProUGUI Amount;
 
@@ -17,9 +17,6 @@ public class MissionRewardItem : SerializedMonoBehaviour
     {
         Icon.sprite = RewardIcon[type];
         Amount.SetText(amount.ToString());
-        for (int i = 0; i < BGs.Length; i++)
-        {
-            BGs[i].gameObject.SetActive(i == ((int)type) % BGs.Length);
-        }
+        Background.sprite = BgSprites[((int)type) % BgSprites.Length];
     }
 }
