@@ -114,6 +114,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private void StartAiming()
     {
         Controller.EndAttackCallback = EndAttack;
+
         //Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName),
         //    CurrentWeapon.Data.Type == WeaponType.Melee || CurrentWeapon.Data.Type == WeaponType.Special ? 1 : 0);
         //Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName),
@@ -126,18 +127,28 @@ public class PlayerWeaponManager : MonoBehaviour
         //    Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimLayerName), 0);
         //    Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.AimAxeLayerName), 0);
         //}
-
+        if (endAttack)
+        {
+            Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
+            // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
+            // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName), 0);
+        }
     }
+    bool endAttack = false;
     private void EndAttack()
     {
         if (reloadingBullet == false && Controller.IsFiring == false)
         {
+            endAttack = true;
+            Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName), 0);
         }
     }
     private void ShowAnimAttack()
     {
+        endAttack = false;
+        Controller.StartAttackAnim(CurrentWeapon.Data.Type, true);
         Controller.AttackCallback = () =>
         {
             CurrentWeapon.Attack(Controller.transform);

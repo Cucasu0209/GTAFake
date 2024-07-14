@@ -22,8 +22,11 @@ public class PlayerController : MonoBehaviour
     [Header("Movement and Aiming")]
     public bool IsAiming;
     public readonly string PistolLayerName = "Pistol";
+    public readonly string PistolBodyLayerName = "PistolBody";
     public readonly string RifleLayerName = "Rifle";
+    public readonly string RifleBodyLayerName = "RifleBody";
     public readonly string MeeleLayerName = "Melee";
+    public readonly string MeeleBodyLayerName = "MeleeBody";
     private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
@@ -89,6 +92,33 @@ public class PlayerController : MonoBehaviour
     public void SetJumpAnim()
     {
         PlayerAnimator.SetTrigger("jump");
+    }
+    public void StartAttackAnim(WeaponType type, bool turnOn)
+    {
+        //switch (type)
+        //{
+        //    case WeaponType.Melee:
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), turnOn ? 1 : 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
+        //        break;
+        //    case WeaponType.Pistol:
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), turnOn ? 1 : 0);
+        //        break;
+        //    case WeaponType.Rifle:
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), turnOn ? 1 : 0);
+        //        break;
+        //    default:
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), 1);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
+        //        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
+        //        break;
+
+        //}
     }
     public void StartChangeWeapon(WeaponType type)
     {

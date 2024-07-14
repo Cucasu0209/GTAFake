@@ -13,7 +13,7 @@ public class FPSMeasurement : MonoBehaviour
         //#if and
         //QualitySettings.vSyncCount = 0;
 #if UNITY_EDITOR
-        Application.targetFrameRate = 60;
+
 #else
         Application.targetFrameRate = 60;
 #endif

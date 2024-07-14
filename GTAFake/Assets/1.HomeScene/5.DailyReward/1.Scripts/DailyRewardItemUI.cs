@@ -3,8 +3,11 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
+using Sirenix.OdinInspector;
 
-public class DailyRewardItemUI : MonoBehaviour
+public class DailyRewardItemUI : SerializedMonoBehaviour
 {
     public int TodayIndex;
     public enum State
@@ -17,8 +20,14 @@ public class DailyRewardItemUI : MonoBehaviour
     public Image Tick;
     public Button SelfButton;
 
-    public Action<int> OnAttendance;
+    [HideInInlineEditors] public Action<int> OnAttendance;
     public Image BigGrow;
+
+    [SerializeField] public Dictionary<DailyRewardItem, Sprite> RewardIcons;
+    public Image Icon;
+    public TextMeshProUGUI Count;
+    public TextMeshProUGUI Day;
+
     private void Start()
     {
         SelfButton.onClick.AddListener(OnClick);
@@ -67,4 +76,28 @@ public class DailyRewardItemUI : MonoBehaviour
 
         }
     }
+    public void Setup(int day, DailyRewardData data)
+    {
+        TodayIndex = day - 1;
+        Day.SetText("Day " + day);
+        Count.SetText("x" + data.Count.ToString());
+        Icon.sprite = RewardIcons[data.Type];
+    }
+}
+[Serializable]
+public class DailyRewardData
+{
+    public DailyRewardItem Type;
+    public int Count;
+
+}
+public enum DailyRewardItem
+{
+    Gold,
+    Coal,
+    Gunpower,
+    Steel,
+    Vitamin,
+    Uranium,
+    Chest
 }

@@ -8,7 +8,7 @@ public class DailyRewardSystem : MonoBehaviour
     string KeyDaily = "DailyRewardKey";
     int today;
     public bool TookAttendance = false;
-
+    public List<DailyRewardData> ItemData;
     private void OnEnable()
     {
         TookAttendance = false;
@@ -21,6 +21,7 @@ public class DailyRewardSystem : MonoBehaviour
         for (int i = 0; i <= 6; i++)
         {
             Items[i].OnAttendance = OnItemClick;
+            Items[i].Setup(i + 1, ItemData[i]);
         }
     }
     public void OnItemClick(int BtnIndex)
