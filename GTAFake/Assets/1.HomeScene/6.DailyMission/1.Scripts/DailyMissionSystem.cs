@@ -133,11 +133,11 @@ public class SingleMissionDailyProgess
 
 public enum DailyMissionType
 {
-    AliveInSurvival,
+    ZombieKilled,
     BossKilled,
-    GetStreak,
+    AliveInSurvival,
     HardMissionCompleteTimes,
     Reroll1Time,
-    ZombieKilled,
+    GetStreak,
 
 }
