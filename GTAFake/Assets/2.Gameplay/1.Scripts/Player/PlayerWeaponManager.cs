@@ -130,6 +130,7 @@ public class PlayerWeaponManager : MonoBehaviour
         if (endAttack)
         {
             Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
+            Debug.Log(CurrentWeapon.Data.Type.ToString() + false);
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName), 0);
         }
@@ -137,13 +138,17 @@ public class PlayerWeaponManager : MonoBehaviour
     bool endAttack = false;
     private void EndAttack()
     {
-        if (reloadingBullet == false && Controller.IsFiring == false)
-        {
+        Debug.Log(CurrentWeapon.Data.Type.ToString() + false);
+
+        //if (reloadingBullet == false && Controller.IsFiring == false)
+        //{
             endAttack = true;
             Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
+            Debug.Log(CurrentWeapon.Data.Type.ToString() + false);  
+
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 0);
             // Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.MeeleLayerName), 0);
-        }
+        //}
     }
     private void ShowAnimAttack()
     {

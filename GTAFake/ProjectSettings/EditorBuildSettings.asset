@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/1.HomeScene/0.General/0.Scenes/HomeScene.unity
     guid: eff32fb9f85203145bf1626de3250fcc
   - enabled: 0
-    path: Assets/2.Gameplay/4.Models/Zombie_2/Avatar/SceneTest.unity
+    path: Assets/2.Gameplay/4.Models/Zombie/Zombie_2/Avatar/SceneTest.unity
     guid: 5d39e1a8780e39640a592dbff8946c07
   m_configObjects: {}
