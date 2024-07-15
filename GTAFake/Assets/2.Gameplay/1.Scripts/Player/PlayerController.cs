@@ -31,12 +31,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform ForwardAxis;
     private Vector3 CurrentTarget;
 
-    //[Header("Flying")]
-    //public bool IsFlying;
     [Header("Weapon")]
     public bool ChangingWeapon = false;
     public bool IsFiring = false;
-    private WeaponType CurrentWeaponType;
+    public WeaponType CurrentWeaponType;
     #endregion
 
     #region Callbacks

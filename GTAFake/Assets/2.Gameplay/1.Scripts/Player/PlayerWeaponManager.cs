@@ -117,7 +117,7 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void CancelAiming()
     {
-
+        CurrentWeapon.StopAttack(Controller.transform);
         //if (endAttack)
         //{
         //    Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
@@ -127,11 +127,8 @@ public class PlayerWeaponManager : MonoBehaviour
     bool endAttack = false;
     private void EndAttack()
     {
-        Debug.Log(CurrentWeapon.Data.Type.ToString() + false);
-
         endAttack = true;
         Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
-        Debug.Log(CurrentWeapon.Data.Type.ToString() + false);
     }
     private void ShowAnimAttack()
     {
@@ -139,6 +136,11 @@ public class PlayerWeaponManager : MonoBehaviour
         if (CurrentWeapon.Data.Type == WeaponType.Melee)
         {
             Controller.StartAttackAnim(CurrentWeapon.Data.Type, true);
+        }
+        else
+        {
+            CurrentWeapon.Attack(Controller.transform);
+
         }
         Controller.AttackCallback = () =>
         {
@@ -148,7 +150,6 @@ public class PlayerWeaponManager : MonoBehaviour
                 ShowReloadBulletAnim();
             }
         };
-
     }
     #endregion  
 }

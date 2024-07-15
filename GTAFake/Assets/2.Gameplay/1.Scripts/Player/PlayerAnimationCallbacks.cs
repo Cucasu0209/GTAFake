@@ -9,6 +9,7 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     [HideInInspector] public PlayerController Controller;
 
     public Transform RightHand;
+    public MultiAimConstraint RHandConstraint;
 
     public void Start()
     {
@@ -23,31 +24,26 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     }
     private void SetConstraintAimingState(bool isActive)
     {
+        if (Controller.CurrentWeaponType == WeaponType.Pistol || Controller.CurrentWeaponType == WeaponType.Rifle)
+        {
+            RHandConstraint.weight = isActive ? 1 : 0;
+        }
+        else
+        {
+            RHandConstraint.weight = 0;
+        }
     }
     private void OnStartAiming()
     {
         if (Controller.ChangingWeapon == false)
         {
-            if (Controller.GetComponent<PlayerWeaponManager>().CurrentWeapon is Gun)
-            {
-                DOVirtual.DelayedCall(0.01f, () =>
-                {
-                    SetConstraintAimingState(true);
-                });
-
-              //  Controller.PlayerAnimator.SetLayerWeight(Controller.PlayerAnimator.GetLayerIndex(Controller.PistolLayerName), 1);
-
-            }
-            else
-            {
-                SetConstraintAimingState(false);
-            }
-
+            SetConstraintAimingState(true);
         }
+
     }
     private void OnCancelAiming()
     {
-        //  SetConstraintAimingState(false);
+        SetConstraintAimingState(false);
     }
 
     #region Animation callbacks (dont delete me please, unless you will regret)
@@ -65,14 +61,13 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     }
     public void EndAttack()
     {
-        
+
         Controller.EndAttackCallback?.Invoke();
         if (Controller.IsFiring == false)
         {
-            DOVirtual.DelayedCall(0.01f, () =>
-            {
-                SetConstraintAimingState(false);
-            });
+
+            SetConstraintAimingState(false);
+
         }
     }
     public void StartReloadBullet()

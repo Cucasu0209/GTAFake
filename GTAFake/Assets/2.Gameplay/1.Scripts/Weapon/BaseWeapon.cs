@@ -15,6 +15,10 @@ public class BaseWeapon : MonoBehaviour
         }
 
     }
+    public virtual void StopAttack(Transform character)
+    {
+        
+    }
     public virtual bool CheckRunoutOfBullet()
     {
         return Data.BulletCount <= 0 && Data.BulletMaxCount > 0;
