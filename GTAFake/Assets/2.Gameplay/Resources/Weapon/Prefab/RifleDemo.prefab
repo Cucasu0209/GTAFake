@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 9
   m_Name: HeadGun
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24,12 +24,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5601389833788187978}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.008577704, y: 0.000044867396, z: 0.005215168, w: 0.9999497}
+  m_LocalPosition: {x: 0.009, y: 0.009, z: 0.715}
+  m_LocalScale: {x: 0.49000013, y: 0.49000007, z: 0.49000025}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7865113979101474404}
+  m_Father: {fileID: 6738613478873114156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5710468109913634612
 GameObject:
@@ -134,7 +134,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c853d1987f70f0749897acf2cabaa929, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7029485400344790484}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c853d1987f70f0749897acf2cabaa929, type: 3}
 --- !u!4 &6738613478873114156 stripped
@@ -226,10 +229,7 @@ PrefabInstance:
     - {fileID: -1280058959441750331, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
     - {fileID: 5527063934811208959, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3503643608116425843, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 7029485400344790484}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4594725980711235199, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
       insertIndex: -1

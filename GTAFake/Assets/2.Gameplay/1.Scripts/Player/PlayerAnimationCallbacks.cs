@@ -58,7 +58,6 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     public void EndChangeWeaponAnim()
     {
         Controller.EndChangeWeapon();
-        Debug.Log("a");
     }
     public void Attack()
     {

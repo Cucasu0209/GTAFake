@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer(float hzInput, float vInput)
     {
-        if (Controller.IsAiming == false)
-        {
+        //if (Controller.IsAiming == false)
+        //{
             Vector2 MoveInput = new Vector2(hzInput, vInput);
             Vector2 Direction = (new Vector2(hzInput, vInput)).normalized;
             if (MoveInput.magnitude > 0.1f)
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             }
             LastMoveInput = Mathf.Lerp(LastMoveInput, MoveInput.magnitude, 20 * Time.deltaTime);
             Controller.SetSpeedAnim(LastMoveInput);
-        }
+        //}
     }
 
 }

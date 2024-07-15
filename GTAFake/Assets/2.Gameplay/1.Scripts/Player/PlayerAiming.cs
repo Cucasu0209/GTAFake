@@ -25,7 +25,7 @@ public class PlayerAiming : MonoBehaviour
     {
         if (Controller.IsAiming == true)
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.GetAngle(), transform.rotation.eulerAngles.z);
+            //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Controller.GetAngle(), transform.rotation.eulerAngles.z);
         }
     }
 

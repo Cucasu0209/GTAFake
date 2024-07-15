@@ -22,11 +22,11 @@ public class PlayerController : MonoBehaviour
     [Header("Movement and Aiming")]
     public bool IsAiming;
     public readonly string MeeleLayerName = "Melee";
-    public readonly string MeeleBodyLayerName = "MeleeBody";
+    public readonly string MeeleBodyLayerName = "MeleeAnimBody";
     public readonly string PistolLayerName = "Pistol";
-    public readonly string PistolBodyLayerName = "PistolBody";
+    public readonly string PistolBodyLayerName = "PistolAnimBody";
     public readonly string RifleLayerName = "Rifle";
-    public readonly string RifleBodyLayerName = "RifleBody";
+    public readonly string RifleBodyLayerName = "RifleAnimBody";
 
     [SerializeField] private Transform ForwardAxis;
     private Vector3 CurrentTarget;
@@ -160,7 +160,6 @@ public class PlayerController : MonoBehaviour
         ChangingWeapon = false;
         OnEndChangeWeapon?.Invoke();
         StartAttackAnim(CurrentWeaponType, false);
-        Debug.Log("aaaaaa");
         if (IsAiming) UserInputController.Instance.OnStartAiming?.Invoke();
     }
     IEnumerator IEndChangeWeapon()

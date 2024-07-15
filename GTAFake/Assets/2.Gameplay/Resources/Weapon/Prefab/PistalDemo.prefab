@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 9
   m_Name: HeadGun
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,11 +25,11 @@ Transform:
   m_GameObject: {fileID: 5601389833788187978}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 3}
+  m_LocalPosition: {x: 0, y: 0.064, z: 0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7865113979101474404}
+  m_Father: {fileID: 6157703239140621858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5710468109913634612
 GameObject:
@@ -134,7 +134,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9d9d6b52a608c74884201776ff62d67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7029485400344790484}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9d9d6b52a608c74884201776ff62d67, type: 3}
 --- !u!4 &6157703239140621858 stripped
@@ -226,10 +229,7 @@ PrefabInstance:
     - {fileID: -1280058959441750331, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
     - {fileID: 5527063934811208959, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3503643608116425843, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 7029485400344790484}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4594725980711235199, guid: c20daf91d2bce304c85fec03f5fafd3b, type: 3}
       insertIndex: -1
