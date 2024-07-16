@@ -7,6 +7,7 @@ public class PlayerSkill : MonoBehaviour
     [HideInInspector] public PlayerController Controller;
     [HideInInspector] public PlayerMovement Movement;
     [HideInInspector] public PlayerWeaponManager WeaponManager;
+    protected bool IsPlayingSkill = false;
     public virtual void Start()
     {
         Controller = GetComponent<PlayerController>();
@@ -26,12 +27,15 @@ public class PlayerSkill : MonoBehaviour
         Controller.PlaySkill();
         Movement.Stop = true;
         WeaponManager.HideWeapon();
+        IsPlayingSkill = true;
     }
     public virtual void OnEndSkill()
     {
         Controller.ActiveLayerSkill(false);
         Movement.Stop = false;
         WeaponManager.ShowWeapon();
+        IsPlayingSkill = false;
+
     }
     public virtual void TakeDmg()
     {

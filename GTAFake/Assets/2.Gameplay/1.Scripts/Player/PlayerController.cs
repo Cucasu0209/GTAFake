@@ -188,6 +188,11 @@ public class PlayerController : MonoBehaviour
         PlayerAnimator.SetTrigger("skill");
 
     }
+    public void EndSkill()
+    {
+        PlayerAnimator.SetTrigger("endskill");
+
+    }
     #endregion
 
     #region Gravity

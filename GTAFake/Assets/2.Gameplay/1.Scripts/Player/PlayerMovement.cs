@@ -5,19 +5,25 @@ using UnityEngine;
 using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed = 7;
+    [SerializeField] private float DefaultSpeed = 9;
+    [SerializeField] private float CurrentSpeed = 7;
     private PlayerController Controller;
     private float LastMoveInput = 0;
     public bool Stop = false;
 
     private void Start()
     {
+        CurrentSpeed = DefaultSpeed;
         Controller = GetComponent<PlayerController>();
         UserInputController.Instance.OnMovementJoystick += MovePlayer;
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnMovementJoystick -= MovePlayer;
+    }
+    public void SetScaleSpeed(float scale)
+    {
+        CurrentSpeed = DefaultSpeed * scale;
     }
     private void MovePlayer(float hzInput, float vInput)
     {
@@ -39,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
                     else rotation += 360;
                 }
                 transform.eulerAngles = Vector3.up * Mathf.Lerp(currentRotation, rotation, 10 * Time.deltaTime);
-                Controller.charController.Move(transform.forward * Speed * Time.deltaTime);
+                Controller.charController.Move(transform.forward * CurrentSpeed * Time.deltaTime);
             }
             LastMoveInput = Mathf.Lerp(LastMoveInput, MoveInput.magnitude, 20 * Time.deltaTime);
             Controller.SetSpeedAnim(LastMoveInput);
