@@ -136,20 +136,32 @@ public class PlayerWeaponManager : MonoBehaviour
         if (CurrentWeapon.Data.Type == WeaponType.Melee)
         {
             Controller.StartAttackAnim(CurrentWeapon.Data.Type, true);
+            Controller.AttackCallback = () =>
+            {
+                CurrentWeapon.Attack(Controller.transform);
+                if (CurrentWeapon.CheckRunoutOfBullet())
+                {
+                    ShowReloadBulletAnim();
+                }
+            };
         }
         else
         {
             CurrentWeapon.Attack(Controller.transform);
 
         }
-        Controller.AttackCallback = () =>
-        {
-            CurrentWeapon.Attack(Controller.transform);
-            if (CurrentWeapon.CheckRunoutOfBullet())
-            {
-                ShowReloadBulletAnim();
-            }
-        };
+
+    }
+
+    public void HideWeapon()
+    {
+        CurrentWeapon.gameObject.SetActive(false);
+
+    }
+    public void ShowWeapon()
+    {
+        CurrentWeapon.gameObject.SetActive(true);
+
     }
     #endregion  
 }

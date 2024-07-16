@@ -17,7 +17,7 @@ MonoBehaviour:
   Name: SimpleGun
   Description: Ehe
   BaseDmg: 3
-  Duration: 0.2
-  BulletCount: 22
+  Duration: 0.4
+  BulletCount: 0
   BulletMaxCount: 10
   LinkPrefab: Weapon/Prefab/PistalDemo

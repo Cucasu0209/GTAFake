@@ -18,6 +18,7 @@ public class UserInputController : MonoBehaviour
     public Action OnStartFlying;
     public Action OnEndFlying;
     public Action OnSwitchModel;
+    public Action OnPlayerPlaySkill;
 
     private void Awake()
     {

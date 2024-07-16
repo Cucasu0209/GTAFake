@@ -17,7 +17,7 @@ MonoBehaviour:
   Name: dsda
   Description: asdasda
   BaseDmg: 1
-  Duration: 12
-  BulletCount: 2
+  Duration: 0.15
+  BulletCount: 0
   BulletMaxCount: 50
   LinkPrefab: Weapon/Prefab/RifleDemo

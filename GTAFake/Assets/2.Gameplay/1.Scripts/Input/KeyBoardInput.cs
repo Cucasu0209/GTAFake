@@ -83,5 +83,9 @@ public class KeyBoardInput : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Q)) UserInputController.Instance.OnSwitchModel?.Invoke();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UserInputController.Instance.OnPlayerPlaySkill?.Invoke();
+        }
     }
 }

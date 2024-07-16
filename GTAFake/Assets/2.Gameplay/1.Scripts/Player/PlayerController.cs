@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public readonly string PistolBodyLayerName = "PistolAnimBody";
     public readonly string RifleLayerName = "Rifle";
     public readonly string RifleBodyLayerName = "RifleAnimBody";
+    public readonly string SkillLayerName = "Skill";
 
     [SerializeField] private Transform ForwardAxis;
     private Vector3 CurrentTarget;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public Action ReloadBulletCallback;
     public Action EndReloadBulletCallback;
     public Action OnEndChangeWeapon;
+    public Action OnTakeDmgSkill;
+    public Action OnEndSkill;
     #endregion
 
     #region Monobehaviour
@@ -175,6 +178,15 @@ public class PlayerController : MonoBehaviour
     public void SetAnimReload()
     {
         PlayerAnimator.SetTrigger("reload");
+    }
+    public void ActiveLayerSkill(bool active)
+    {
+        PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(SkillLayerName), active ? 1 : 0);
+    }
+    public void PlaySkill()
+    {
+        PlayerAnimator.SetTrigger("skill");
+
     }
     #endregion
 

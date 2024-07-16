@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Speed = 7;
     private PlayerController Controller;
     private float LastMoveInput = 0;
+    public bool Stop = false;
+
     private void Start()
     {
         Controller = GetComponent<PlayerController>();
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //if (Controller.IsAiming == false)
         //{
+        if (!Stop)
+        {
             Vector2 MoveInput = new Vector2(hzInput, vInput);
             Vector2 Direction = (new Vector2(hzInput, vInput)).normalized;
             if (MoveInput.magnitude > 0.1f)
@@ -39,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
             }
             LastMoveInput = Mathf.Lerp(LastMoveInput, MoveInput.magnitude, 20 * Time.deltaTime);
             Controller.SetSpeedAnim(LastMoveInput);
+        }
+
         //}
     }
 

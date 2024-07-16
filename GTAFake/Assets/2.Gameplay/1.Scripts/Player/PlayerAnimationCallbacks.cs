@@ -89,5 +89,13 @@ public class PlayerAnimationCallbacks : MonoBehaviour
         });
         Controller.EndReloadBulletCallback?.Invoke();
     }
+    public void TakeDmgSkill()
+    {
+        Controller.OnTakeDmgSkill?.Invoke();
+    }
+    public void EndSkill()
+    {
+        Controller.OnEndSkill?.Invoke();
+    }
     #endregion
 }
