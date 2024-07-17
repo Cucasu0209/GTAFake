@@ -6,10 +6,10 @@ using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float DefaultSpeed = 9;
-    [SerializeField] private float CurrentSpeed = 7;
+    private float CurrentSpeed = 7;
     private PlayerController Controller;
     private float LastMoveInput = 0;
-    public bool Stop = false;
+    private bool Stop = false;
 
     private void Start()
     {
@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetScaleSpeed(float scale)
     {
         CurrentSpeed = DefaultSpeed * scale;
+    }
+    public void SetCanRun(bool canRun)
+    {
+        Stop = !canRun;
     }
     private void MovePlayer(float hzInput, float vInput)
     {

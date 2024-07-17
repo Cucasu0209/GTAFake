@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerJumping : MonoBehaviour
 {
     private PlayerController Controller;
+    private bool CanJump = true;
     [SerializeField] private float JumpStartVeloc = 10;
 
     private void Start()
@@ -18,9 +19,13 @@ public class PlayerJumping : MonoBehaviour
         UserInputController.Instance.OnJumpBtnClick -= Jump;
 
     }
+    public void SetCanJump(bool capable)
+    {
+        CanJump = capable;
+    }
     private void Jump()
     {
-        if (Controller.IsGrounded())
+        if (Controller.IsGrounded() && CanJump)
         {
             Controller.Velocity += Vector3.up * (JumpStartVeloc - Controller.Velocity.y);
             Controller.SetJumpAnim();

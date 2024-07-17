@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAiming;
     public readonly string MeeleLayerName = "Melee";
     public readonly string MeeleBodyLayerName = "MeleeAnimBody";
+    public readonly string MeeleFullBodyLayerName = "MeleeFullBody";
     public readonly string PistolLayerName = "Pistol";
     public readonly string PistolBodyLayerName = "PistolAnimBody";
     public readonly string RifleLayerName = "Rifle";
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform ForwardAxis;
     private Vector3 CurrentTarget;
+    private int MeeleAttackIndex = 0;
+    private float Speed = 0;
 
     [Header("Weapon")]
     public bool ChangingWeapon = false;
@@ -82,6 +85,11 @@ public class PlayerController : MonoBehaviour
     public void SetSpeedAnim(float speed)
     {
         PlayerAnimator.SetFloat("speed", speed);
+        Speed = speed;
+        if ((PlayerAnimator.GetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName)) == 1 && speed < 0.5f) || (PlayerAnimator.GetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleFullBodyLayerName)) == 1 && speed > 0.5f))
+        {
+            StartAttackAnim(WeaponType.Melee, true);
+        }
     }
     public void SetAimingMovement(float hzInput, float vInput)
     {
@@ -98,58 +106,25 @@ public class PlayerController : MonoBehaviour
     }
     public void StartAttackAnim(WeaponType type, bool turnOn)
     {
-        switch (type)
-        {
-            case WeaponType.Melee:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), turnOn ? 1 : 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
-                break;
-            case WeaponType.Pistol:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), turnOn ? 1 : 0);
-                break;
-            case WeaponType.Rifle:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), turnOn ? 1 : 0);
-                break;
-            default:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), turnOn ? 1 : 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), 0);
-                break;
-
-        }
+        StartCoroutine(IEndChangeWeapon(MeeleBodyLayerName, type == WeaponType.Melee && turnOn && Speed > 0.5f));
+        StartCoroutine(IEndChangeWeapon(MeeleFullBodyLayerName, type == WeaponType.Melee && turnOn && Speed < 0.5f));
+        StartCoroutine(IEndChangeWeapon(RifleBodyLayerName, type == WeaponType.Rifle && turnOn));
+        StartCoroutine(IEndChangeWeapon(PistolBodyLayerName, type == WeaponType.Pistol && turnOn));
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleBodyLayerName), type == WeaponType.Melee && turnOn && !isFullBody ? 1 : 0);
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleFullBodyLayerName), type == WeaponType.Melee && turnOn && isFullBody ? 1 : 0);
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleBodyLayerName), type == WeaponType.Rifle && turnOn ? 1 : 0);
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolBodyLayerName), type == WeaponType.Pistol && turnOn ? 1 : 0);
     }
     public void StartChangeWeapon(WeaponType type)
     {
         StartAttackAnim(type, true);
-        switch (type)
-        {
-            case WeaponType.Melee:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 1);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
-                break;
-            case WeaponType.Pistol:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 1);
-                break;
-            case WeaponType.Rifle:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 1);
-                break;
-            default:
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), 1);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), 0);
-                PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), 0);
-                break;
+        StartCoroutine(IEndChangeWeapon(MeeleLayerName, type == WeaponType.Melee));
+        StartCoroutine(IEndChangeWeapon(RifleLayerName, type == WeaponType.Rifle));
+        StartCoroutine(IEndChangeWeapon(PistolLayerName, type == WeaponType.Pistol));
 
-        }
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(MeeleLayerName), type == WeaponType.Melee ? 1 : 0);
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(RifleLayerName), type == WeaponType.Rifle ? 1 : 0);
+        //PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(PistolLayerName), type == WeaponType.Pistol ? 1 : 0);
 
         PlayerAnimator.SetTrigger("changeweapon");
         CurrentWeaponType = type;
@@ -163,17 +138,25 @@ public class PlayerController : MonoBehaviour
         StartAttackAnim(CurrentWeaponType, false);
         if (IsAiming) UserInputController.Instance.OnStartAiming?.Invoke();
     }
-    IEnumerator IEndChangeWeapon()
+    IEnumerator IEndChangeWeapon(string Name, bool turnOn, float time = 0.15f)
     {
-        int id = PlayerAnimator.GetLayerIndex("ChangeWeapon");
-        float intensity = 1;
+        int id = PlayerAnimator.GetLayerIndex(Name);
+
+        //if (turnOn)
+        //{
+
         float loopCount = 30;
-        while (intensity > 0)
+        float intensity = PlayerAnimator.GetLayerWeight(PlayerAnimator.GetLayerIndex(Name));
+        while (turnOn ? intensity < 1 : intensity > 0)
         {
-            yield return new WaitForSeconds(0.3f / loopCount);
-            intensity -= 1 / loopCount;
+            yield return new WaitForSeconds(time / loopCount);
+            intensity = intensity + (turnOn ? 1 : -1) / loopCount;
             PlayerAnimator.SetLayerWeight(id, intensity);
         }
+        //}
+
+        PlayerAnimator.SetLayerWeight(id, turnOn ? 1 : 0);
+
     }
     public void SetAnimReload()
     {
@@ -183,6 +166,19 @@ public class PlayerController : MonoBehaviour
     {
         PlayerAnimator.SetLayerWeight(PlayerAnimator.GetLayerIndex(SkillLayerName), active ? 1 : 0);
     }
+    public void SetNextMeeleAttack()
+    {
+        MeeleAttackIndex++;
+        Debug.Log(MeeleAttackIndex);
+        MeeleAttackIndex %= 4;
+        PlayerAnimator.SetFloat("AttackMeeleIndex", MeeleAttackIndex);
+    }
+    public void ResetMeeleAttackIndex()
+    {
+        MeeleAttackIndex = 0;
+        PlayerAnimator.SetFloat("AttackMeeleIndex", MeeleAttackIndex);
+    }
+
     public void PlaySkill()
     {
         PlayerAnimator.SetTrigger("skill");

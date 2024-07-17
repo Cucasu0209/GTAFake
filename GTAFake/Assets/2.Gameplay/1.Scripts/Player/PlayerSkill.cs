@@ -6,13 +6,15 @@ public class PlayerSkill : MonoBehaviour
 {
     [HideInInspector] public PlayerController Controller;
     [HideInInspector] public PlayerMovement Movement;
+    [HideInInspector] public PlayerJumping Jumping;
     [HideInInspector] public PlayerWeaponManager WeaponManager;
     protected bool IsPlayingSkill = false;
     public virtual void Start()
     {
-        Controller = GetComponent<PlayerController>();
-        Movement = GetComponent<PlayerMovement>();
-        WeaponManager = GetComponent<PlayerWeaponManager>();
+        Controller = transform.parent.GetComponent<PlayerController>();
+        Movement = transform.parent.GetComponent<PlayerMovement>();
+        WeaponManager = transform.parent.GetComponent<PlayerWeaponManager>();
+        Jumping = transform.parent.GetComponent<PlayerJumping>();
         UserInputController.Instance.OnPlayerPlaySkill += PlaySkill;
         Controller.OnEndSkill = OnEndSkill;
         Controller.OnTakeDmgSkill = TakeDmg;
@@ -23,16 +25,20 @@ public class PlayerSkill : MonoBehaviour
     }
     public virtual void PlaySkill()
     {
-        Controller.ActiveLayerSkill(true);
-        Controller.PlaySkill();
-        Movement.Stop = true;
-        WeaponManager.HideWeapon();
-        IsPlayingSkill = true;
+        if (IsPlayingSkill == false)
+        {
+            Controller.ActiveLayerSkill(true);
+            Controller.PlaySkill();
+            Movement.SetCanRun(false);
+            WeaponManager.HideWeapon();
+            IsPlayingSkill = true;
+        }
+
     }
     public virtual void OnEndSkill()
     {
         Controller.ActiveLayerSkill(false);
-        Movement.Stop = false;
+        Movement.SetCanRun(true);
         WeaponManager.ShowWeapon();
         IsPlayingSkill = false;
 

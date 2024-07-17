@@ -22,7 +22,7 @@ public class PlayerHeartUI : MonoBehaviour
     {
         if ((player != null))
         {
-            PosInCamera = Camera.main.WorldToViewportPoint(player.position + Vector3.up * 2.5f);
+            PosInCamera = Camera.main.WorldToViewportPoint(player.position + Vector3.up * 2.7f);
             Slider.anchoredPosition = new Vector2((PosInCamera.x - 0.5f) * Viewport.sizeDelta.x, (PosInCamera.y - 0.5f) * Viewport.sizeDelta.y);
         }
 

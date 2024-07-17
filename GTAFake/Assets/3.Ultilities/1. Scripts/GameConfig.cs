@@ -1,4 +1,5 @@
-﻿using EnhancedScrollerDemos.Chat;
+﻿using BestHTTP.SecureProtocol.Org.BouncyCastle.Asn1.Crmf;
+using EnhancedScrollerDemos.Chat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -73,4 +74,13 @@ public static class GameConfig
     public static int RerollMissionBaseReward = 5;
     public static int GetStreakBaseReward = 5;
 
+}
+public enum CharacterType
+{
+    Gangster,
+    Soldier,
+    SpiderMan1,
+    SpiderMan2,
+    Mech1,
+    Mech2,
 }

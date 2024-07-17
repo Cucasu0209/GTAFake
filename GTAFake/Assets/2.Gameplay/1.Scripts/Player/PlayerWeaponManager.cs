@@ -11,6 +11,9 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public Action ChangeWeaponDataCallback;
     private bool reloadingBullet = false;
+    private bool CanAttack = true;
+    private bool CanSwitchWeapon = true;
+
 
     #region Monobehaviour
     IEnumerator Start()
@@ -33,6 +36,14 @@ public class PlayerWeaponManager : MonoBehaviour
     #endregion
 
     #region Action
+    public void SetCanAttack(bool canAttack)
+    {
+        CanAttack = canAttack;
+    }
+    public void SetCanSwitchWeapon(bool canSwitchWeapon)
+    {
+        CanSwitchWeapon = canSwitchWeapon;
+    }
     private void ShowReloadBulletAnim()
     {
         reloadingBullet = true;
@@ -56,9 +67,13 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void OnChangeWeapon(WeaponType type)
     {
-        Controller.StartChangeWeapon(type);
-        if (Controller.IsAiming) UserInputController.Instance.OnCancelAiming?.Invoke();
-        Controller.ChangeWeaponDataCallback = () => SwitchWeapon(type);
+        if (CanSwitchWeapon)
+        {
+            Controller.StartChangeWeapon(type);
+            if (Controller.IsAiming) UserInputController.Instance.OnCancelAiming?.Invoke();
+            Controller.ChangeWeaponDataCallback = () => SwitchWeapon(type);
+        }
+
     }
     private void SwitchWeapon(WeaponType type)
     {
@@ -109,7 +124,10 @@ public class PlayerWeaponManager : MonoBehaviour
     }
     private void SetAimingState(float hz, float v)
     {
-        ShowAnimAttack();
+        if (CanAttack)
+        {
+            ShowAnimAttack();
+        }
     }
     private void StartAiming()
     {
@@ -128,7 +146,10 @@ public class PlayerWeaponManager : MonoBehaviour
     private void EndAttack()
     {
         endAttack = true;
-        Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
+        if (Controller.IsAiming == false)
+            Controller.StartAttackAnim(CurrentWeapon.Data.Type, false);
+        if (CurrentWeapon.Data.Type == WeaponType.Melee)
+            Controller.SetNextMeeleAttack();
     }
     private void ShowAnimAttack()
     {

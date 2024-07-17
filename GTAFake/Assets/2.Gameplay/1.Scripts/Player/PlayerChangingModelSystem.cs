@@ -1,11 +1,12 @@
 
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChangingModelSystem : MonoBehaviour
+public class PlayerChangingModelSystem : SerializedMonoBehaviour
 {
     public Animator CurrentAnim;
-    public int currentIndex = -1;
-    public GameObject[] Model;
+    public Dictionary<CharacterType, GameObject> CharactorDictionary;
     private void Start()
     {
         UserInputController.Instance.OnSwitchModel += OnSwitchModel;
@@ -13,30 +14,25 @@ public class PlayerChangingModelSystem : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchToPlayer(0);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) SwitchToPlayer(1);
-        if (Input.GetKeyDown(KeyCode.Alpha7)) SwitchToPlayer(2);
-        if (Input.GetKeyDown(KeyCode.Alpha8)) SwitchToPlayer(3);
-        if (Input.GetKeyDown(KeyCode.Alpha9)) SwitchToPlayer(4);
-        if (Input.GetKeyDown(KeyCode.Alpha0)) SwitchToPlayer(5);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) SwitchToPlayer(CharacterType.Gangster);
+        if (Input.GetKeyDown(KeyCode.Alpha6)) SwitchToPlayer(CharacterType.Soldier);
+        if (Input.GetKeyDown(KeyCode.Alpha7)) SwitchToPlayer(CharacterType.SpiderMan1);
+        if (Input.GetKeyDown(KeyCode.Alpha8)) SwitchToPlayer(CharacterType.SpiderMan2);
+        if (Input.GetKeyDown(KeyCode.Alpha9)) SwitchToPlayer(CharacterType.Mech1);
+        if (Input.GetKeyDown(KeyCode.Alpha0)) SwitchToPlayer(CharacterType.Mech2);
     }
     private void OnDestroy()
     {
         UserInputController.Instance.OnSwitchModel -= OnSwitchModel;
     }
-    private void OnSwitchModel()
+    private void OnSwitchModel(CharacterType type)
     {
-        int newIndex = currentIndex + 1;
-        SwitchToPlayer(newIndex);
+        SwitchToPlayer(type);
     }
-    private void SwitchToPlayer(int playerIndex)
+    private void SwitchToPlayer(CharacterType type)
     {
-        playerIndex %= Model.Length;
-        if (currentIndex == playerIndex) return;
-        if (playerIndex >= Model.Length) return;
         Destroy(CurrentAnim.gameObject);
-        currentIndex = playerIndex;
-        GameObject newmodel = Instantiate(Model[currentIndex], transform);
+        GameObject newmodel = Instantiate(CharactorDictionary[type], transform);
         newmodel.transform.localPosition = Vector3.zero;
         CurrentAnim = newmodel.GetComponent<Animator>();
         gameObject.GetComponent<PlayerController>().PlayerAnimator = newmodel.GetComponent<Animator>();

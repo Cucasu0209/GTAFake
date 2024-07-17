@@ -59,9 +59,9 @@ public class PlayerAnimationCallbacks : MonoBehaviour
     {
         Controller.AttackCallback?.Invoke();
     }
-    public void EndAttack()
+    public void EndAttack(string log)
     {
-
+        Debug.Log(log);
         Controller.EndAttackCallback?.Invoke();
         if (Controller.IsFiring == false)
         {

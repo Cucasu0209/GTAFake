@@ -14,7 +14,7 @@ public class SpiderMan1Skill : PlayerSkill
         {
             Controller.EndSkill();
             Movement.SetScaleSpeed(1);
-            Movement.Stop = true;
+            Movement.SetCanRun(false);
             IsPlayingSkill = false;
         }
 
@@ -23,8 +23,6 @@ public class SpiderMan1Skill : PlayerSkill
     {
         base.TakeDmg();
         Movement.SetScaleSpeed(2);
-
-        Movement.Stop = false;
-
+        Movement.SetCanRun(true);
     }
 }

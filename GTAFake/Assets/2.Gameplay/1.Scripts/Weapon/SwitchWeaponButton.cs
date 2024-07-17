@@ -19,6 +19,7 @@ public class SwitchWeaponButton : MonoBehaviour, IPointerDownHandler, IPointerUp
     public void Setup()
     {
         Icon.sprite = Resources.Load<Sprite>(WeaponConfig.GetIconLink(Type));
+        Icon.SetNativeSize();
         CountdownImg.fillAmount = 0;
         OnBulletCountChange();
     }

@@ -13,7 +13,7 @@ public class MobileFeatureInput : MonoBehaviour
     private void Start()
     {
         JumpBtn.onClick.AddListener(() => UserInputController.Instance.OnJumpBtnClick?.Invoke());
-        SwitchModelBtn.onClick.AddListener(() => UserInputController.Instance.OnSwitchModel?.Invoke());
+     //   SwitchModelBtn.onClick.AddListener(() => UserInputController.Instance.OnSwitchModel?.Invoke());
         AimingJoystick.OnStartDrag += OnStartAiming;
         AimingJoystick.OnEndDrag += OnEndAiming;
     }

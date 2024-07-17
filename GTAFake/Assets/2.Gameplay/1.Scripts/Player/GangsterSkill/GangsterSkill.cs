@@ -13,6 +13,13 @@ public class GangsterSkill : PlayerSkill
     {
         base.Start();
     }
+    public override void PlaySkill()
+    {
+        base.PlaySkill();
+        Jumping.SetCanJump(false);
+        WeaponManager.SetCanSwitchWeapon(false);
+        WeaponManager.SetCanAttack(false);
+    }
     public override void TakeDmg()
     {
         base.TakeDmg();
@@ -21,5 +28,12 @@ public class GangsterSkill : PlayerSkill
         NewBomb.transform.parent = null;
         NewBomb.Fly(Controller.transform);
 
+    }
+    public override void OnEndSkill()
+    {
+        base.OnEndSkill();
+        Jumping.SetCanJump(true);
+        WeaponManager.SetCanSwitchWeapon(true);
+        WeaponManager.SetCanAttack(true);
     }
 }
