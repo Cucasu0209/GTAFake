@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using AmplifyImpostors;
 public class PlayerWeaponManager : MonoBehaviour
 {
     private PlayerController Controller;
-    [SerializeField] public Transform WeaponPosition;
+    [SerializeField] public Transform HandRight;
+    [SerializeField] public Transform HandLeft;
     [HideInInspector] public BaseWeapon CurrentWeapon;
     public List<BaseWeapon> CurrentWeapons = new List<BaseWeapon>();
 
@@ -19,12 +21,18 @@ public class PlayerWeaponManager : MonoBehaviour
     IEnumerator Start()
     {
         Controller = GetComponent<PlayerController>();
+        if (HandRight == null) HandRight = GetComponentInChildren<PlayerAnimationCallbacks>().HandRight;
+        if (HandLeft == null) HandLeft = GetComponentInChildren<PlayerAnimationCallbacks>().HandLeft;
         UserInputController.Instance.OnSwitchWeapon += OnChangeWeapon;
         UserInputController.Instance.OnAimingJoystick += SetAimingState;
         UserInputController.Instance.OnStartAiming += StartAiming;
         UserInputController.Instance.OnCancelAiming += CancelAiming;
+        UserInputController.Instance.OnSwitchModel += ChangeModel;
         yield return null;
         UserInputController.Instance.OnSwitchWeapon?.Invoke(WeaponType.Melee);
+        yield return null;
+        if (HandRight == null) HandRight = GetComponentInChildren<PlayerAnimationCallbacks>().HandRight;
+        if (HandLeft == null) HandLeft = GetComponentInChildren<PlayerAnimationCallbacks>().HandLeft;
     }
     private void OnDestroy()
     {
@@ -36,6 +44,16 @@ public class PlayerWeaponManager : MonoBehaviour
     #endregion
 
     #region Action
+    public void ChangeModel(CharacterType type)
+    {
+        //StartCoroutine(aaaaaa());
+    }
+    IEnumerator aaaaaa()
+    {
+        yield return new WaitForSeconds(0.5f);
+        HandRight = GetComponentInChildren<PlayerAnimationCallbacks>().HandRight;
+        HandLeft = GetComponentInChildren<PlayerAnimationCallbacks>().HandLeft;
+    }
     public void SetCanAttack(bool canAttack)
     {
         CanAttack = canAttack;
@@ -107,6 +125,27 @@ public class PlayerWeaponManager : MonoBehaviour
                 if (CurrentWeapon != null) CurrentWeapon.gameObject.SetActive(false);
                 CurrentWeapon = weapon;
                 CurrentWeapon.gameObject.SetActive(true);
+                if ((GetComponentInChildren<PlayerAnimationCallbacks>().CharacterType == CharacterType.Mech5 || GetComponentInChildren<PlayerAnimationCallbacks>().CharacterType == CharacterType.Mech6))
+                {
+                    CurrentWeapon.transform.localPosition = Vector3.up * 10000;
+
+                    HandRight = GetComponentInChildren<PlayerAnimationCallbacks>().HandRight;
+                    HandLeft = GetComponentInChildren<PlayerAnimationCallbacks>().HandLeft;
+
+                    if (CurrentWeapon is Gun)
+                    {
+                        ((Gun)CurrentWeapon).HeadGun = new Transform[] { HandRight, HandLeft };
+                    }
+                }
+                else
+                {
+                    CurrentWeapon.transform.localPosition = Vector3.zero;
+                    if (CurrentWeapon is Gun)
+                    {
+                        ((Gun)CurrentWeapon).HeadGun = new Transform[] { ((Gun)CurrentWeapon).DefaultHeadGun };
+                    }
+
+                }
                 return;
             }
         }
@@ -114,12 +153,29 @@ public class PlayerWeaponManager : MonoBehaviour
         BaseWeapon wr = Resources.Load<BaseWeapon>(data.LinkPrefab);
         if (wr != null)
         {
-            BaseWeapon w = Instantiate(wr, WeaponPosition);
+            BaseWeapon w = Instantiate(wr, HandRight);
             w.Data = data;
             w.transform.localPosition = Vector3.zero;
             CurrentWeapons.Add(w);
             if (CurrentWeapon != null) CurrentWeapon.gameObject.SetActive(false);
             CurrentWeapon = w;
+            if ((GetComponentInChildren<PlayerAnimationCallbacks>().CharacterType == CharacterType.Mech5 || GetComponentInChildren<PlayerAnimationCallbacks>().CharacterType == CharacterType.Mech6))
+            {
+                w.transform.localPosition = Vector3.up * 10000;
+
+                HandRight = GetComponentInChildren<PlayerAnimationCallbacks>().HandRight;
+                HandLeft = GetComponentInChildren<PlayerAnimationCallbacks>().HandLeft;
+                if (w is Gun)
+                {
+                    ((Gun)w).HeadGun = new Transform[] { HandRight, HandLeft };
+                }
+            }
+            else
+            {
+                w.transform.localPosition = Vector3.zero;
+                ((Gun)CurrentWeapon).HeadGun = new Transform[] { ((Gun)CurrentWeapon).DefaultHeadGun };
+
+            }
         }
     }
     private void SetAimingState(float hz, float v)

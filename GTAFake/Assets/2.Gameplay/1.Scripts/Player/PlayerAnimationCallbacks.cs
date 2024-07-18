@@ -7,8 +7,9 @@ using UnityEngine.Animations.Rigging;
 public class PlayerAnimationCallbacks : MonoBehaviour
 {
     [HideInInspector] public PlayerController Controller;
-
-    public Transform RightHand;
+    public CharacterType CharacterType;
+    public Transform HandRight;
+    public Transform HandLeft;
     public MultiAimConstraint RHandConstraint;
 
     public void Start()

@@ -2,10 +2,9 @@ using DG.Tweening;
 using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bomb_GangsterSkill : MonoBehaviour
+public class Spider2Web : MonoBehaviour
 {
     public Vector2 StartVelocity = new Vector2(3, 5);
     public Rigidbody Body;
@@ -25,7 +24,7 @@ public class Bomb_GangsterSkill : MonoBehaviour
     {
         Vector3 newfir = forward.forward.normalized * StartVelocity.y + Vector3.up * StartVelocity.x;
         Body.velocity = newfir;
-        DOVirtual.DelayedCall(1, () => canTrigger = true);
+        DOVirtual.DelayedCall(0.3f, () => canTrigger = true);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -81,6 +81,6 @@ public enum CharacterType
     Soldier,
     SpiderMan1,
     SpiderMan2,
-    Mech1,
-    Mech2,
+    Mech5,
+    Mech6,
 }

@@ -9,6 +9,9 @@ public class SpiderMan1Skill : PlayerSkill
         if (IsPlayingSkill == false)
         {
             base.PlaySkill();
+            Jumping.SetCanJump(false);
+            WeaponManager.SetCanSwitchWeapon(false);
+            WeaponManager.SetCanAttack(false);
         }
         else
         {
@@ -24,5 +27,12 @@ public class SpiderMan1Skill : PlayerSkill
         base.TakeDmg();
         Movement.SetScaleSpeed(2);
         Movement.SetCanRun(true);
+    }
+    public override void OnEndSkill()
+    {
+        base.OnEndSkill();
+        Jumping.SetCanJump(true);
+        WeaponManager.SetCanSwitchWeapon(true);
+        WeaponManager.SetCanAttack(true);
     }
 }

@@ -8,7 +8,8 @@ public class Gun : BaseWeapon
 {
     [Header("Attack")]
     public GameObject Bullet;
-    public Transform HeadGun;
+    public Transform[] HeadGun;
+    public Transform DefaultHeadGun;
 
 
     private float LastTimeFire = -1;
@@ -17,10 +18,14 @@ public class Gun : BaseWeapon
         base.Attack(character);
         if (Time.time - LastTimeFire > Data.Duration)
         {
-            LastTimeFire = Time.time;
-            GameObject newbu = LeanPool.Spawn(Bullet, HeadGun.position, Quaternion.identity);
-            newbu.GetComponent<Bullet>().SetVelocity(character.forward);
-            newbu.GetComponent<Bullet>().SetDmg(Data.BaseDmg);
+            for (int i = 0; i < HeadGun.Length; i++)
+            {
+                LastTimeFire = Time.time;
+                GameObject newbu = LeanPool.Spawn(Bullet, HeadGun[i].position, Quaternion.identity);
+                newbu.GetComponent<Bullet>().SetVelocity(character.forward);
+                newbu.GetComponent<Bullet>().SetDmg(Data.BaseDmg);
+            }
+
         }
 
     }

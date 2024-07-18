@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour, IActor
     private float Health = 10;
     [SerializeField] private float MaxHealth = 10;
 
+    public bool Run = true;
+
     public void Respawn()
     {
         Anim.applyRootMotion = false;
@@ -64,7 +66,7 @@ public class EnemyController : MonoBehaviour, IActor
     void Update()
     {
         Anim.SetFloat("speed", Agent.velocity.magnitude);
-        if (Time.time - LastTimeCheckFollow > Random.Range(0.5f, 1))
+        if (Time.time - LastTimeCheckFollow > Random.Range(0.5f, 1) && Run)
         {
             LastTimeCheckFollow = Time.time;
             PlayerController player = FindAnyObjectByType<PlayerController>();

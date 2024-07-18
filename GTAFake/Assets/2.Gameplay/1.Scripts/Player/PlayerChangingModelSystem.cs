@@ -9,6 +9,7 @@ public class PlayerChangingModelSystem : SerializedMonoBehaviour
     public Dictionary<CharacterType, GameObject> CharactorDictionary;
     private void Start()
     {
+        if (CurrentAnim == null) CurrentAnim = GetComponentInChildren<Animator>();
         UserInputController.Instance.OnSwitchModel += OnSwitchModel;
 
     }
@@ -18,8 +19,8 @@ public class PlayerChangingModelSystem : SerializedMonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6)) SwitchToPlayer(CharacterType.Soldier);
         if (Input.GetKeyDown(KeyCode.Alpha7)) SwitchToPlayer(CharacterType.SpiderMan1);
         if (Input.GetKeyDown(KeyCode.Alpha8)) SwitchToPlayer(CharacterType.SpiderMan2);
-        if (Input.GetKeyDown(KeyCode.Alpha9)) SwitchToPlayer(CharacterType.Mech1);
-        if (Input.GetKeyDown(KeyCode.Alpha0)) SwitchToPlayer(CharacterType.Mech2);
+        if (Input.GetKeyDown(KeyCode.Alpha9)) SwitchToPlayer(CharacterType.Mech5);
+        if (Input.GetKeyDown(KeyCode.Alpha0)) SwitchToPlayer(CharacterType.Mech6);
     }
     private void OnDestroy()
     {
@@ -36,11 +37,14 @@ public class PlayerChangingModelSystem : SerializedMonoBehaviour
         newmodel.transform.localPosition = Vector3.zero;
         CurrentAnim = newmodel.GetComponent<Animator>();
         gameObject.GetComponent<PlayerController>().PlayerAnimator = newmodel.GetComponent<Animator>();
-        gameObject.GetComponent<PlayerWeaponManager>().WeaponPosition = newmodel.GetComponent<PlayerAnimationCallbacks>().RightHand;
+        gameObject.GetComponent<PlayerWeaponManager>().HandRight = newmodel.GetComponent<PlayerAnimationCallbacks>().HandRight;
         foreach (var weapon in gameObject.GetComponent<PlayerWeaponManager>().CurrentWeapons)
         {
-            weapon.transform.parent = newmodel.GetComponent<PlayerAnimationCallbacks>().RightHand;
-            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.parent = newmodel.GetComponent<PlayerAnimationCallbacks>().HandRight;
+            if (type == CharacterType.Mech5 || type == CharacterType.Mech6)
+                weapon.transform.localPosition = Vector3.up * 10000;
+
+            else weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
