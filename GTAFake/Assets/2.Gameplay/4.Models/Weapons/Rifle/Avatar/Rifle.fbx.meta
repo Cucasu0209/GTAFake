@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: c853d1987f70f0749897acf2cabaa929
+guid: c381369375400bd418f3339276d53b88
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rifle_Mat
+    second: {fileID: 2100000, guid: 7333125ce43cc254686b278a271f98fc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -99,7 +104,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: ac31680cf6ccb9348ab4ea2a695f8759
+guid: 5b5f0ec9c3ed9be4787d06fe942c9bbc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machete_Mat
+    second: {fileID: 2100000, guid: a853eb8ee66067a4f9d3a2c4c224f1e1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -99,7 +104,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
