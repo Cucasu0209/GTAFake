@@ -173,7 +173,7 @@ public class PlayerWeaponManager : MonoBehaviour
             else
             {
                 w.transform.localPosition = Vector3.zero;
-                ((Gun)CurrentWeapon).HeadGun = new Transform[] { ((Gun)CurrentWeapon).DefaultHeadGun };
+                if (w is Gun) ((Gun)CurrentWeapon).HeadGun = new Transform[] { ((Gun)CurrentWeapon).DefaultHeadGun };
 
             }
         }

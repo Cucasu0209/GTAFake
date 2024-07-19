@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += 150 * Velocity.normalized * Time.deltaTime;
+        transform.position += 100 * Velocity.normalized * Time.deltaTime;
         if (Physics.Raycast(transform.position - Velocity.normalized * 3, Velocity.normalized, out hit, 6, EnemyMask))
         {
             if (hit.collider.gameObject.GetComponent<IActor>() != null)

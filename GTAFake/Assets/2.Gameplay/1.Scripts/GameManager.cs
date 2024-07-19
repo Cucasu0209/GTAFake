@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Action<EnemyController> OnSpawnNewEnemy;
     public Action<EnemyController> OnEnemyDied;
     public Action OnPlayerFired;
-    private List<EnemyController> Enemies = new List<EnemyController>();
+    [SerializeField] private List<EnemyController> Enemies = new List<EnemyController>();
 
     private void Awake()
     {
@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        foreach (EnemyController enemy in FindObjectsByType<EnemyController>(FindObjectsSortMode.None))
+        {
+            Enemies.Add(enemy);
+        }
         playerController = FindAnyObjectByType<PlayerController>();
     }
     public List<EnemyController> GetEnemies() => Enemies;

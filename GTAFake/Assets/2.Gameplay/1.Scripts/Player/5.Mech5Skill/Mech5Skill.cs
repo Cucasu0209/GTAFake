@@ -5,6 +5,9 @@ using UnityEngine;
 public class Mech5Skill : PlayerSkill
 {
     public GameObject Fire;
+    public Transform HeadGun;
+    private readonly int SkillDmg = 1;
+    private readonly float fireGap = 0.1f;
     public override void PlaySkill()
     {
         if (IsPlayingSkill == false)
@@ -14,7 +17,8 @@ public class Mech5Skill : PlayerSkill
             Controller.PlaySkill();
             WeaponManager.HideWeapon();
             IsPlayingSkill = true;
-
+            StopAllCoroutines();
+            StartCoroutine(IAttack());
             WeaponManager.SetCanSwitchWeapon(false);
             WeaponManager.SetCanAttack(false);
             Fire.SetActive(true);
@@ -28,8 +32,18 @@ public class Mech5Skill : PlayerSkill
             WeaponManager.SetCanSwitchWeapon(true);
             WeaponManager.SetCanAttack(true);
             Fire.SetActive(false);
+            StopAllCoroutines();
 
         }
 
+    }
+    IEnumerator IAttack()
+    {
+        while (true)
+        {
+            PlayerTakeDmgSystem.Instance.TakeDmgInCircleArea(HeadGun.position, 6, SkillDmg);
+            yield return new WaitForSeconds(fireGap);
+
+        }
     }
 }

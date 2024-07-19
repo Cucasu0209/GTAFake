@@ -9,6 +9,7 @@ public class GangsterSkill : PlayerSkill
     public Bomb_GangsterSkill BombPrefab;
     public Transform RightHand;
     public float SkillDelay = 1;
+    Bomb_GangsterSkill NewBomb;
     public override void Start()
     {
         base.Start();
@@ -19,13 +20,14 @@ public class GangsterSkill : PlayerSkill
         Jumping.SetCanJump(false);
         WeaponManager.SetCanSwitchWeapon(false);
         WeaponManager.SetCanAttack(false);
+        NewBomb = LeanPool.Spawn(BombPrefab, RightHand);
+        NewBomb.transform.localPosition = Vector3.zero;
     }
     public override void TakeDmg()
     {
         base.TakeDmg();
-        Bomb_GangsterSkill NewBomb = LeanPool.Spawn(BombPrefab, RightHand);
-        NewBomb.transform.localPosition = Vector3.zero;
         NewBomb.transform.parent = null;
+
         NewBomb.Fly(Controller.transform);
 
     }

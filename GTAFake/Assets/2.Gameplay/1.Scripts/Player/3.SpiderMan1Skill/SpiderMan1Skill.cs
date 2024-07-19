@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SpiderMan1Skill : PlayerSkill
 {
@@ -20,7 +21,6 @@ public class SpiderMan1Skill : PlayerSkill
             Movement.SetCanRun(false);
             IsPlayingSkill = false;
         }
-
     }
     public override void TakeDmg()
     {
