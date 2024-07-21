@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class Bomb_GangsterSkill : MonoBehaviour
 {
-    public Vector2 StartVelocity = new Vector2(3, 5);
-    public float gravityScale = 6;
+    public Vector2 StartVelocity = new Vector2(15, 40);
+    public float gravityScale = 8;
     public MeshRenderer Renderer;
     public GameObject ParticleSystem;
     public float radious = 10;
@@ -52,7 +52,10 @@ public class Bomb_GangsterSkill : MonoBehaviour
             Renderer.enabled = false;
 
             LeanPool.Despawn(gameObject, 3);
-            PlayerTakeDmgSystem.Instance.TakeDmgInCircleArea(transform.position, radious, 999);
+            foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(transform.position, 6))
+            {
+                enemy.TakeDmg(999);
+            }
 
             Debug.Log(transform.rotation.eulerAngles);
             flying = false;

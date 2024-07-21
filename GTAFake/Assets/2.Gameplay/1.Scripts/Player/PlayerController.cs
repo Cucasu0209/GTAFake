@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
 
     [Header("Gravity")]
+    public bool IsAntigravity = false;
     [SerializeField] public float Gravity = -50;
     public readonly float DefaultGravity = -50;
     public Vector3 Velocity;
@@ -188,16 +189,20 @@ public class PlayerController : MonoBehaviour
     }
     void ApplyGravity()
     {
-        if (IsGrounded() == false)
+        if (IsAntigravity == false)
         {
-            Velocity.y += Gravity * Time.deltaTime;
-        }
-        else if (Velocity.y < 0)
-        {
-            Velocity.y = 0;
-        }
 
-        charController.Move(Velocity * Time.deltaTime);
+            if (IsGrounded() == false)
+            {
+                Velocity.y += Gravity * Time.deltaTime;
+            }
+            else if (Velocity.y < 0)
+            {
+                Velocity.y = 0;
+            }
+
+            charController.Move(Velocity * Time.deltaTime);
+        }
     }
     #endregion
 

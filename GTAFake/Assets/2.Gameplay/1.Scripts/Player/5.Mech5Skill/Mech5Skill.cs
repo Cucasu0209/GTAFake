@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Mech5Skill : PlayerSkill
 {
@@ -41,7 +42,10 @@ public class Mech5Skill : PlayerSkill
     {
         while (true)
         {
-            PlayerTakeDmgSystem.Instance.TakeDmgInCircleArea(HeadGun.position, 6, SkillDmg);
+            foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(HeadGun.position, 6))
+            {
+                enemy.TakeDmg(SkillDmg);
+            }
             yield return new WaitForSeconds(fireGap);
 
         }

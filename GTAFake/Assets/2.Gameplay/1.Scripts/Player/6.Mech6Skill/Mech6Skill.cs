@@ -38,7 +38,10 @@ public class Mech6Skill : PlayerSkill
     {
         while (true)
         {
-            PlayerTakeDmgSystem.Instance.TakeDmgInCircleArea(transform.position, 7, SkillDmg);
+            foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(transform.position, 7))
+            {
+                enemy.TakeDmg(SkillDmg);
+            }
             yield return new WaitForSeconds(fireGap);
 
         }

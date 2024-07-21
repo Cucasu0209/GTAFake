@@ -10,16 +10,9 @@ public class PlayerTakeDmgSystem : MonoBehaviour
     {
         Instance = this;
     }
-    public void TakeDmgInCircleArea(Vector3 position, float radius, float dmg)
-    {
-        foreach (var enemy in GetEnemyInCircleArea(position, radius))
-        {
-            enemy.TakeDmg(dmg);
-            Debug.Log("aaaaaaaaaaaaaaaa");
-        }
-    }
 
-    private List<EnemyController> GetEnemyInCircleArea(Vector3 position, float radius)
+
+    public List<EnemyController> GetEnemyInCircleArea(Vector3 position, float radius)
     {
         List<EnemyController> reru = new List<EnemyController>();
         Vector3 enemyPos;
@@ -32,15 +25,8 @@ public class PlayerTakeDmgSystem : MonoBehaviour
         return reru;
     }
 
-    public void TakeDmgInBox(Vector3[] corner, float dmg)
-    {
-        foreach (var enemy in GetEnemyInBox(corner))
-        {
-            enemy.TakeDmg(dmg);
-        }
-    }
 
-    private List<EnemyController> GetEnemyInBox(Vector3[] corner)
+    public List<EnemyController> GetEnemyInBox(Vector3[] corner)
     {
         List<EnemyController> reru = new List<EnemyController>();
         Vector3 enemyPos;
