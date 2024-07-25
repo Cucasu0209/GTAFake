@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Action<EnemyController> OnEnemyDied;
     public Action OnPlayerFired;
     [SerializeField] private List<EnemyController> Enemies = new List<EnemyController>();
+    public LayerMask PlayerLayer;
+    public LayerMask EnemyLayer;
 
     private void Awake()
     {
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
             Enemies.Add(enemy);
         }
         playerController = FindAnyObjectByType<PlayerController>();
+        Physics.IgnoreLayerCollision(9, 10, true);
+        Physics.IgnoreLayerCollision(10, 10, true);
     }
     public List<EnemyController> GetEnemies() => Enemies;
     public void AddNewEnemy(EnemyController enemy)

@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ae30e2f4d2a7746ab1d69e20a3feca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartVelocity: {x: 15, y: 40}
-  gravityScale: 8
+  StartVelocity: {x: 12, y: 30}
+  gravityScale: 10
   Renderer: {fileID: 5669472338059119363}
   ParticleSystem: {fileID: 9098120317560580351}
   radious: 10
@@ -268,7 +268,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2

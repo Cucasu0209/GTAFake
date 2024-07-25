@@ -11,6 +11,7 @@ public class Spider2Web : MonoBehaviour
     public MeshRenderer Renderer;
     public GameObject ParticleSystem;
     public float radious = 10;
+    public float StunDuration = 15;
     bool canTrigger = false;
     private Vector3 currentVelocity = Vector3.zero;
     private bool flying = false;
@@ -18,8 +19,8 @@ public class Spider2Web : MonoBehaviour
     private void OnEnable()
     {
         transform.rotation = Quaternion.Euler(0, 0, 0);
-        ParticleSystem.active = false;
-
+        ParticleSystem.GetComponent<ParticleSystem>().Stop();
+        ParticleSystem.SetActive(false);
         Renderer.enabled = true;
         canTrigger = false;
         flying = false;
@@ -28,7 +29,7 @@ public class Spider2Web : MonoBehaviour
     public void Fly(Transform forward)
     {
         currentVelocity = forward.forward.normalized * StartVelocity.y + Vector3.up * StartVelocity.x;
-        DOVirtual.DelayedCall(0.4f, () => canTrigger = true);
+        DOVirtual.DelayedCall(0.1f, () => canTrigger = true);
         flying = true;
     }
     private void Update()
@@ -43,17 +44,22 @@ public class Spider2Web : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (canTrigger)
+        Bloom();
+    }
+    private void Bloom()
+    {
+        if (canTrigger && flying)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
-            ParticleSystem.active = true;
+            ParticleSystem.SetActive(true);
             Renderer.enabled = false;
 
             LeanPool.Despawn(gameObject, 3);
-            foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(transform.position, 6))
+            foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(transform.position, 10))
             {
-                enemy.TakeDmg(999);
+                enemy.StunFor(StunDuration);
+
             }
 
             Debug.Log(transform.rotation.eulerAngles);

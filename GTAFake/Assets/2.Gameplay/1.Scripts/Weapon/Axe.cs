@@ -17,6 +17,9 @@ public class Axe : BaseWeapon
         foreach (var enemy in PlayerTakeDmgSystem.Instance.GetEnemyInCircleArea(character.transform.position, 4))
         {
             enemy.TakeDmg(Data.BaseDmg);
+            GameObject fx = LeanPool.Spawn(HitEffect, enemy.transform.position + Vector3.up * 1f, Quaternion.identity);
+            fx.transform.localScale = Vector3.one * 0.7f;
+            LeanPool.Despawn(fx, 3);
         }
     }
 }
