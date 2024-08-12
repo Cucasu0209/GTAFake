@@ -8,43 +8,31 @@ public class InitEverythingWhileLoading : MonoBehaviour
 {
     private void Start()
     {
-        //LocalizationManager.Instance.OnLoadStringTableDone += OnLocalizeDone;
-        // TOAN TOAN TOAN
-        // KHI NÀO TÍCH HỢP LOCALIZATION THÌ BỎ CÁI NÀY ĐI
-        LoadUserData();
-    }
+        LoadingManager.Instance.CreateNewProcess();
 
+        LoadingManager.Instance.RegisterAction(
+            LoadingDataLabel.LoadUserData.ToString(),
+            CustomAuthentication.Instance.LoadUserData);
+
+        LoadingManager.Instance.RegisterAction(
+            LoadingDataLabel.Login.ToString(),
+            CustomAuthentication.Instance.Login,
+             LoadingDataLabel.LoadUserData.ToString());
+
+        LoadingManager.Instance.RegisterAction(
+            LoadingDataLabel.LoadGameData.ToString(),
+            GameDataManager.Instance.LoadGameData,
+            LoadingDataLabel.Login.ToString());
+        LoadingManager.Instance.OnLoadingComplete += OnLoadShopDataDone;
+        LoadingManager.Instance.StartLoading();
+    }
     private void OnDestroy()
     {
-        //LocalizationManager.Instance.OnLoadStringTableDone -= OnLocalizeDone;
-    }
-    private void OnLocalizeDone()
-    {
-        LoadUserData();
-    }
-
-    private void LoadUserData()
-    {
-        CustomAuthentication.Instance.OnLoadUserInfoFinish += LoadGameData;
-        CustomAuthentication.Instance.LoadUserData();
-    }
-
-    private void LoadGameData()
-    {
-        CustomAuthentication.Instance.OnLoadUserInfoFinish -= LoadGameData;
-        GameDataManager.Instance.OnLoadGameDataFinish += OnLoadShopDataDone;
-        GameDataManager.Instance.LoadGameData();
-    }
-
-    private void LoadShopData()
-    {
-        // GameDataManager.Instance.OnLoadGameDataFinish -= LoadShopData;
-
+        LoadingManager.Instance.OnLoadingComplete -= OnLoadShopDataDone;
     }
 
     private void OnLoadShopDataDone()
     {
-        GameDataManager.Instance.OnLoadGameDataFinish -= OnLoadShopDataDone;
         SceneManager.LoadSceneAsync(GameConfig.HOME_SCENE);
     }
 }

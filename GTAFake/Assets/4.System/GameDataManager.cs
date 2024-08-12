@@ -82,11 +82,7 @@ public class GameDataManager : CustomAPI
     {
         Debug.LogError(responseData);
         playerdataresult = JsonConvert.DeserializeObject<PlayerDataResult>(responseData);
-
-        if (OnLoadGameDataFinish != null)
-        {
-            OnLoadGameDataFinish();
-        }
+        LoadingManager.Instance.OnLoadingActionDone(LoadingDataLabel.LoadGameData.ToString());
     }
 
     [Button("LoadData daily mission")]
@@ -113,13 +109,10 @@ public class PlayerDataResult
 {
     [JsonProperty("id")]
     public string Id;
-
     [JsonProperty("user_id")]
     public string user_id;
-
     [JsonProperty("user_name")]
     public string user_name;
-
     [JsonProperty("claim_remove_ads")]
     public bool claim_remove_ads;
     [JsonProperty("claim_starter_pack")]

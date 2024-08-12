@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class CustomAuthentication: CustomAPI
+public class CustomAuthentication : CustomAPI
 {
     public static CustomAuthentication Instance;
-    [HideInInspector] public Action OnLoadUserInfoFinish;
     private void Awake()
     {
         Instance = this;
@@ -24,7 +23,7 @@ public class CustomAuthentication: CustomAPI
         UserInfoData userInfoData = JsonConvert.DeserializeObject<UserInfoData>(responseData);
         GameDataManager.Instance.SetUserInfoData(userInfoData);
         PlayerPrefs.SetString(UserIDCache, userInfoData.UserId);
-        Login();
+        LoadingManager.Instance.OnLoadingActionDone(LoadingDataLabel.LoadUserData.ToString());
     }
 
 
@@ -61,7 +60,7 @@ public class CustomAuthentication: CustomAPI
     }
 
 
-    private void Login()
+    public void Login()
     {
         UserLoginData requestData = new UserLoginData();
         requestData.Username = GameDataManager.Instance.UserData.UserId;
@@ -75,7 +74,8 @@ public class CustomAuthentication: CustomAPI
         UserLoginResponse loginResponse = JsonConvert.DeserializeObject<UserLoginResponse>(responseData);
         GameConfig.Token = loginResponse.Token;
         GameConfig.PlayerID = loginResponse.UserId;
-        OnLoadUserInfoFinish();
+        LoadingManager.Instance.OnLoadingActionDone(LoadingDataLabel.Login.ToString());
+
     }
 }
 
